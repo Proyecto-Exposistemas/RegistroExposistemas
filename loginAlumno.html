@@ -14,7 +14,7 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="#" class="sign-in-form">
+                <form action="conexion.php" class="sign-in-form" >
                     <h2 class="title">Iniciar sesión como alunmo</h2>
 
                     <div class="input-field">
@@ -30,17 +30,17 @@
                     <input type="submit" value="Iniciar sesión" class="btn solid" />
                 </form>
 
-                <form action="#" class="sign-up-form">
+                <form action="#" method="post" class="sign-up-form">
                     <h2 class="title">Registrar Alumno</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nombre" />
+                        <input type="text" placeholder="Nombre" name="nombre" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Apellido paterno" />
+                        <input type="text" placeholder="Apellido paterno" name="ap" />
                     </div>
 
                     <div class="input-field">
@@ -55,7 +55,7 @@
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Correo institucional" />
+                        <input type="email" placeholder="Correo institucional" name="correo" />
                     </div>
 
                     <div class="input-field">
