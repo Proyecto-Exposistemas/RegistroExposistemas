@@ -105,7 +105,7 @@ form.sign-in-form {
 .options {
   display: flex;
   align-items: center;
-  width: 60vh;
+  width: 25rem;
   margin-left: 3vh;
 }
 
@@ -113,7 +113,7 @@ form.sign-in-form {
   display: flex;
   justify-content: space-between;
   margin-left: 2vh;
-  width: 39vh;
+  width: 65%;
   color: #797979;
   font-size: 1.1rem;
 }
@@ -371,6 +371,22 @@ form.sign-in-form {
 }
 
 @media (max-width: 570px) {
+  .title {
+    font-size: 1.9rem;
+  }
+  .input-field {
+    max-width: 450px;
+    width: 100%;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    height: 45px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+  }
+
   form {
     padding: 0 1.5rem;
   }
@@ -393,7 +409,15 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 17%;
     left: 50%;
+  }
+
+  .mensaje{
+    display: none;
+  }
+
+  .second{
+    margin-top: 275px;
   }
 }
