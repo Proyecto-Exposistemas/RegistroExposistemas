@@ -14,7 +14,7 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="LogicaLoginEstudiantes.php" class="sign-in-form" >
+                <form action="php/registro_Estudiantes_bd.php" class="sign-in-form" method="POST">
                     <h2 class="title">Iniciar sesión como estudiante</h2>
 
                     <div class="input-field">
@@ -30,32 +30,32 @@
                     <input type="submit" value="Iniciar sesión" class="btn solid" />
                 </form>
 
-                <form action="#" method="post" class="sign-up-form">
+                <form action="php/registro_Estudiantes_bd.php" method="POST" class="sign-up-form">
                     <h2 class="title">Registrar estudiante</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nombre" name="nombre" />
+                        <input type="text" placeholder="Nombre" name="nombre" autocomplete="off" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Apellido paterno" name="ap" />
+                        <input type="text" placeholder="Apellido paterno" name="ap" autocomplete="off" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Apellido materno" />
+                        <input type="text" placeholder="Apellido materno" name="am" autocomplete="off"/>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-id-card"></i>
-                        <input type="text" placeholder="Número de control" />
+                        <input type="text" placeholder="Número de control" name="nc" autocomplete="off" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Correo institucional" name="correo" />
+                        <input type="email" placeholder="Correo institucional" name="correo" autocomplete="off" />
                     </div>
 
                     <div class="input-field">
@@ -78,12 +78,12 @@
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" />
+                        <input type="password" placeholder="Contraseña" name="password" autocomplete="off" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirmar contraseña" />
+                        <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" autocomplete="off" />
                     </div>
 
                     <input type="submit" value="Registrarse" class="btn solid" />

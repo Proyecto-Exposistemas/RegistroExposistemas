@@ -8,12 +8,4 @@
     /* Declaración de la conexion a la base de datos en mysql */
     $conexion = mysqli_connect($servidor,$administrador,$password,$baseDatos);
 
-    if(!$conexion){
-        echo 'No se puede realizar la conexion a la base de datos, favor de verificar los datos de conexion';
-    }else{
-        echo 'Conexion a la base de datos completada de manera exitosa';
-    }
-
-    /* Declaración del codigo para extraer los datos para el form */
-    
 ?>
