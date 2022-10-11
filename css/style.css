@@ -1,5 +1,6 @@
-*{
-	padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+*{	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
@@ -34,13 +35,13 @@ body{
 
 .login-content{
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	text-align: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 .img img{
-	width: 500px;
+	width: 500px; 
 }
 
 form{
@@ -220,3 +221,40 @@ a:hover{
 		justify-content: center;
 	}
 }
+
+.opciones {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.cajas {
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+	text-align: center;
+	font-size: 1.1rem;
+}
+
+.containerCampos {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #dbdbdb;
+	height: 25rem;
+	border-radius: 15px;
+}
+
+#icono {
+	font-size: 4rem;
+}
+
