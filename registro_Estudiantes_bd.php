@@ -37,11 +37,11 @@
                         alert('Registro exitoso');
                         window.location = 'loginAlumno.php'
                     </script>";
-    
             }
             else{
                 echo "<script>
                     alert('Error al registrar');
+                    window.location = 'loginAlumno.php'
                 </script>";
             }
         }
@@ -49,13 +49,17 @@
         else{
             echo "<script>
                     alert('Las contraseñas no coinciden');
+                    window.location = 'loginAlumno.php'
                 </script>";
         }
 
 
     } else {
         /* Envia una alerta para rellenar todos los campos */
-        echo "<script>alert('Rellena todos los campos');</script>";
+        echo "<script>
+            alert('Rellena todos los campos');
+            window.location = 'loginAlumno.php'
+        </script>";
     }
 
 ?>
