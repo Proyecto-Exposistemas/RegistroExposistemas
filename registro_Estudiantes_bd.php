@@ -44,6 +44,7 @@
                     window.location = 'loginAlumno.php'
                 </script>";
             }
+            mysqli_close($conexion);
         }
 
         else{
