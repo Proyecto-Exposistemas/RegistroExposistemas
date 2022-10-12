@@ -64,12 +64,12 @@
 
                             <div class="container-options">
                                 <div class="container-espectador">
-                                    <input type="radio" name="participacion" id="espectador" class="espectador">
+                                    <input type="radio" name="participacion" id="espectador" class="espectador" value="espectador">
                                     <label for="espectador">Espectador</label>
                                 </div>
 
                                 <div class="container-expositor">
-                                    <input type="radio" name="participacion" id="expositor" class="expositor">
+                                    <input type="radio" name="participacion" id="expositor" class="expositor" value="expositor">
                                     <label for="expositor">Expositor</label>
                                 </div>
                             </div>

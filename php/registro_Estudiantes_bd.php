@@ -13,6 +13,7 @@
     /* Selecciona el valor que se ha seleccionado en participacion */
     if($participacion == "espectador"){
         $participacion = 0;
+
     }else{
         $participacion = 1;
     }
@@ -22,7 +23,7 @@
 
         $password = hash('sha512', $password);
 
-        $consulta = "INSERT INTO alumnos (Cor_Elec, Nombres, AP, AM, NC, Pass, Participacion) VALUES ('$correo', '$nombre', '$ap', '$am', '$correo', '$password', '$participacion')";
+        $consulta = "INSERT INTO alumnos (Cor_Elec, Nombres, AP, AM, NC, Pass, Participacion) VALUES ('$correo', '$nombre', '$ap', '$am', '$nc', '$password', '$participacion')";
 
         $resultado = mysqli_query($conexion, $consulta);
 
@@ -30,22 +31,29 @@
             /* Enviar una alerta por una ventana */
             echo "<script>
                     alert('Registro exitoso');
-                    window.location= 'loginAlumno.php'
                 </script>";
+
+                /* llama al nuevo archivo de html llamado QR y haz que se vuelva el principal mediante un script en javascript*/
+                echo "<script>
+                        window.location = '../QR.php'
+                    </script>";
+
             }else{
                 echo "<script>
                     alert('Error al registrar');
-                    window.location= 'loginAlumno.php'
+                    window.location = 'loginAlumno.php'
                 </script>";
-
-                /*  */
             }
 
     }else{
         echo "<script>
                 alert('Las contraseñas no coinciden');
-                window.location= 'registroAlumno.php'
             </script>";
+            
+            /* Hacer que vuelva a loginAlumno.php con codigo php*/
+            echo "<script>
+                    window.location = 'loginAlumno.php'
+                </script>";
     }
 
 ?>
