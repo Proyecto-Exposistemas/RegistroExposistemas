@@ -89,7 +89,6 @@
                     <input type="submit" value="Registrarse" class="btn solid" />
                 </form>
 
-
             </div>
         </div>
 
