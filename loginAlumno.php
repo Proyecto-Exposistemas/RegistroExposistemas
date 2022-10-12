@@ -14,17 +14,17 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="" class="sign-in-form" method="POST">
+                <form action="login_Estudiantes_bd.php" class="sign-in-form" method="POST">
                     <h2 class="title">Iniciar sesión como estudiante</h2>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Correo" />
+                        <input type="email" placeholder="Correo"  name="inputCorreo" id="" class="" autocomplete="off"/>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" />
+                        <input type="password" placeholder="Contraseña" name="inputPassword" id="" class="" autocomplete="off" />
                     </div>
 
                     <input type="submit" value="Iniciar sesión" class="btn solid" />
