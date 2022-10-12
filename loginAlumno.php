@@ -14,7 +14,7 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="php/registro_Estudiantes_bd.php" class="sign-in-form" method="POST">
+                <form action="" class="sign-in-form" method="POST">
                     <h2 class="title">Iniciar sesión como estudiante</h2>
 
                     <div class="input-field">
@@ -30,7 +30,7 @@
                     <input type="submit" value="Iniciar sesión" class="btn solid" />
                 </form>
 
-                <form action="php/registro_Estudiantes_bd.php" method="POST" class="sign-up-form">
+                <form action="registro_Estudiantes_bd.php" method="POST" class="sign-up-form">
                     <h2 class="title">Registrar estudiante</h2>
 
                     <div class="input-field">

@@ -21,8 +21,10 @@
     /* Verifica que el campo password y el confirmPassword sean iguales*/
     if($password == $confirm_password){
 
+        /* Encriptacion de la contraseña */
         $password = hash('sha512', $password);
 
+        /* Inseccion de los datos en la base de datps */
         $consulta = "INSERT INTO alumnos (Cor_Elec, Nombres, AP, AM, NC, Pass, Participacion) VALUES ('$correo', '$nombre', '$ap', '$am', '$nc', '$password', '$participacion')";
 
         $resultado = mysqli_query($conexion, $consulta);
@@ -33,27 +35,28 @@
                     alert('Registro exitoso');
                 </script>";
 
-                /* llama al nuevo archivo de html llamado QR y haz que se vuelva el principal mediante un script en javascript*/
-                echo "<script>
-                        window.location = '../QR.php'
-                    </script>";
+            /* Redireccionar a la pagina de QR.html mediante javascript*/
+            echo "<script>
+                    window.location = '../QR.html';
+                </script>";
 
             }else{
                 echo "<script>
                     alert('Error al registrar');
-                    window.location = 'loginAlumno.php'
                 </script>";
-            }
 
+                header("location: ../loginAlumno.php");
+            }
+            
     }else{
         echo "<script>
                 alert('Las contraseñas no coinciden');
             </script>";
             
-            /* Hacer que vuelva a loginAlumno.php con codigo php*/
-            echo "<script>
-                    window.location = 'loginAlumno.php'
-                </script>";
+        /* Redireccionar de nuevo a loginAlumnos por medio de Javascript */
+        echo "<script>
+                window.location = '../loginAlumno.php';
+            </script>";
     }
 
 ?>
