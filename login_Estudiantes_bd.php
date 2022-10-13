@@ -5,76 +5,52 @@
     $correoInput = $_POST['inputCorreo'];
     $passwordInput = $_POST['inputPassword'];
 
-    echo $correoInput;
-    echo $passwordInput;
-
-
-    /* Verifica que el campo correo y el campo password no se encuentren vacios */
+   /*  Verifica que el campo correo y el campo password no se encuentren vacios */
     if (!empty($correoInput) && !empty($passwordInput)) {
-        /* Encripta la contraseña */
-        $passwordInput = hash('sha512', $passwordInput);
+        
+        $resultado = mysqli_query($conexion,"SELECT Cor_Elec, Pass FROM $tabla where Cor_Elec = '$correoInput'");
 
-        /* Crea una consulta para obtener el correo y la contraseña de la tabla alumnos */
-        $consulta = "SELECT Cor_Elec, Pass FROM alumnos WHERE Cor_Elec = '$correoInput' AND Pass = '$passwordInput'";
-        $resultado = mysqli_query($conexion, $consulta);
+        /* Fetching the result of the query. */
+        $fila = mysqli_fetch_array($resultado);
 
-        /* Crea un condicional en donde pregunte si el correo y la contraseña son iguales a los que se encuentran en la tabla alumnos */
-        if ($resultado) {
-            /* Crea una variable en donde se almacene el numero de filas que se encuentran en la tabla alumnos */
-            $filas = mysqli_num_rows($resultado);
+        $correo = $fila['Cor_Elec'];
+        $password = $fila['Pass'];
 
-            /* Crea un condicional en donde pregunte si el numero de filas es igual a 1 */
-            if ($filas == 1) {
-                /* Crea una variable en donde se almacene el correo y la contraseña de la tabla alumnos */
-                $datos = mysqli_fetch_array($resultado);
+        /* verifica que los campos de correo y contraseña no estén vacios */
+        if (!empty($correo) && !empty($password)) {
+    
+            /* verifica que el correo y la contraseña sean iguales a los que se encuentran en la base de datos */
+            if ($correo == $correoInput && $password == hash('sha512', $passwordInput)) {
+                
+                /* Envia una alerta de que el usuario se ha logeado correctamente */
+                echo "<script>
+                        alert('Bienvenido');
+                        window.location = 'QR.html'
+                    </script>";
 
-                /* Crea una variable en donde se almacene el correo y la contraseña de la tabla alumnos */
-                $correo = $datos['Cor_Elec'];
-                $password = $datos['Pass'];
-
-                /* Compara si las variables correo y password coiniden con las cajas de texto inputCorreo e inputPassword */
-                if ($correo == $correoInput && $password == $passwordInput) {
-                    /* Crea una sesion en donde se almacene el correo y la contraseña de la tabla alumnos */
-                    $_SESSION['correo'] = $correo;
-                    $_SESSION['password'] = $password;
-
-                    /* Redirecciona a la pagina principal */
-                    header("location: ../index.php");
-                } else {
-                    /* Envia una alerta para rellenar todos los campos */
-                    echo "<script>
-                            alert('Correo o contraseña incorrectos');
-                            window.location = 'loginAlumno.php'
-                        </script>";
-                }
-
-                /*  Manda un mensaje de que fue aceptado el login 
-                echo '<script type="text/javascript">
-                        alert("Bienvenido");
-                    </script>'; */
-
-            } else {
-                /* Envia una alerta para que el usuario ingrese un correo y una contraseña correctos */
+                include 'close_conexiones.php';
+            }
+            else{
                 echo "<script>
                         alert('Correo o contraseña incorrectos');
-                        window.location = '../loginAlumno.php'
+                        window.location = 'loginAlumno.php'
                     </script>";
             }
-        } 
-        else {
-            /* Envia una alerta para que el usuario ingrese un correo y una contraseña correctos */
+        }
+        else{
             echo "<script>
                     alert('Correo o contraseña incorrectos');
-                    window.location = '../loginAlumno.php'
+                    window.location = 'loginAlumno.php'
                 </script>";
         }
-        mysqli_close($conexion);
+
     } 
     else {
-        /* Envia una alerta para que el usuario ingrese un correo y una contraseña correctos */
+        /* eniva una alerta que contenga que los datos no pueden estar vacios y redireccione al login estudiantes */
+
         echo "<script>
-                alert('No se permiten campos vacios');
-                window.location = 'loginAlumno.php' 
+            alert('Los datos no pueden estar vacios');
+            window.location= 'loginAlumno.php'
             </script>";
-    }
+    } 
 ?>

@@ -55,12 +55,14 @@
         }
 
 
-    } else {
+    } 
+    else {
         /* Envia una alerta para rellenar todos los campos */
         echo "<script>
             alert('Rellena todos los campos');
             window.location = 'loginAlumno.php'
         </script>";
+        mysqli_close($conexion);
     }
 
 ?>

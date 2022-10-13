@@ -421,3 +421,7 @@ form.sign-in-form {
     margin-top: 275px;
   }
 }
+
+.campoUppercase {
+  text-transform: uppercase;
+}
