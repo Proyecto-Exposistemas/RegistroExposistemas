@@ -24,7 +24,6 @@
                 
                 /* Envia una alerta de que el usuario se ha logeado correctamente */
                 echo "<script>
-                        alert('Bienvenido');
                         window.location = 'QR.html'
                     </script>";
 

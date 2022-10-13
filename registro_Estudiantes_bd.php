@@ -27,7 +27,7 @@
     
             $password = hash('sha512', $password);
     
-            $consulta = "INSERT INTO alumnos (Cor_Elec, Nombres, AP, AM, NC, Pass, Participacion) VALUES ('$correo', '$nombre', '$ap', '$am', '$nc', '$password', '$participacion')";
+            $consulta = "INSERT INTO $tabla (Cor_Elec, Nombres, AP, AM, NC, Pass, Participacion) VALUES ('$correo', '$nombre', '$ap', '$am', '$nc', '$password', '$participacion')";
     
             $resultado = mysqli_query($conexion, $consulta);
     

@@ -14,7 +14,7 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="#" class="sign-in-form">
+                <form action="registro_Docentes_bd.php" class="sign-in-form" method="POST">
                     <h2 class="title">Iniciar sesión como docente</h2>
 
                     <div class="input-field">
@@ -30,47 +30,46 @@
                     <input type="submit" value="Iniciar sesión" class="btn solid" />
                 </form>
 
-                <form action="#" class="sign-up-form">
                     <h2 class="title">Registrar docente</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nombre" />
+                        <input type="text" placeholder="Nombre" name="nombre" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Apellido paterno" />
+                        <input type="text" placeholder="Apellido paterno" name="ap" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Apellido materno" />
+                        <input type="text" placeholder="Apellido materno" name="am"/>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-award"></i>
-                        <input type="text" placeholder="Título" />
+                        <input type="text" placeholder="Título" name="titulo"/>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="RFC" />
+                        <input type="text" placeholder="RFC" name="rfc" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Correo institucional" />
+                        <input type="email" placeholder="Correo" name="correo" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" />
+                        <input type="password" placeholder="Contraseña" name="password" />
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirmar contraseña" />
+                        <input type="password" placeholder="Confirmar contraseña" name ="confirmPassword" />
                     </div>
 
                     <input type="submit" value="Registrarse" class="btn solid" />
