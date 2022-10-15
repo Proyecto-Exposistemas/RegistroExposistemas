@@ -14,24 +14,8 @@
         <div class="forms-container">
             <div class="signin-signup">
 
-                <form action="login_Estudiantes_bd.php" class="sign-in-form" method="POST">
-                    <h2 class="title">Iniciar sesión como estudiante</h2>
-
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Correo"  name="inputCorreo" id="" class="" autocomplete="off"/>
-                    </div>
-
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" name="inputPassword" id="" class="" autocomplete="off" />
-                    </div>
-
-                    <input type="submit" value="Iniciar sesión" class="btn solid" />
-                </form>
-
-                <form action="registro_Estudiantes_bd.php" method="POST" class="sign-up-form">
-                    <h2 class="title">Registrar estudiante</h2>
+                <form action="" method="POST" class="sign-in-form">
+                    <h2 class="title">Registrarme</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -49,16 +33,11 @@
                     </div>
 
                     <div class="input-field">
-                        <i class="fas fa-id-card"></i>
-                        <input type="text" placeholder="Número de control" name="nc" autocomplete="off" />
-                    </div>
-
-                    <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="Correo institucional" name="correo" autocomplete="off" />
                     </div>
 
-                    <div class="input-field">
+                    <div class="input-field" style="height: 100%;">
                         <div class="options">
                             <i class="fas fa-clipboard"></i>
 
@@ -72,21 +51,43 @@
                                     <input type="radio" name="participacion" id="expositor" class="expositor" value="expositor">
                                     <label for="expositor">Expositor</label>
                                 </div>
+
+                                <div class="container-panelista">
+                                    <input type="radio" name="participacion" id="panelista" class="panelista" value="panelista">
+                                    <label for="panelista">Panelista</label>
+                                </div>
+
+                                <div class="container-organizador">
+                                    <input type="radio" name="participacion" id="organizador" class="organizador" value="organizador">
+                                    <label for="organizador">Conferencista</label>
+                                </div>
+                        
                             </div>
                         </div>
                     </div>
 
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Contraseña" name="password" autocomplete="off" />
-                    </div>
-
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirmar contraseña" name="confirmPassword" autocomplete="off" />
-                    </div>
+                    <!-- <div class="input-field">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" placeholder="Número de control" name="nc" autocomplete="off" />
+                    </div> -->
 
                     <input type="submit" value="Registrarse" class="btn solid" />
+                </form>
+
+                <form action="" class="sign-up-form" method="POST">
+                    <h2 class="title">Iniciar sesión administrador</h2>
+
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Correo"  name="inputCorreo" id="" class="" autocomplete="off"/>
+                    </div>
+
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Contraseña" name="inputPassword" id="" class="" autocomplete="off" />
+                    </div>
+
+                    <input type="submit" value="Iniciar sesión" class="btn solid" />
                 </form>
 
             </div>
@@ -95,21 +96,22 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Aun no tienes cuenta?</h3>
+                    <h3>¿Eres un administrador?</h3>
                     <p>
-                        Puedes crear tu cuenta rellenando los siguientes campos desde el siguiente botón
+                        Si eres un administrador, inicia sesión para poder ingresar a el sistema.
                     </p>
                     <button class="btn transparent" id="sign-up-btn">
-                        Crear una cuenta
+                        Iniciar sesión
                     </button>
                 </div>
                 <img src="img/virtual-reality-animate.svg" class="image" alt="" />
             </div>
+
             <div class="panel right-panel">
                 <div class="content">
-                    <h3 class="mensaje">Ya tienes una cuenta?</h3>
+                    <h3 class="mensaje">¿No eres un administrador?</h3>
                     <p class="mensaje">
-                        Puedes regresar a la pestaña de iniciar sesión desde el siguiente botón
+                        Puedes regresar a la pestaña de registro desde el siguiente botón para completar el ingreso de tus datos
                     </p>
                     <button class="btn transparent second" id="sign-in-btn" style="margin-bottom: -85px;">
                         Iniciar sesión

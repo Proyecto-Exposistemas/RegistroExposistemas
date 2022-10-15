@@ -110,12 +110,12 @@ form.sign-in-form {
 }
 
 .container-options {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 2vh;
-  width: 65%;
+  display: grid;
   color: #797979;
   font-size: 1.1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-left: 15px;
 }
 
 .btn {
