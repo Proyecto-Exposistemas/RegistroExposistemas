@@ -18,7 +18,8 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blanchedalmond;
+    background: linear-gradient(to bottom, #4b6cb7 0%, #182848 100%);
+    color: #fff;
 }
 
 header h1, header h2 {
@@ -34,6 +35,7 @@ header h1, header h2 {
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    background-color: #e2e2e2;
 }       
 
 .contenedor_datos form{
