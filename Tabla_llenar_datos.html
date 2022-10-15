@@ -1,64 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llenar tabla evento</title>
-    <link rel="stylesheet" href="/llenar_evento_estilo.css">
+    <link rel="stylesheet" href="llenar_evento_estilo.css">
 </head>
+
 <body>
     <header>
-    <div class="contenedor_titulo">
-        <h1 class="titulo_de_tec"><b>Tecnológico  Superior Zactecas Sur</b></h1>
-      </div>
-    <div class="Contenedor_ubicacion">
-        <h1 class="ubicacion">Llenar datos del evento</h1>
-   </div>
+        <h1>Instituto Tecnológico Superior Zactecas Sur</h2>
+            <h2>Registro del programa de actividades de exposistemas</h2>
     </header>
-    <div class="contenedor_datos" style="float: center;">
-        <label>Programa</label>
-        <input class="parte1" type="text"  id="programa">
-        <label>Hora</label>
-        <input class="parte1" type="text" id="programa">
-        <label>Número Actividad</label>
-        <input class="parte1" type="int"  id="numero_actividad">
-        <label>Tema</label>
-        <input class="parte1" type="text"  id="tema">
 
-        <br>
-        <label>Expositor</label>
-        <input class="parte2" type="text"  id="expositor">
-        <label>Encargado del proyecto</label>
-        <input class="parte2" type="text"  id="encargado_proyecto">
-        <label>Materia</label>
-        <input class="parte2" type="text"  id="materia">
+    <article class="container-all">
+        <article class="contenedor_datos">
 
-    </div>
-    <div class="contenedor-botones" style="float: center;">
-        <button disabled id="btn_agregar"  class="botones">Agregar evento</button>
-        <button disabled id="btn1" class="botones" >Cancelar</button>
-        <!-- <input class="botones" type="submit" name="modifica" value="EDITAR">
-        <input class="botones" type="submit" name="elimina" value="ELIMINAR"> -->
-    </div>
-    <div class="contenedor-tabla">
-        <table class="table-cebra">
-            <thead>
-               <tr>
-                   <th class="sticky"> Programa </th>
-                   <th> Hora </th>
-                   <th> Número actividad </th>
-                   <th> Tema </th>
-                   <th> Expositor </th>
-                   <th>Encargado del proyecto</th>
-                   <th>Materia</th>
-               </tr>
-            </thead>
-            <tbody>
-                   
-                </tbody>
-           </table>  
-    </div>
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" id="progama" required class="input">
+                    <label for="programa" class="input-label">Programa</label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="time" id="hora" required class="input">
+                    <label for="hora" class="input-label"></label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="text" id="actividad" required class="input">
+                    <label for="actividad" class="input-label">Numero de actividad</label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="text" id="tema" required class="input">
+                    <label for="tema" class="input-label">Tema</label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="text" id="Expositor" required class="input">
+                    <label for="Expositor" class="input-label">Expositor</label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="text" id="asesor" required class="input">
+                    <label for="asesor" class="input-label">Asesor del proyecto</label>
+                </div>
+        
+                <div class="input-group">
+                    <input type="text" id="materia" required class="input">
+                    <label for="materia" class="input-label">Materia</label>
+                </div>
+            </form>
     
+            <button disabled id="btn-agregar" class="botones">Agregar evento</button>
+            <button disabled id="btn-cancelar" class="botones">Cancelar</button>
+    
+        </article>
+    
+    
+        <article class="contenedor-tabla">
+    
+            <table class="table-cebra">
+    
+                <thead>
+                    <tr>
+                        <th class="sticky"> Programa </th>
+    
+                        <th> Hora </th>
+    
+                        <th> Número actividad </th>
+    
+                        <th> Tema </th>
+    
+                        <th> Expositor </th>
+    
+                        <th>Encargado del proyecto</th>
+    
+                        <th>Materia</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                </tbody>
+    
+            </table>
+        </article>
+    </article>
 </body>
+
 </html>
