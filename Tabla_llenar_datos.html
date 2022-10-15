@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llenar tabla evento</title>
+    <link rel="stylesheet" href="/llenar_evento_estilo.css">
+</head>
+<body>
+    <header>
+    <div class="contenedor_titulo">
+        <h1 class="titulo_de_tec"><b>Tecnológico  Superior Zactecas Sur</b></h1>
+      </div>
+    <div class="Contenedor_ubicacion">
+        <h1 class="ubicacion">Llenar datos del evento</h1>
+   </div>
+    </header>
+    <div class="contenedor_datos" style="float: center;">
+        <label>Programa</label>
+        <input class="parte1" type="text"  id="programa">
+        <label>Hora</label>
+        <input class="parte1" type="text" id="programa">
+        <label>Número Actividad</label>
+        <input class="parte1" type="int"  id="numero_actividad">
+        <label>Tema</label>
+        <input class="parte1" type="text"  id="tema">
+
+        <br>
+        <label>Expositor</label>
+        <input class="parte2" type="text"  id="expositor">
+        <label>Encargado del proyecto</label>
+        <input class="parte2" type="text"  id="encargado_proyecto">
+        <label>Materia</label>
+        <input class="parte2" type="text"  id="materia">
+
+    </div>
+    <div class="contenedor-botones" style="float: center;">
+        <button disabled id="btn_agregar"  class="botones">Agregar evento</button>
+        <button disabled id="btn1" class="botones" >Cancelar</button>
+        <!-- <input class="botones" type="submit" name="modifica" value="EDITAR">
+        <input class="botones" type="submit" name="elimina" value="ELIMINAR"> -->
+    </div>
+    <div class="contenedor-tabla">
+        <table class="table-cebra">
+            <thead>
+               <tr>
+                   <th class="sticky"> Programa </th>
+                   <th> Hora </th>
+                   <th> Número actividad </th>
+                   <th> Tema </th>
+                   <th> Expositor </th>
+                   <th>Encargado del proyecto</th>
+                   <th>Materia</th>
+               </tr>
+            </thead>
+            <tbody>
+                   
+                </tbody>
+           </table>  
+    </div>
+    
+</body>
+</html>
