@@ -18,9 +18,9 @@ if(isset($_SESSION['user'])){
 
     if($user->userExist($usuario,$pass)){
 
-       $user->setUser($usuario);
-       $sesion->setUser($user->getUsername(),$user->getNombre());
-       include_once("PaginasVista/registro_alumnos.html");
+        $user->setUser($usuario);
+        $sesion->setUser($user->getUsername(),$user->getNombre());
+        include_once("PaginasVista/registro_alumnos.html");
 
     }else{
         $errorLogin ="Nombre de usuario y/o password incorrecto";
