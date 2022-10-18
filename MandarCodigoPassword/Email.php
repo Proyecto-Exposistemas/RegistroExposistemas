@@ -35,26 +35,6 @@ class Email{
 
 }
 
-class EmailProyectoEscolar extends Email{
-
-    public function GeneradorCodigo()
-    {
-        $this->setCode(random_int(1000,9999));
-    }
-
-    public function CrearEmailProyectoEscolar($destinatario)
-    {
-        $remitente = "ecateam22@gmail.com";
-        // $destinatario= "tetillamas@gmail.com";
-        $asunto = "Codigo";
-        $cuerpo = $this->getCode();
-
-        $this->MensajeEmail($remitente,$destinatario,$cuerpo,$asunto);
-          
-    
-    }
-
-}
 
 
 
