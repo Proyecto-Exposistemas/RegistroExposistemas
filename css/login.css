@@ -437,7 +437,7 @@ form.sign-in-form {
   }
 
   .container:before {
-    bottom: 72%;
+    bottom: 90%;
     left: 50%;
   }
 
@@ -446,12 +446,27 @@ form.sign-in-form {
     left: 50%;
   }
 
-  .mensaje{
+  .mensaje1{
     display: none;
   }
 
-  .second{
+  .boton1{
     margin-top: 275px;
+  }
+
+  #panel1{
+    margin-top: -125px;
+  }
+  #panel2{
+    margin-top: 20px;
+  }
+
+  .mensaje2{
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  .texto2{
+    display: none;
   }
 }
 
