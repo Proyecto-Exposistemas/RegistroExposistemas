@@ -1,36 +1,35 @@
-
 <?php
 
-include_once("SesionesUsuario/user_session.php");
-include_once("SesionesUsuario/user_XAMP.php");
+    include_once("SesionesUsuario/user_session.php");
+    include_once("SesionesUsuario/user_XAMP.php");
 
-$user = new User();
-$sesion = new UserSession();
+    $user = new User();
+    $sesion = new UserSession();
 
 
-if(isset($_SESSION['user'])){
-    $user->setUser($sesion->getUser());
-    include_once("Paginas/home.html");
-
-}else if(isset($_POST["inputUser"]) && isset($_POST["inputUser"])){
-    
-    $usuario = $_POST["inputUser"];
-    $pass = $_POST["inputPassword"];
-
-    
-    if($user->userExist($usuario,$pass)){
-        
-        $user->setUser($usuario);
-        $sesion->setUser($user->getUsername(),$user->getNombre(),$user->getApellidoP());
+    if(isset($_SESSION['user'])){
+        $user->setUser($sesion->getUser());
         include_once("Paginas/home.html");
 
-    }else{
-        $errorLogin ="Nombre de usuario y/o password incorrecto";
-        include_once("index.html");
-    }
+    }else if(isset($_POST["inputUser"]) && isset($_POST["inputUser"])){
+        
+        $usuario = $_POST["inputUser"];
+        $pass = $_POST["inputPassword"];
 
-}else{
-    include_once "index.html";
-}
+        
+        if($user->userExist($usuario,$pass)){
+            
+            $user->setUser($usuario);
+            $sesion->setUser($user->getUsername(),$user->getNombre(),$user->getApellidoP());
+            include_once("Paginas/home.html");
+
+        }else{
+            $errorLogin ="Nombre de usuario y/o password incorrecto";
+            include_once("index.html");
+        }
+
+    }else{
+        include_once "index.html";
+    }
 
 ?>
