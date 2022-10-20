@@ -10,25 +10,27 @@ $sesion = new UserSession();
 
 if(isset($_SESSION['user'])){
     $user->setUser($sesion->getUser());
+    include_once("Paginas/home.html");
 
-}else if(isset($_POST["username"]) && isset($_POST["password"])){
+}else if(isset($_POST["inputUser"]) && isset($_POST["inputUser"])){
+    
+    $usuario = $_POST["inputUser"];
+    $pass = $_POST["inputPassword"];
 
-    $usuario = $_POST["username"];
-    $pass = $_POST["password"];
-
+    
     if($user->userExist($usuario,$pass)){
-
+        
         $user->setUser($usuario);
-        $sesion->setUser($user->getUsername(),$user->getNombre());
-        include_once("PaginasVista/registro_alumnos.html");
+        $sesion->setUser($user->getUsername(),$user->getNombre(),$user->getApellidoP());
+        include_once("Paginas/home.html");
 
     }else{
         $errorLogin ="Nombre de usuario y/o password incorrecto";
-        include_once("/PaginasVista/login.php");
+        include_once("index.html");
     }
 
 }else{
-    include_once "/PaginasVista/login.php";
+    include_once "index.html";
 }
 
 ?>
