@@ -18,48 +18,47 @@
     <article class="container-all">
         <article class="contenedor_datos">
 
-            <form action="" method="post">
+            <form  method="post" action="obtencion_datos_tabla.php" >
                 <div class="input-group">
-                    <input type="text" id="progama" required class="input">
+                    <input type="text" name="progama_expo" required class="input">
                     <label for="programa" class="input-label">Programa</label>
                 </div>
         
                 <div class="input-group">
-                    <input type="time" id="hora" required class="input">
+                    <input type="time" name="hora_expo" required class="input">
                     <label for="hora" class="input-label"></label>
                 </div>
         
                 <div class="input-group">
-                    <input type="text" id="actividad" required class="input">
+                    <input type="text" name="actividad_expo" required class="input">
                     <label for="actividad" class="input-label">Numero de actividad</label>
                 </div>
         
                 <div class="input-group">
-                    <input type="text" id="tema" required class="input">
+                    <input type="text" name="tema_expo" required class="input">
                     <label for="tema" class="input-label">Tema</label>
                 </div>
         
                 <div class="input-group">
-                    <input type="text" id="Expositor" required class="input">
+                    <input type="text" name="Expositor_expo" required class="input">
                     <label for="Expositor" class="input-label">Expositor</label>
                 </div>
         
                 <div class="input-group">
-                    <input type="text" id="asesor" required class="input">
+                    <input type="text" name="asesor_expo" required class="input">
                     <label for="asesor" class="input-label">Asesor del proyecto</label>
                 </div>
         
                 <div class="input-group">
-                    <input type="text" id="materia" required class="input">
+                    <input type="text" name="materia_expo" required class="input">
                     <label for="materia" class="input-label">Materia</label>
                 </div>
+                <input disabled id="btn-agregar" class="botones" type="submit" value="Agregar evento"/>
+                <button disabled id="btn-cancelar" class="botones" >Cancelar</button>
             </form>
     
-            <button disabled id="btn-agregar" class="botones">Agregar evento</button>
-            <button disabled id="btn-cancelar" class="botones">Cancelar</button>
     
         </article>
-    
     
         <article class="contenedor-tabla">
     
