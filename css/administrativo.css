@@ -105,6 +105,7 @@ header h2 {
 .navigation ul li:hover{
     background-color: #fff;
     color: #222;
+    transition: 0.5s;
 }
 
 .navigation ul li:nth-child(1){
@@ -124,6 +125,7 @@ header h2 {
 
 .navigation ul li:hover:not(:first-child) a{
     color: #668588;
+    transition: 0.3s;
 }
 
 .navigation ul li a .icon {
