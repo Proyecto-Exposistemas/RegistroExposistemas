@@ -25,11 +25,11 @@
 
         }else{
             $errorLogin ="Nombre de usuario y/o password incorrecto";
-            include_once("index.html");
+            include_once("Paginas/login.php");
         }
 
     }else{
-        include_once "index.html";
+        include_once "Paginas/login.php";
     }
 
 ?>
