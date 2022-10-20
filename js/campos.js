@@ -39,7 +39,6 @@ identidad.addEventListener("change", function() {
         inputRfc.style.display = "grid"
         inputProcedencia.style.display = "none"
         inputFuncion.style.display = "grid"
-        /* inputIdentidad.style.display = "none" */
     }
     else if(seleccion == "3") {
         inputRol.style.display = "grid"
@@ -47,7 +46,7 @@ identidad.addEventListener("change", function() {
         inputNumeroControl.style.display = "none"
         inputSemestre.style.display = "none"
         inputTitulo.style.display = "none"
-        inputRfc.style.display = "grid"
+        inputRfc.style.display = "none"
         inputProcedencia.style.display = "grid"
         inputFuncion.style.display = "none"
     }
