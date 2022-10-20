@@ -9,5 +9,4 @@
 
     /* Declaración de la conexion a la base de datos en mysql */
     $conexion = mysqli_connect($servidor,$administrador,$password,$baseDatos);
-
 ?>

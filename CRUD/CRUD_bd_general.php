@@ -3,14 +3,14 @@
 * Este archivo crea las consultas para una base de datos en phpmyadmin
 */
 define("HOST", "mysql:host=localhost;");
-define("DBNAME", "dbname=pruebas");
+define("DBNAME", "dbname=exposistemas");
 define("USUARIO", "root");
 define("PASSWORD", '');
 
 
 class CRUD_general{
 
-    public $conexion;
+    private $conexion;
 
     public function conexionBD(){
 
@@ -56,8 +56,13 @@ class CRUD_general{
         $resultados->execute($arrayAsociativo);
         $resultados = null;
         
-        echo "se realizo la consulta";
+        return true;
 
+    }
+
+    public function CERRAR_CONEXION()
+    {
+        $this->conexion = null;
     }
 
     

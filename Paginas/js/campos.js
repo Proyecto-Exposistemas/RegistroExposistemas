@@ -12,6 +12,8 @@ let inputFuncion = document.getElementById("cajaFuncion")
 
 let botonEnviar = document.getElementById("enviar")
 
+let circulo = document.getElementById("circulo")
+
 identidad.addEventListener("change", function() {
     seleccion = identidad.value
 
@@ -24,6 +26,9 @@ identidad.addEventListener("change", function() {
         inputRfc.style.display = "none"
         inputProcedencia.style.display = "none"
         inputFuncion.style.display = "none"
+
+        /* Modifica la propiedad de un media qwery */
+        circulo.style.width = "100%"
     }
     else if(seleccion == "2") {
         inputRol.style.display = "none"
@@ -34,7 +39,6 @@ identidad.addEventListener("change", function() {
         inputRfc.style.display = "grid"
         inputProcedencia.style.display = "none"
         inputFuncion.style.display = "grid"
-        /* inputIdentidad.style.display = "none" */
     }
     else if(seleccion == "3") {
         inputRol.style.display = "grid"
@@ -42,7 +46,7 @@ identidad.addEventListener("change", function() {
         inputNumeroControl.style.display = "none"
         inputSemestre.style.display = "none"
         inputTitulo.style.display = "none"
-        inputRfc.style.display = "grid"
+        inputRfc.style.display = "none"
         inputProcedencia.style.display = "grid"
         inputFuncion.style.display = "none"
     }
