@@ -156,7 +156,7 @@ CREATE TABLE `total_alumnos` (
   `nombre` varchar(40) NOT NULL,
   `paterno` varchar(20) NOT NULL,
   `materno` varchar(20) DEFAULT NULL,
-  `no_control` varchar(64) NOT NULL,
+  `no_control` varchar(10) NOT NULL,
   `semestre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
