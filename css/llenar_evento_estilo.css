@@ -13,6 +13,7 @@ body {
     box-sizing: border-box;
 }
 
+
 header {
     display: flex;
     flex-direction: column;
@@ -163,4 +164,47 @@ header h1, header h2 {
 ::-webkit-scrollbar-thumb{
     background: linear-gradient(0deg, #000851 0%, #1CB5E0 100%);
     border-radius: 1rem;
+}
+#listado {
+    max-width: 100%;
+    overflow-x: scroll;
+    text-align: center;
+    justify-items: center;
+    
+}
+#listado th{
+    color: white;
+    background: linear-gradient(to top, #4b6cb7 0%, #182848 100%);
+    width: 250px;
+}
+#listado td{
+    color: black;
+    background-color: white;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 250px;
+}
+#listado td:last-child,
+#listado th:last-child {
+    border-right: 0;
+}
+
+#listado tbody tr {
+    background: #1e355e;
+}
+
+#listado tbody tr:nth-child(2n) {
+    background: white;
+}
+#listado .sticky {
+    position: sticky;
+    left: 0;
+}
+
+#listado tbody tr .sticky {
+    background: white;
+}
+
+#listado tbody tr:nth-child(2n) {
+    background: #f2f2f2;
 }
