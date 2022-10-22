@@ -19,22 +19,22 @@
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Nombre" name="nombre" autocomplete="off" />
+            <input id="nombre" type="text" placeholder="Nombre" name="nombre" autocomplete="off" />
           </div>
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Apellido paterno" name="ap" autocomplete="off" />
+            <input id="ap" type="text" placeholder="Apellido paterno" name="ap" autocomplete="off" />
           </div>
 
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Apellido materno" name="am" autocomplete="off" />
+            <input id="am" type="text" placeholder="Apellido materno" name="am" autocomplete="off" />
           </div>
 
           <div class="input-field">
             <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Correo" name="correo" autocomplete="off" />
+            <input id="email" type="email" placeholder="Correo" name="correo" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaIdentidad">
@@ -67,40 +67,40 @@
 
           <div class="input-field" id="cajaTelefono">
             <i class="fas fa-mobile"></i>
-            <input type="text" placeholder="Número de teléfono" name="telefono" autocomplete="off" />
+            <input id="tel" type="text" placeholder="Número de teléfono" name="telefono" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaNumeroControl">
             <i class="fas fa-id-card"></i>
-            <input type="text" placeholder="Número de control" name="numeroControl" autocomplete="off" />
+            <input id="control" type="text" placeholder="Número de control" name="numeroControl" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaSemestre">
             <i class="fas fa-graduation-cap"></i>
-            <input type="text" placeholder="Semestre" name="semestre" autocomplete="off" />
+            <input id="semestre" type="text" placeholder="Semestre" name="semestre" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaTitulo">
             <i class="fas fa-award"></i>
-            <input type="text" placeholder="Titulo" name="titulo" autocomplete="off" />
+            <input id="titulo" type="text" placeholder="Titulo" name="titulo" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaFuncion">
             <i class="fas fa-award"></i>
-            <input type="text" placeholder="Función" name="funcion" autocomplete="off" />
+            <input id="funcion" type="text" placeholder="Función" name="funcion" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaRfc">
             <i class="fas fa-id-card"></i>
-            <input type="text" placeholder="RFC" name="rfc" autocomplete="off" />
+            <input id="rfc" type="text" placeholder="RFC" name="rfc" autocomplete="off" />
           </div>
 
           <div class="input-field" id="cajaProcedencia">
             <i class="fas fa-map-marker-alt"></i>
-            <input type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
+            <input id="lugar" type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
           </div>
 
-          <input type="submit" value="Registrarse" class="btn solid" id="enviar" />
+          <input disabled id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar" />
         </form>
 
         <form action="" method="POST" class="sign-up-form">
@@ -152,6 +152,7 @@
 
   <script src="js/app.js"></script>
   <script src="js/campos.js"></script>
+  <script src="js/java.js"></script>
 </body>
 
 </html>

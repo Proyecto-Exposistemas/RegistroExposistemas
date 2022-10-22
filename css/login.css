@@ -154,12 +154,12 @@ form.sign-in-form {
 .btn {
   width: 150px;
 
-  background: linear-gradient(90deg, #4b6cb7 0%, #182848 50%, #182848 50%, #4b6cb7 100%);
+  background: linear-gradient(135deg,  #546678 0%, #282e48 100%);
   background-size: 200% 100%;
   background-position: left center;
   transition: background 300ms ease;
 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25); */
 
   border: none;
   outline: none;
