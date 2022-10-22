@@ -21,7 +21,7 @@
             
             $user->setUser($usuario);
             $sesion->setUser($user->getUsername(),$user->getNombre(),$user->getApellidoP());
-            include_once("Paginas/administrativo.html");
+            include_once("Paginas/administrativo.php");
 
         }else{
             $errorLogin ="Nombre de usuario y/o password incorrecto";
