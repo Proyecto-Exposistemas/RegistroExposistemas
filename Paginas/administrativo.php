@@ -145,10 +145,9 @@
               <div class="container">
                 <h2>Expositores</h2>
 
-                <div class="select-box">
+                <div class="select-box" style="margin-top: -25px">
 
                   <div class="options-container">
-
                   </div>
 
                   <div class="selected">
@@ -160,45 +159,20 @@
                   </div>
 
                 </div>
+      
               </div>
 
             </div>
             <!-- Código del contenedor de nombres -->
             <div class="contanerPersonas">
 
-              <div class="container">
+              <div class="containerP">
                 <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
-                <div class="nombres">
-                  <p id="nombre1" class="nombreExpoenente">Alejandro Gordo Barajas</p>
-                  <!-- Boton de eliminar -->
-                  <button class="btnEliminar" type="button">
-                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="nombres">
-                  <p id="nombre2" class="nombreExpoenente">Nayeli Romero Dávila</p>
-                  <!-- Boton de eliminar -->
-                  <button class="btnEliminar" type="button">
-                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
-                  </button>
-                </div>
-
-                <div class="nombres">
-                  <p id="nombre3" class="nombreExpoenente">Luis Fernando Valdez Mota</p>
-                  <!-- Boton de eliminar -->
-                  <button class="btnEliminar" type="button">
-                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
-                  </button>
-                </div>
-
                 
               </div>
             </div>
 
           </div>
-          
 
           <div class="botones">
             <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
@@ -252,7 +226,6 @@
       navigation.classList.toggle('active')
     }
   </script>
-  <!-- Importación del script del selectbox -->
   
 </body>
 
@@ -342,14 +315,49 @@
     let contenedor = document.querySelector('.options-container');
 
     for(let i = 0; i < nombre_completo.length; i++){
-      contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"category\" > <label for=\"' + numeros_control[i] + '\">' + nombre_completo[i] + '</label> </div>';
+      contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"expositoresParticipantes\" > <label for=\"' + numeros_control[i] + '\"id=\"etiqueta\" >' + nombre_completo[i] + '</label> </div>';
     }
   </script>";
 
   echo '<script src="../js/selectbox.js"></script>';
+
+  /* */
+?>
+
+<!-- Php para cargar la seleccion en la lista de integrantes -->
+<?php
+  /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
+  echo "<script>
+  let listaOpciones = document.querySelectorAll('.option');
+  /* Declara un array que se llame ListaNombres */
+  let listaNombres = [];
+
+  let nombresLista = document.querySelector('.containerP');
   
-  /* <!-- <div class="option">
-    <input type="radio" class="radio" id="automobiles" name="category" />
-    <label for="automobiles">Leobardo Miramontes Murillo</label>
-  </div> --> */
+
+  listaOpciones.forEach(o => {
+    o.addEventListener('click', (e) => {
+      let valorTexto = e.target.textContent;
+      
+      if(valorTexto != ''){
+        if(!listaNombres.includes(valorTexto)){
+          /* Si el valor del texto ya está en el array, no lo agregues */
+          listaNombres.push(valorTexto);
+          console.log(listaNombres);
+
+          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+        }
+        else{
+          console.log('Ya está en la lista');
+        }
+      }
+    });
+
+  });
+
+
+  
+  </script>";
+
 ?>
