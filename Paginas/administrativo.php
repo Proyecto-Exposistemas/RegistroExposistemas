@@ -93,47 +93,37 @@
       <div class="card">
         <h1>Registro del programa de exposistemas</h1>
 
-        <form action="registro_programa.php" method="post"> 
+        <form action="" method="post"> 
 
           <div class="campos">
 
             <div class="input-group">
-              <input type="text" id="NombreActividad" required class="input">
+              <input type="text" name="NombreActividad" autocomplete="off" id="NombreActividad" required class="input">
               <label for="NombreActividad" class="input-label">Nombre del proyecto</label>
             </div>
 
             <div class="input-group">
-              <input type="text" id="NumeroActividad" required class="input">
+              <input type="text" name="NumeroActividad" autocomplete="off" id="NumeroActividad" required class="input">
               <label for="NumeroActividad" class="input-label">Posición de actividad</label>
             </div>
 
             <div class="input-group">
-              <input type="text" id="temaActividad" required class="input">
+              <input type="text" name="temaActividad" autocomplete="off" id="temaActividad" required class="input">
               <label for="temaActividad" class="input-label">Tema del proyecto</label>
             </div>
 
-            <!-- <div class="input-group">
-              <input type="text" id="Expositores" required class="input">
-              <label for="Expositores" class="input-label">Expositores</label>
-            </div> -->
-
-            <!-- <div class="input-group">
-              <input type="text" id="NombreAsesor" required class="input">
-              <label for="NombreAsesor" class="input-label">Nombre del asesor</label>
-            </div> -->
-
             <div class="input-group">
-              <input type="text" id="Materia" required class="input">
+              <input type="text" name="Materia" autocomplete="off" id="Materia" required class="input">
               <label for="Materia" class="input-label">Nombre de la asignatura</label>
             </div>
 
             <div class="input-group">
-              <input type="time" id="HoraInicio" required class="input">
+              <input type="time" name="HoraInicio" autocomplete="off" id="HoraInicio" required class="input">
               <label for="HoraInicio" class="input-label">Hora de inicio</label>
             </div>
 
             <div class="input-group">
-              <input type="time" id="HoraFinal" required class="input">
+              <input type="time" name="HoraFinal" autocomplete="off" id="HoraFinal" required class="input">
               <label for="HoraFinal" class="input-label">Hora de final</label>
             </div>
 
@@ -248,10 +238,10 @@
           
 
           <div class="botones">
-            <!--  <input type="submit" class="btn" id="btn-buscar" value="Buscar registro">
-            <input type="submit" class="btn" id="btn-actualizar" value="Actualizar Registro"> -->
-            <input type="submit" class="btn" id="btn-enviar" value="Ingresar registro">
-            <!-- <input type="submit" class="btn" id="btn-eliminar" value="Eliminar registro"> -->
+            <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
+            <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
+            <input type="submit" class="btn" name="btn-enviar" id="btn-enviar" value="Ingresar registro">
+            <input type="submit" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
           </div>
 
         </form>
@@ -304,3 +294,76 @@
 </body>
 
 </html>
+
+
+
+<?php
+  /* Obten el boton que está siendo presionado */
+  if(isset($_POST['btn-buscar'])){
+    buscarDatos();
+  }else if(isset($_POST['btn-actualizar'])){
+    actualizarDatos();
+  }else if(isset($_POST['btn-enviar'])){
+    insertarDatos();
+  }else if(isset($_POST['btn-eliminar'])){
+    eliminarDatos();
+  }
+
+  /* Funcion para buscar los datos */
+  function buscarDatos(){
+    echo "Buscar datos";
+  }
+
+  /* Funcion para actualizar los datos */
+  function actualizarDatos(){
+    echo "Actualizar datos";
+  }
+
+  /* Funcion para insertar los datos */
+  function insertarDatos(){
+    // Conexión a la base de datos 
+    include '../conexiones.php';
+
+    /* echo "Insertar datos"; */
+    $nombre_actividad = $_POST['NombreActividad'];
+    $numero_actividad = $_POST['NumeroActividad'];
+    $tema_actividad = $_POST['temaActividad'];
+    $materia = $_POST['Materia'];
+    $hora_inicio = $_POST['HoraInicio'];
+    $hora_fin = $_POST['HoraFinal'];
+
+    $hora_inicio = $hora_inicio . ":00";
+    $hora_fin = $hora_fin . ":00";
+
+    $consulta = "INSERT INTO `evento` (`no_evento`, `evento`, `hora_inicio`, `hora_fin`) VALUES ($numero_actividad, '$nombre_actividad', '$hora_inicio', '$hora_fin')";
+
+    $resultado = mysqli_query($conexion, $consulta);
+
+    if($resultado){
+        /* lanza una alerta que confirme el registro */
+        echo "<script>alert('Registro exitoso')</script>";
+    }else{
+        /* lanza una alerta que confirme el registro */
+        echo "<script>alert('Registro fallido')</script>";
+    }
+  }
+
+  /* Funcion para eliminar los datos */
+  function eliminarDatos(){
+    echo "Eliminar datos";
+  }
+  
+?>
+
+<!-- <?php
+    include '../conexiones.php';
+
+    /* Detecta cual botón fue pulsado */
+    if(isset($_POST['btn-enviar'])){
+        echo "Boton enviar";
+        
+    }
+
+    /* cierra la conexion */
+    mysqli_close($conexion);
+?> -->
