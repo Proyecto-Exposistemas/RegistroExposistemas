@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/toast_alert.css">
   <title>Iniciar sesión o registrarse</title>
 </head>
 
@@ -14,7 +15,7 @@
     <div class="forms-container">
       <div class="signin-signup">
 
-        <form action="" method="POST" class="sign-in-form">
+        <form method="POST" class="sign-in-form" id="formulario">
           <h2 class="title">Registrarme</h2>
 
           <div class="input-field">
@@ -100,10 +101,10 @@
             <input id="lugar" type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
           </div>
 
-          <input disabled id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar" />
+          <input  id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar"  />
         </form>
 
-        <form action="" method="POST" class="sign-up-form">
+        <form method="POST" class="sign-up-form">
           <h2 class="title">Iniciar sesión administrador</h2>
 
           <div class="input-field">
@@ -152,7 +153,9 @@
 
   <script src="js/app.js"></script>
   <script src="js/campos.js"></script>
-  <script src="js/java.js"></script>
+  <script src="js/registro.js"></script>
+  <!-- <script src="js/java.js"></script> -->
+  <script src="../js/toast_alert.js"></script>
 </body>
 
 </html>

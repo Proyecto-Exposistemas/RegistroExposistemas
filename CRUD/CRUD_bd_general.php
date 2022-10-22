@@ -33,32 +33,48 @@ class CRUD_general{
     public function MOSTRAR($consultaEscrita, ?array $arrayAsociativo = null){
 
         
+        try{
+
+            if($arrayAsociativo == null){
+                $sentencia = $this->conexion->query($consultaEscrita);
+            }else{
+                $sentencia = $this->conexion->prepare($consultaEscrita);
+                $sentencia->execute($arrayAsociativo);
         
-        if($arrayAsociativo == null){
-            $sentencia = $this->conexion->query($consultaEscrita);
-        }else{
-            $sentencia = $this->conexion->prepare($consultaEscrita);
-            $sentencia->execute($arrayAsociativo);
+            }
+            
+            $filas=$sentencia->fetchAll();
+            $sentencia = null;
     
+            #var_dump($filas);
+            return $filas;
+
+        } catch (Exception $e) {
+
+            die("Error:".$e->getMessage());
+            echo "Linea del error " . $e->getLine();
         }
         
-        $filas=$sentencia->fetchAll();
-        $sentencia = null;
-
-        #var_dump($filas);
-        return $filas;
        
     }
 
     public function INSERTAR_ELIMINAR_ACTUALIZAR($consultaEscrita, $arrayAsociativo){
+        try{
+            $resultados=$this->conexion->prepare($consultaEscrita);
+            $resultados->execute($arrayAsociativo);
+            $resultados = null;
+            
+            return true;
+        }catch (Exception $e) {
 
-        $resultados=$this->conexion->prepare($consultaEscrita);
-        $resultados->execute($arrayAsociativo);
-        $resultados = null;
-        
-        return true;
+            die("Error:".$e->getMessage());
+            echo "Linea del error " . $e->getLine();
+        }
+       
 
     }
+
+
 
     public function CERRAR_CONEXION()
     {
