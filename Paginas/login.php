@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="css/login.css" />
   <title>Iniciar sesión o registrarse</title>
 </head>
 
@@ -144,7 +144,7 @@
             Iniciar sesión
           </button>
         </div>
-        <img src="../img/cross-platform-software-animate.svg" class="image" alt="" />
+        <img src="img/cross-platform-software-animate.svg" class="image" alt="" />
       </div>
 
       <div class="panel right-panel" id="panel2">
@@ -157,16 +157,16 @@
             Iniciar sesión
           </button>
         </div>
-        <img src="../img/virtual-reality-animate.svg" class="image" alt="" />
+        <img src="img/virtual-reality-animate.svg" class="image" alt="" />
       </div>
 
     </div>
 
   </div>
 
-  <script src="../js/app.js"></script>
-  <script src="../js/campos.js"></script>
-  <script src="../js/java.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/campos.js"></script>
+  <script src="js/java.js"></script>
 </body>
 
 </html>
