@@ -77,11 +77,21 @@
           <li>
             <a href="#">
               <span class="icon">
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </span>
+              <span class="title">Escanear QR</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>
               <span class="title">Cerrar sesión</span>
             </a>
           </li>
+
         </ul>
 
         <div class="toggle"></div>
@@ -138,53 +148,6 @@
                 <div class="select-box">
 
                   <div class="options-container">
-
-                    <div class="option">
-
-                      <input type="radio" class="radio" id="automobiles" name="category" />
-                      <label for="automobiles">Leobardo Miramontes Murillo</label>
-
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="film" name="category" />
-                      <label for="film">Ana Isabel García Llams</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="science" name="category" />
-                      <label for="science">Alejandro Gordo Barajas</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="art" name="category" />
-                      <label for="art">Nayeli Romero Dávila</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="music" name="category" />
-                      <label for="music">Luis Fernando Valdez Mota</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="travel" name="category" />
-                      <label for="travel">Álan Eduardo Treviño Santos</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="sports" name="category" />
-                      <label for="sports">Carlos Nolasco Hernández</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="news" name="category" />
-                      <label for="news">Estephania Salcedo Luna</label>
-                    </div>
-
-                    <div class="option">
-                      <input type="radio" class="radio" id="tutorials" name="category" />
-                      <label for="tutorials">Alma González Serrano</label>
-                    </div>
 
                   </div>
 
@@ -290,13 +253,13 @@
     }
   </script>
   <!-- Importación del script del selectbox -->
-  <script src="../js/selectbox.js"></script>
+  
 </body>
 
 </html>
 
 
-
+<!-- Php para las funciones de los botones -->
 <?php
   /* Obten el boton que está siendo presionado */
   if(isset($_POST['btn-buscar'])){
@@ -355,15 +318,38 @@
   
 ?>
 
-<!-- <?php
-    include '../conexiones.php';
+<!-- Php para cargar los campos en el selectbox -->
+<?php
+  include '../conexiones.php';
 
-    /* Detecta cual botón fue pulsado */
-    if(isset($_POST['btn-enviar'])){
-        echo "Boton enviar";
-        
+  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` ORDER BY nombre ASC";
+  $resultado = mysqli_query($conexion, $consulta);
+
+  /* Junta el nombre con sus apellidos y guardalos en un arreglo */
+  $nombre_completo = array();
+  $numeros_control = array();
+
+  while($fila = mysqli_fetch_array($resultado)){
+    $nombre_completo[] = $fila['nombre'] . " " . $fila['paterno'] . " " . $fila['materno'];
+    $numeros_control[] = $fila['no_control'];
+  }
+  /* Mediante javascrip, en la clase options-contaniner ingresa los datos que tiene el array nombre completo,
+  dentro del div, crea un input de tipo check, con el name listaEspositores y el id igual al numero de control */
+  echo "<script>
+    let nombre_completo = " . json_encode($nombre_completo) . ";
+    let numeros_control = " . json_encode($numeros_control) . ";
+
+    let contenedor = document.querySelector('.options-container');
+
+    for(let i = 0; i < nombre_completo.length; i++){
+      contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"category\" > <label for=\"' + numeros_control[i] + '\">' + nombre_completo[i] + '</label> </div>';
     }
+  </script>";
 
-    /* cierra la conexion */
-    mysqli_close($conexion);
-?> -->
+  echo '<script src="../js/selectbox.js"></script>';
+  
+  /* <!-- <div class="option">
+    <input type="radio" class="radio" id="automobiles" name="category" />
+    <label for="automobiles">Leobardo Miramontes Murillo</label>
+  </div> --> */
+?>
