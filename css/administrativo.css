@@ -20,12 +20,18 @@ header {
     align-self: center;
     justify-content: center;
 }
+h1{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
 
 header h2 {
     font-size: 2rem;
     font-weight: 600;
     color: #fff;
 }
+
 /* Estilos del menú nav lateral */
 .navigation {
     position: fixed;
@@ -36,7 +42,7 @@ header h2 {
     border-radius: 50px;
     overflow: hidden;
     transition: 0.5s;
-    z-index: 1;
+    z-index: 101;
 }
 
 .navigation.active {
@@ -168,8 +174,9 @@ header h2 {
     background: #668588;
     border-radius: 10px;
 }
+
 /* Estilos del container general */
-.container {
+.container-general {
     margin-left: 255px;
     margin-top: 30px;
     width: 75%;
@@ -181,19 +188,19 @@ header h2 {
     padding: 0px;
 }
 
-.container h2 {
+.container-general h2 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #222;
     margin-bottom: 35px;
 }
 
-.card{
+.card {
     background-color: #fff;
     padding: 20px;
     border-radius: 25px;
     width: 100%;
-    margin:10px;
+    margin: 10px;
 }
 
 form {
@@ -201,14 +208,27 @@ form {
     flex-direction: column;
 }
 
-.campos{
+.campos {
     display: grid;
     grid-template-columns: repeat(3, 0.5fr);
     column-gap: 30px;
     row-gap: 46px;
 }
 
-.botones{
+.expositores{
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    column-gap: 30px;
+    row-gap: 46px;
+}
+
+.opcionesExpositores{
+    height: 100%;
+    width: 50%;
+}
+
+
+.botones {
     display: grid;
     grid-template-columns: repeat(4, 0.5fr);
     column-gap: 30px;
@@ -295,5 +315,165 @@ form {
     background-position: right bottom;
     color: #FFF;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+}
+
+/* Estilos para el combobox con search */
+.container {
+    margin-top: 20px;
+    /* padding: 32px; */
+}
+
+.select-box {
+    position: relative;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+}
+
+.select-box .options-container {
+    background: #2f3640;
+    color: #f5f6fa;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    order: 1;
+}
+
+.selected {
+    background: #2f3640;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    position: relative;
+
+    order: 0;
+}
+
+.selected::after {
+    content: "";
+    background: url("img/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 10px;
+    top: 5px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+    margin-top: 54px;
+}
+
+.select-box .options-container.active+.selected::after {
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: #0d141f;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+    background: #525861;
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.select-box .option:hover {
+    background: #414b57;
+}
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+
+/* Searchbox */
+
+.search-box input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    position: absolute;
+    border-radius: 8px 8px 0 0;
+    z-index: 100;
+    border: 8px solid #2f3640;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s;
+}
+
+.search-box input:focus {
+    outline: none;
+}
+
+.select-box .options-container.active~.search-box input {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Estilos para los nombres */
+.nombres {
+    margin-top: -10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iconoBoton{
+    font-size: 1.3rem;
+}
+
+.btnEliminar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+
+    border: none;
+    outline: none;
+
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    /* color: #fff; */
+
+    font-weight: 600;
+    margin: 10px 10px;
+
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btnEliminar:hover {
+    /* background-position: right bottom; */
+    color: rgba(255, 0, 0, 0.636);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     border-radius: 40px;
 }

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventna adminstrativo</title>
+  <link rel="stylesheet" href="../css/administrativo.css">
+</head>
+
+<body>
+  <section class="container-all">
+    <header>
+      <h2>Menú administrativo</h2>
+    </header>
+
+    <article class="navigation">
+      <nav>
+        <ul>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="business-outline"></ion-icon>
+                </ion-icon>
+              </span>
+              <span class="title">Exposistemas ISC</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="document-text-outline"></ion-icon>
+              </span>
+              <span class="title">Registro del Programa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="newspaper-outline"></ion-icon>
+              </span>
+              <span class="title">Emisión de constancias</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+              <span class="title">Reportes de asistencia</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="book-outline"></ion-icon>
+              </span>
+              <span class="title">Consulta del Programa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="finger-print-outline"></ion-icon>
+              </span>
+              <span class="title">Cambio de contraseña</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </span>
+              <span class="title">Escanear QR</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </span>
+              <span class="title">Cerrar sesión</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="toggle"></div>
+      </nav>
+    </article>
+
+    <article class="container-general" id="RegistroPrograma">
+
+      <div class="card">
+        <h1>Registro del programa de exposistemas</h1>
+
+        <form action="" method="post"> 
+
+          <div class="campos">
+
+            <div class="input-group">
+              <input type="text" name="NombreActividad" autocomplete="off" id="NombreActividad" required class="input">
+              <label for="NombreActividad" class="input-label">Nombre del proyecto</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="NumeroActividad" autocomplete="off" id="NumeroActividad" required class="input">
+              <label for="NumeroActividad" class="input-label">Posición de actividad</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="temaActividad" autocomplete="off" id="temaActividad" required class="input">
+              <label for="temaActividad" class="input-label">Tema del proyecto</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="Materia" autocomplete="off" id="Materia" required class="input">
+              <label for="Materia" class="input-label">Nombre de la asignatura</label>
+            </div>
+
+            <div class="input-group">
+              <input type="time" name="HoraInicio" autocomplete="off" id="HoraInicio" required class="input">
+              <label for="HoraInicio" class="input-label">Hora de inicio</label>
+            </div>
+
+            <div class="input-group">
+              <input type="time" name="HoraFinal" autocomplete="off" id="HoraFinal" required class="input">
+              <label for="HoraFinal" class="input-label">Hora de final</label>
+            </div>
+
+          </div>
+
+          <div class="expositores">
+            <!-- Codigo de el select menu -->
+            <div class="opcionesExpositores">
+              <div class="container">
+                <h2>Expositores</h2>
+
+                <div class="select-box">
+
+                  <div class="options-container">
+
+                  </div>
+
+                  <div class="selected">
+                    Seleccione los integrantes del equipo
+                  </div>
+
+                  <div class="search-box">
+                    <input type="text" placeholder="Ingresa un nombre..." />
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <!-- Código del contenedor de nombres -->
+            <div class="contanerPersonas">
+
+              <div class="container">
+                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
+                
+                <div class="nombres">
+                  <p id="nombre1" class="nombreExpoenente">Alejandro Gordo Barajas</p>
+                  <!-- Boton de eliminar -->
+                  <button class="btnEliminar" type="button">
+                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="nombres">
+                  <p id="nombre2" class="nombreExpoenente">Nayeli Romero Dávila</p>
+                  <!-- Boton de eliminar -->
+                  <button class="btnEliminar" type="button">
+                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="nombres">
+                  <p id="nombre3" class="nombreExpoenente">Luis Fernando Valdez Mota</p>
+                  <!-- Boton de eliminar -->
+                  <button class="btnEliminar" type="button">
+                    <ion-icon name="backspace-outline" class="iconoBoton"></ion-icon>
+                  </button>
+                </div>
+
+                
+              </div>
+            </div>
+
+          </div>
+          
+
+          <div class="botones">
+            <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
+            <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
+            <input type="submit" class="btn" name="btn-enviar" id="btn-enviar" value="Ingresar registro">
+            <input type="submit" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
+          </div>
+
+        </form>
+      </div>
+
+      <div class="card">
+        <article class="contenedor-tabla">
+
+          <table class="table-cebra">
+
+            <thead>
+              <tr>
+                <th class="sticky"> Nombre </th>
+
+                <th> Numero de control </th>
+
+                <th> Semestre </th>
+
+                <th> Correo electronico </th>
+
+                <th> Teléfono </th>
+
+                <th>Grupo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+          </table>
+      </div>
+
+    </article>
+
+  </section>
+  <!-- Importacion de los íconos de Ionic -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Creacion del script general -->
+  <script>
+    let navigation = document.querySelector('.navigation')
+    let toggle = document.querySelector('.toggle')
+
+    toggle.onclick = function () {
+      navigation.classList.toggle('active')
+    }
+  </script>
+  <!-- Importación del script del selectbox -->
+  
+</body>
+
+</html>
+
+
+<!-- Php para las funciones de los botones -->
+<?php
+  /* Obten el boton que está siendo presionado */
+  if(isset($_POST['btn-buscar'])){
+    buscarDatos();
+  }else if(isset($_POST['btn-actualizar'])){
+    actualizarDatos();
+  }else if(isset($_POST['btn-enviar'])){
+    insertarDatos();
+  }else if(isset($_POST['btn-eliminar'])){
+    eliminarDatos();
+  }
+
+  /* Funcion para buscar los datos */
+  function buscarDatos(){
+    echo "Buscar datos";
+  }
+
+  /* Funcion para actualizar los datos */
+  function actualizarDatos(){
+    echo "Actualizar datos";
+  }
+
+  /* Funcion para insertar los datos */
+  function insertarDatos(){
+    // Conexión a la base de datos 
+    include '../conexiones.php';
+
+    /* echo "Insertar datos"; */
+    $nombre_actividad = $_POST['NombreActividad'];
+    $numero_actividad = $_POST['NumeroActividad'];
+    $tema_actividad = $_POST['temaActividad'];
+    $materia = $_POST['Materia'];
+    $hora_inicio = $_POST['HoraInicio'];
+    $hora_fin = $_POST['HoraFinal'];
+
+    $hora_inicio = $hora_inicio . ":00";
+    $hora_fin = $hora_fin . ":00";
+
+    $consulta = "INSERT INTO `evento` (`no_evento`, `evento`, `hora_inicio`, `hora_fin`) VALUES ($numero_actividad, '$nombre_actividad', '$hora_inicio', '$hora_fin')";
+
+    $resultado = mysqli_query($conexion, $consulta);
+
+    if($resultado){
+        /* lanza una alerta que confirme el registro */
+        echo "<script>alert('Registro exitoso')</script>";
+    }else{
+        /* lanza una alerta que confirme el registro */
+        echo "<script>alert('Registro fallido')</script>";
+    }
+  }
+
+  /* Funcion para eliminar los datos */
+  function eliminarDatos(){
+    echo "Eliminar datos";
+  }
+  
+?>
+
+<!-- Php para cargar los campos en el selectbox -->
+<?php
+  include '../conexiones.php';
+
+  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` ORDER BY nombre ASC";
+  $resultado = mysqli_query($conexion, $consulta);
+
+  /* Junta el nombre con sus apellidos y guardalos en un arreglo */
+  $nombre_completo = array();
+  $numeros_control = array();
+
+  while($fila = mysqli_fetch_array($resultado)){
+    $nombre_completo[] = $fila['nombre'] . " " . $fila['paterno'] . " " . $fila['materno'];
+    $numeros_control[] = $fila['no_control'];
+  }
+  /* Mediante javascrip, en la clase options-contaniner ingresa los datos que tiene el array nombre completo,
+  dentro del div, crea un input de tipo check, con el name listaEspositores y el id igual al numero de control */
+  echo "<script>
+    let nombre_completo = " . json_encode($nombre_completo) . ";
+    let numeros_control = " . json_encode($numeros_control) . ";
+
+    let contenedor = document.querySelector('.options-container');
+
+    for(let i = 0; i < nombre_completo.length; i++){
+      contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"category\" > <label for=\"' + numeros_control[i] + '\">' + nombre_completo[i] + '</label> </div>';
+    }
+  </script>";
+
+  echo '<script src="../js/selectbox.js"></script>';
+  
+  /* <!-- <div class="option">
+    <input type="radio" class="radio" id="automobiles" name="category" />
+    <label for="automobiles">Leobardo Miramontes Murillo</label>
+  </div> --> */
+?>

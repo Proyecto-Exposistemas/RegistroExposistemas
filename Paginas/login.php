@@ -75,6 +75,19 @@
             <input id="control" type="text" placeholder="Número de control" name="numeroControl" autocomplete="off" />
           </div>
 
+          <div class="input-field" id="cajaRolEstudiante">
+            <i class="fas fa-clipboard"></i>
+            <div class="options">
+                
+                <select name="rolEstudiante" id="rolEstudiante">
+                  <option value="0">Selecciona un rol</option>
+                  <option value="1">Espectador</option>
+                  <option value="2">Expositor</option>
+                </select>
+            </div>
+
+          </div>
+
           <div class="input-field" id="cajaSemestre">
             <i class="fas fa-graduation-cap"></i>
             <input id="semestre" type="text" placeholder="Semestre" name="semestre" autocomplete="off" />
@@ -148,6 +161,7 @@
       </div>
 
     </div>
+
   </div>
 
   <script src="js/app.js"></script>
