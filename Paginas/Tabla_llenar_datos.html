@@ -11,198 +11,199 @@
 
 <body>
     <header>
-            <h1>Instituto Tecnológico Superior Zactecas Sur</h2>
+        <h1>Instituto Tecnológico Superior Zactecas Sur</h2>
             <h2>Registro del programa de actividades de exposistemas</h2>
     </header>
 
     <article class="container-all">
         <article class="contenedor_datos">
 
-            <form   method="POST" action="" >
+            <form method="POST" action="">
                 <div class="input-group">
                     <input type="text" name="progama_expo" required class="input">
                     <label for="programa" class="input-label">Programa</label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="time" name="hora_expo" required class="input">
                     <label for="hora" class="input-label"></label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="text" name="actividad_expo" required class="input">
                     <label for="actividad" class="input-label">Numero de actividad</label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="text" name="tema_expo" required class="input">
                     <label for="tema" class="input-label">Tema</label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="text" name="Expositor_expo" required class="input">
                     <label for="Expositor" class="input-label">Expositor</label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="text" name="asesor_expo" required class="input">
                     <label for="asesor" class="input-label">Asesor del proyecto</label>
                 </div>
-        
+
                 <div class="input-group">
                     <input type="text" name="materia_expo" required class="input">
                     <label for="materia" class="input-label">Materia</label>
                 </div>
                 <div>
-                <input type="submit"  value="Agregar evento"  class="botones">
-                <input type="button" value="Cancelar" class="botones" >
+                    <input type="submit" value="Agregar evento" class="botones">
+                    <input type="button" value="Cancelar" class="botones">
                 </div>
             </form>
-    
+
         </article>
-    
+
         <article class="contenedor-tabla">
-    
-            <table id="listado" class="table-cebra" >
-    
+
+            <table id="listado" class="table-cebra">
+
                 <thead>
                     <tr>
                         <th class="sticky"> Programa </th>
-    
+
                         <th> Hora </th>
-    
+
                         <th> Número actividad </th>
-    
+
                         <th> Tema </th>
-    
+
                         <th> Expositor </th>
-    
+
                         <th>Encargado del proyecto</th>
-    
+
                         <th>Materia</th>
                     </tr>
                 </thead>
-    
+
                 <tbody>
                 </tbody>
-    
+
             </table>
         </article>
     </article>
-</body>    
+</body>
 </script>
+
 </html>
 <script>
-// Evento que se ejecuta al pulsar el botón agregar
-document.querySelector("input[type=submit]").addEventListener("click",function(e){
-    // cancelamos el evento
-    e.preventDefault();
+    // Evento que se ejecuta al pulsar el botón agregar
+    document.querySelector("input[type=submit]").addEventListener("click", function (e) {
+        // cancelamos el evento
+        e.preventDefault();
 
-        const progamaexpo=document.querySelector("input[name=progama_expo]");
-        const horaexpo=document.querySelector("input[name=hora_expo]");
-        const actividadexpo=document.querySelector("input[name=actividad_expo");
-        const temaexpo=document.querySelector("input[name=tema_expo");
-        const expositorexpo=document.querySelector("input[name=Expositor_expo]");
-        const asesorexpo=document.querySelector("input[name=asesor_expo]");
-        const materiaexpo=document.querySelector("input[name=materia_expo]");
+        const progamaexpo = document.querySelector("input[name=progama_expo]");
+        const horaexpo = document.querySelector("input[name=hora_expo]");
+        const actividadexpo = document.querySelector("input[name=actividad_expo");
+        const temaexpo = document.querySelector("input[name=tema_expo");
+        const expositorexpo = document.querySelector("input[name=Expositor_expo]");
+        const asesorexpo = document.querySelector("input[name=asesor_expo]");
+        const materiaexpo = document.querySelector("input[name=materia_expo]");
         // mostramos un error si no ha recibido el programa
         if (!progamaexpo.value) {
-        progamaexpo.classList.add("error");
-        return;
+            progamaexpo.classList.add("error");
+            return;
         }
         progamaexpo.classList.remove("error");
         // mostramos un error si no ha recibido la hora
-        if (isNaN(parseInt(horaexpo.value)) || parseInt(horaexpo.value)<=0) {
-        horaexpo.classList.add("error");
-        return;
+        if (isNaN(parseInt(horaexpo.value)) || parseInt(horaexpo.value) <= 0) {
+            horaexpo.classList.add("error");
+            return;
         }
         horaexpo.classList.remove("error");
         // mostramos un error si no ha recibido la actividad
         if (!actividadexpo.value) {
-        actividadexpo.classList.add("error");
-        return;
+            actividadexpo.classList.add("error");
+            return;
         }
         actividadexpo.classList.remove("error");
 
         // mostramos un error si no ha recibido el tema
         if (!temaexpo.value) {
-        temaexpo.classList.add("error");
-        return;
+            temaexpo.classList.add("error");
+            return;
         }
         temaexpo.classList.remove("error");
 
         // mostramos un error si no ha recibido el expositor
         if (!expositorexpo.value) {
-        expositorexpo.classList.add("error");
-        return;
+            expositorexpo.classList.add("error");
+            return;
         }
         expositorexpo.classList.remove("error");
 
         // mostramos un error si no ha recibido el acesor
         if (!asesorexpo.value) {
-        asesorexpo.classList.add("error");
-        return;
+            asesorexpo.classList.add("error");
+            return;
         }
         asesorexpo.classList.remove("error");
 
         // mostramos un error si no ha recibido la materia
         if (!materiaexpo.value) {
-        materiaexpo.classList.add("error");
-        return;
+            materiaexpo.classList.add("error");
+            return;
         }
         materiaexpo.classList.remove("error");
 
-        agregarFila(progamaexpo.value, horaexpo.value, actividadexpo.value,temaexpo.value,expositorexpo.value,asesorexpo.value,materiaexpo.value);
-        agregarInput(progamaexpo.value, horaexpo.value, actividadexpo.value,temaexpo.value,expositorexpo.value,asesorexpo.value,materiaexpo.value);
+        agregarFila(progamaexpo.value, horaexpo.value, actividadexpo.value, temaexpo.value, expositorexpo.value, asesorexpo.value, materiaexpo.value);
+        agregarInput(progamaexpo.value, horaexpo.value, actividadexpo.value, temaexpo.value, expositorexpo.value, asesorexpo.value, materiaexpo.value);
 
-        progamaexpo.value="";
-        horaexpo.value="";
-        actividadexpo.value="";
-        temaexpo.value="";
-        expositorexpo.value="";
-        asesorexpo.value="";
-        materiaexpo.value="";
+        progamaexpo.value = "";
+        horaexpo.value = "";
+        actividadexpo.value = "";
+        temaexpo.value = "";
+        expositorexpo.value = "";
+        asesorexpo.value = "";
+        materiaexpo.value = "";
     })
-    document.querySelector(".Cancelar").addEventListener("click", function(e) {
-    this.closest("form").submit();
+    document.querySelector(".Cancelar").addEventListener("click", function (e) {
+        this.closest("form").submit();
     })
 
-function agregarFila(programa, hora,actividad,tema,expositor,asesor,materia) {
-        const tr=document.createElement("tr");
+    function agregarFila(programa, hora, actividad, tema, expositor, asesor, materia) {
+        const tr = document.createElement("tr");
 
-        const tdprogramaexpo=document.createElement("td");
-        let txt=document.createTextNode(programa);
+        const tdprogramaexpo = document.createElement("td");
+        let txt = document.createTextNode(programa);
         tdprogramaexpo.appendChild(txt);
 
-        const tdhora=document.createElement("td");
-        txt=document.createTextNode(hora);
+        const tdhora = document.createElement("td");
+        txt = document.createTextNode(hora);
         tdhora.appendChild(txt);
 
-        const tdactividad=document.createElement("td");
-        txt=document.createTextNode(actividad);
+        const tdactividad = document.createElement("td");
+        txt = document.createTextNode(actividad);
         tdactividad.appendChild(txt);
-        
 
-        const tdtema=document.createElement("td");
-        txt=document.createTextNode(tema);
+
+        const tdtema = document.createElement("td");
+        txt = document.createTextNode(tema);
         tdtema.appendChild(txt);
-        
 
-        const tdexpositor=document.createElement("td");
-        txt=document.createTextNode(expositor);
+
+        const tdexpositor = document.createElement("td");
+        txt = document.createTextNode(expositor);
         tdexpositor.appendChild(txt);
-        
 
-        const tdasesor=document.createElement("td");
-        txt=document.createTextNode(asesor);
+
+        const tdasesor = document.createElement("td");
+        txt = document.createTextNode(asesor);
         tdasesor.appendChild(txt);
-        
 
-        const tdmateria=document.createElement("td");
-        txt=document.createTextNode(materia);
+
+        const tdmateria = document.createElement("td");
+        txt = document.createTextNode(materia);
         tdmateria.appendChild(txt);
-        
-        
+
+
 
         tr.appendChild(tdprogramaexpo);
         tr.appendChild(tdhora);
@@ -212,30 +213,30 @@ function agregarFila(programa, hora,actividad,tema,expositor,asesor,materia) {
         tr.appendChild(tdasesor);
         tr.appendChild(tdmateria);
 
-        const tbody=document.getElementById("listado").querySelector("tbody").appendChild(tr);
- 
-        // eliminamos la clase que tiene oculta la tabla cando no hay ningun alumno
-       document.getElementById("listado").classList.remove("table-cebra");
-    }
- 
-function agregarInput(programa, hora,actividad,tema,expositor,asesor,materia) {
-    const input=document.createElement("input");
-    input.type="hidden";
-    input.name="nombres[]";
-    input.value=programa+"-"+hora+"-"+actividad+"-"+tema+"-"+expositor+"-"+asesor+"-"+materia;
- 
-    document.querySelector("form").appendChild(input);
-}
- 
-/**
- * Funcion para eliminar el input oculto
- *
- * @param string nombre
- * @param string edad
- */
-function eliminarInput(programa, hora,actividad,tema,expositor,asesor,materia) {
-    const input=document.querySelector("input[type=hidden][value="+programa+"-"+hora+"-"+actividad+"-"+tema+"-"+expositor+"-"+asesor+"-"+materia+"]");
-    input.remove();
-}    
+        const tbody = document.getElementById("listado").querySelector("tbody").appendChild(tr);
 
-</script> 
+        // eliminamos la clase que tiene oculta la tabla cando no hay ningun alumno
+        document.getElementById("listado").classList.remove("table-cebra");
+    }
+
+    function agregarInput(programa, hora, actividad, tema, expositor, asesor, materia) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "nombres[]";
+        input.value = programa + "-" + hora + "-" + actividad + "-" + tema + "-" + expositor + "-" + asesor + "-" + materia;
+
+        document.querySelector("form").appendChild(input);
+    }
+
+    /**
+     * Funcion para eliminar el input oculto
+     *
+     * @param string nombre
+     * @param string edad
+     */
+    function eliminarInput(programa, hora, actividad, tema, expositor, asesor, materia) {
+        const input = document.querySelector("input[type=hidden][value=" + programa + "-" + hora + "-" + actividad + "-" + tema + "-" + expositor + "-" + asesor + "-" + materia + "]");
+        input.remove();
+    }
+
+</script>
