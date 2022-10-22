@@ -95,53 +95,86 @@
 
         <form method="POST" action="obtencion_datos_tabla.php">
 
-          <div class="input-group">
-            <input type="text" id="NombreActividad" required class="input">
-            <label for="NombreActividad" class="input-label">Nombre del proyecto</label>
+          <div class="campos">
+
+            <div class="input-group">
+              <input type="text" id="NombreActividad" required class="input">
+              <label for="NombreActividad" class="input-label">Nombre del proyecto</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="NumeroActividad" required class="input">
+              <label for="NumeroActividad" class="input-label">Posición de actividad</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="temaActividad" required class="input">
+              <label for="temaActividad" class="input-label">Tema del proyecto</label>
+            </div>
+
+            <!-- <div class="input-group">
+              <input type="text" id="Expositores" required class="input">
+              <label for="Expositores" class="input-label">Expositores</label>
+            </div> -->
+
+            <!-- <div class="input-group">
+              <input type="text" id="NombreAsesor" required class="input">
+              <label for="NombreAsesor" class="input-label">Nombre del asesor</label>
+            </div> -->
+
+            <div class="input-group">
+              <input type="text" id="Materia" required class="input">
+              <label for="Materia" class="input-label">Nombre de la asignatura</label>
+            </div>
+
+            <div class="input-group">
+              <input type="time" id="HoraInicio" required class="input">
+              <label for="HoraInicio" class="input-label">Hora de inicio</label>
+            </div>
+
+            <div class="input-group">
+              <input type="time" id="HoraFinal" required class="input">
+              <label for="HoraFinal" class="input-label">Hora de final</label>
+            </div>
+
           </div>
 
-          <div class="input-group">
-            <input type="text" id="NumeroActividad" required class="input">
-            <label for="NumeroActividad" class="input-label">Posición de actividad</label>
+          <div class="botones">
+            <input type="submit" class="btn" id="btn-buscar" value="Buscar registro">
+            <input type="submit" class="btn" id="btn-actualizar" value="Actualizar Registro">
+            <input type="submit" class="btn" id="btn-enviar" value="Ingresar registro">
+            <input type="submit" class="btn" id="btn-eliminar" value="Eliminar registro">
           </div>
 
-          <div class="input-group">
-            <input type="text" id="temaActividad" required class="input">
-            <label for="temaActividad" class="input-label">Tema del proyecto</label>
-          </div>
-
-          <div class="input-group">
-            <input type="text" id="Expositores" required class="input">
-            <label for="Expositores" class="input-label">Expositores</label>
-          </div>
-
-          <div class="input-group">
-            <input type="text" id="NombreAsesor" required class="input">
-            <label for="NombreAsesor" class="input-label">Nombre del asesor</label>
-          </div>
-
-          <div class="input-group">
-            <input type="text" id="Materia" required class="input">
-            <label for="Materia" class="input-label">Nombre de la asignatura</label>
-          </div>
-
-          <div class="input-group">
-            <input type="time" id="HoraInicio" required class="input">
-            <label for="HoraInicio" class="input-label">Hora de inicio</label>
-          </div>
-          
-          <div class="input-group">
-            <input type="time" id="HoraFinal" required class="input">
-            <label for="HoraFinal" class="input-label">Hora de final</label>
-          </div>
-
-          <input type="submit" class="btn" id="btn-buscar" value="Buscar registro">
-          <input type="submit" class="btn" id="btn-actualizar" value="Actualizar Registro">
-          <input type="submit" class="btn" id="btn-enviar" value="Ingresar registro">
-          <input type="submit" class="btn" id="btn-eliminar" value="Eliminar registro">
         </form>
       </div>
-      
+
+      <div class="card">
+        <article class="contenedor-tabla">
+
+          <table class="table-cebra">
+
+            <thead>
+              <tr>
+                <th class="sticky"> Nombre </th>
+
+                <th> Numero de control </th>
+
+                <th> Semestre </th>
+
+                <th> Correo electronico </th>
+
+                <th> Teléfono </th>
+
+                <th>Grupo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+          </table>
+      </div>
     </article>
 
   </section>
