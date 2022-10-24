@@ -233,6 +233,43 @@
       <!-- Seccion para escanear los códigos QR -->
       <div class="card">
         <h2>Escanear código QR</h2>
+        <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+        <label id="titulo">Escanea el codigo QR</label>
+        <!-- visualizacion de la camara -->
+        <div id="video">
+        <video id="previsualizacion" width="50%"></video>
+        </div>
+
+        <label id="resultado">Resultado</label>
+        <!-- caja de texto -->
+        <div id="caja">
+            <input type="text" id="text" v-model="content">
+        </div>
+        <!-- etiqueta script -->
+        <script type="text/javascript">
+            let scanner = new Instascan.Scanner({
+            video: document.getElementById('previsualizacion')
+        }); 
+        Instascan.Camera.getCameras().then(function(cameras){
+            if(cameras.length > 0){
+                scanner.start(cameras[0]);
+            }else{
+                console.error("No se encontraron cámaras");
+                alert("no se han encontrado camaras");
+            } 
+        }).catch(function(e){
+            console.error(e);
+            alert("ERROR:"+ e);
+        });
+        /* mandar el resultado de qr a caja de texto */
+        scanner.addListener('scan', function(c){
+            document.getElementById('text').value = c;
+        });
+        </script>
+
+
+
+
       </div>
       
     </article>
