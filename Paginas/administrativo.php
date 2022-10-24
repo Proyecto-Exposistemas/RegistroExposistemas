@@ -99,7 +99,8 @@
     </article>
 
     <article class="container-general" id="RegistroPrograma">
-
+      
+      <!-- Seccion del registro del programa de exposistemas -->
       <div class="card">
         <h1>Registro del programa de exposistemas</h1>
 
@@ -183,8 +184,20 @@
 
         </form>
       </div>
-
+      
+      <!-- Sección para la emisión del programa de exposistemas -->
       <div class="card">
+        <h2>Emisión de constancias</h2>
+      </div>
+      
+      <!-- Sección para la emisión de reportes de asistencia -->
+      <div class="card">
+        <h2>Reportes de asistencia</h2>
+      </div>
+
+      <!-- Sección para la consulta del programa de exposistemas -->
+      <div class="card">
+        <h2>Consulta del programa exposistemas</h2>
         <article class="contenedor-tabla">
 
           <table class="table-cebra">
@@ -209,8 +222,19 @@
             </tbody>
 
           </table>
+        </article>
       </div>
 
+      <!-- Sección para el cambio de contraseña -->
+      <div class="card">
+        <h2>Cambiar la contraseña</h2>
+      </div>
+
+      <!-- Seccion para escanear los códigos QR -->
+      <div class="card">
+        <h2>Escanear código QR</h2>
+      </div>
+      
     </article>
 
   </section>
@@ -345,7 +369,9 @@
           listaNombres.push(valorTexto);
           console.log(listaNombres);
 
-          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+          /* cuenta los elementos de la lista */
+          let contador = listaNombres.length;
+          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name\"btnEliminar + contador\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
         }
         else{
@@ -361,3 +387,12 @@
   </script>";
 
 ?>
+<!-- Php para eliminar de la lista de integrantes -->
+<?php  
+  /* Revisa si el boton ha sido pulsado */
+  if(isset($_POST['btnEliminar'])){
+    
+  }
+?>
+
+<!-- Php para -->
