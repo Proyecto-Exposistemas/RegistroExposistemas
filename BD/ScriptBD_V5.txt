@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:5581
--- Tiempo de generación: 24-10-2022 a las 19:05:31
+-- Tiempo de generación: 24-10-2022 a las 21:53:05
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.5
 
@@ -23,8 +23,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `administradores` (
   `rfc` varchar(13) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`rfc`, `password`) VALUES
+('QWER12345678', '$2y$10$r.maaNt8ayMbAuJ3hm.MSeVuOAqwG3n7Ldv9my2jQIqTzC14QIWT6');
 
 -- --------------------------------------------------------
 
@@ -42,6 +49,13 @@ CREATE TABLE `alumnos` (
   `correo` varchar(60) NOT NULL,
   `telefono` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `alumnos`
+--
+
+INSERT INTO `alumnos` (`nombre`, `paterno`, `materno`, `semestre`, `no_control`, `rol`, `correo`, `telefono`) VALUES
+('Ana Isabel', 'García', 'Llamas', 5, 'Z20020059', 'Espectador', 'isabelllamas09@gmail.com', '3322229363');
 
 -- --------------------------------------------------------
 
@@ -71,6 +85,13 @@ CREATE TABLE `docentes` (
   `rfc` varchar(13) NOT NULL,
   `titulo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `docentes`
+--
+
+INSERT INTO `docentes` (`nombre`, `paterno`, `materno`, `funcion`, `correo`, `telefono`, `rfc`, `titulo`) VALUES
+('Super', 'Administrador', NULL, 'Coordinador de seguimiento y logística', 'prueba1@gmail.com', '0123456789', 'QWER12345678', 'Inggeniero en sistemas computacionales');
 
 -- --------------------------------------------------------
 
