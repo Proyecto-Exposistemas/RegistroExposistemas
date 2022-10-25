@@ -136,7 +136,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
     }
     $conexion->CERRAR_CONEXION();
     //regresa el tipo JSON con el mensaje
-    $data = ["mensaje"=> $mensaje,"error"=>$error];
+    $data = ["mensaje"=> $mensaje,"error"=>$error, "identificador"=>$identificador];
     header("Content-Type: application/json");
     echo json_encode($data);
     
