@@ -408,7 +408,7 @@
 
           /* cuenta los elementos de la lista */
           let contador = listaNombres.length;
-          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name\"btnEliminar + contador\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
         }
         else{

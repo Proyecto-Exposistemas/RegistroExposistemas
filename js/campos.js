@@ -19,6 +19,7 @@ identidad.addEventListener("change", function() {
     seleccion = identidad.value
 
     if(seleccion == "1") {
+        /* Código para los campos del alumno */
         inputRol.style.display = "none"
         inputTelefono.style.display = "grid"
         inputNumeroControl.style.display = "grid"
@@ -28,11 +29,9 @@ identidad.addEventListener("change", function() {
         inputProcedencia.style.display = "none"
         inputFuncion.style.display = "none"
         inputRolEstudiante.style.display = "grid"
-
-        /* Modifica la propiedad de un media qwery */
-        circulo.style.width = "100%"
     }
     else if(seleccion == "2") {
+        /* Código para los campos del profesor */
         inputRol.style.display = "none"
         inputTelefono.style.display = "grid"
         inputNumeroControl.style.display = "none"
@@ -44,6 +43,7 @@ identidad.addEventListener("change", function() {
         inputRolEstudiante.style.display = "none"
     }
     else if(seleccion == "3") {
+        /* Código para los campos del extenro */
         inputRol.style.display = "grid"
         inputTelefono.style.display = "none"
         inputNumeroControl.style.display = "none"
@@ -53,6 +53,16 @@ identidad.addEventListener("change", function() {
         inputProcedencia.style.display = "grid"
         inputFuncion.style.display = "none"
         inputRolEstudiante.style.display = "none"
+
+        let opcionesRol = document.getElementById("roles")
+
+        opcionesRol.addEventListener("change", function() { 
+            seleccionRol = opcionesRol.value
+
+            if(seleccionRol == "3") {
+                inputTitulo.style.display = "grid"
+            }
+        })
     }
 })
 
