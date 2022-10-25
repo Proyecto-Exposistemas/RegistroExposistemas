@@ -3,7 +3,8 @@
    require 'phpqrcode/qrlib.php';
 
    $dir='temp/';
-
+   $identificador=$_GET["identificador"];
+   echo $identificador;
    if(!file_exists($dir))
         mkdir($dir);
 

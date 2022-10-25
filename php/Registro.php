@@ -3,7 +3,7 @@ include_once("../CRUD/CRUD_bd_general.php");
 
 $conexion = new CRUD_general();
 $conexion->conexionBD();
-
+$identificador = "no hay";
 if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) && isset($_POST['am']) && isset($_POST['correo'])){
     $nivel = $_POST['identdad'];
     $nombre = $_POST['nombre'];
@@ -12,47 +12,54 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
     $correo = $_POST['correo'];
 
 
-    if($nivel == 1 && isset($_POST['telefono']) && isset($_POST['numeroControl']) && isset($_POST['semestre'])){
+    if($nivel == 1 && isset($_POST['telefono']) && isset($_POST['numeroControl']) && isset($_POST['semestre']) && isset($_POST["rolEstudiante"])){
 
         $semestre = $_POST['semestre'];
         $numero_control = $_POST['numeroControl'];
         $telefono = $_POST['telefono'];
-        //tabla total alumnos
-        //tabla alumnos
-        $sql = "INSERT INTO alumnos (nombre, paterno, materno, semestre, no_control, correo, telefono) VALUES(:nom,:pa,:ma,:semestre,:noControl,:correo,:tele)";
-        $parametros = [":nom"=>$nombre, ":pa"=>$ap_paterno, ":ma"=>$ap_materno, ":semestre"=>$semestre, ":noControl"=>$numero_control, ":correo"=>$correo, ":tele"=>$telefono];
-       
-        $registros = $conexion->MOSTRAR("SELECT nombre FROM alumnos WHERE no_control=:no_con", [":no_con"=>$numero_control]);
-        if(count($registros) > 0){
+        $roles_estudiantes = ["Espectador", "Expositor"];
+        $numero_rol = $_POST['rolEstudiante'];
 
-            $mensaje = "El alumno ya esta registrado";
-            $error=true;
+        if($numero_rol == 0){
+
+            $mensaje = "Debes seleccionar un rol";
+            $error = true;
+            
 
         }else{
+            //tabla total alumnos
+            //tabla alumnos
+            $sql = "INSERT INTO alumnos (nombre, paterno, materno, semestre, no_control, rol, correo, telefono) VALUES(:nom,:pa,:ma,:semestre,:noControl,:rol,:correo,:tele)";
+            $parametros = [":nom"=>$nombre, ":pa"=>$ap_paterno, ":ma"=>$ap_materno, ":semestre"=>$semestre, ":noControl"=>$numero_control,":rol"=>$roles_estudiantes[$numero_rol-1] ,":correo"=>$correo, ":tele"=>$telefono];
+        
+            $registros = $conexion->MOSTRAR("SELECT nombre FROM alumnos WHERE no_control=:no_con", [":no_con"=>$numero_control]);
+            if(count($registros) > 0){
 
-            $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-       
-            if($resultado){
-                $mensaje = "Registro exitoso";
-                $error=false;
-            }else{
-                $mensaje = "No se ha podido realizar el registro";
+                $mensaje = "El alumno ya esta registrado";
                 $error=true;
+
+            }else{
+
+                $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+                if($resultado){
+                    $mensaje = "Registro exitoso";
+                    $error=false;
+                    $identificador = $numero_control;
+                }else{
+                    $mensaje = "No se ha podido realizar el registro";
+                    $error=true;
+                }
             }
         }
         
-        $conexion->CERRAR_CONEXION();
-        //regresa el tipo JSON con el mensaje
-        $data = ["mensaje"=> $mensaje,"error"=>$error];
-        header("Content-Type: application/json");
-        echo json_encode($data);
-        
+
 
     }else if($nivel == 2 && isset($_POST['telefono']) && isset($_POST['titulo']) && isset($_POST['funcion']) && isset($_POST['rfc'])){
 
-        $telefono = $_POST['semestre'];
-        $titulo = $_POST['numeroControl'];
-        $funcion = $_POST['telefono'];
+        $telefono = $_POST['telefono'];
+        $titulo = $_POST['titulo'];
+        $funcion = $_POST['funcion'];
         $rfc = $_POST['rfc'];
 
         //tabla de docentes
@@ -73,34 +80,41 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             if($resultado){
                 $mensaje = "Registro exitoso";
                 $error=false;
+                $identificador = $rfc;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;
             }
         }
-        
-        $conexion->CERRAR_CONEXION();
-        //regresa el tipo JSON con el mensaje
-        $data = ["mensaje"=> $mensaje,"error"=>$error];
-        header("Content-Type: application/json");
-        echo json_encode($data);
-        
 
     }else if($nivel == 3 && isset($_POST['roles']) && isset($_POST['procedencia'])){
 
         $roles = $_POST["roles"];
         $procedencia = $_POST['procedencia'];
-        
 
-        //tabla de docentes
-        $sql = "INSERT INTO docentes (nombre,paterno,materno,funcion,correo,telefono,rfc,titulo) VALUES(:nom,:apep,:apem,:funcion,:correo,:tele,:rfc,:titulo)";
-        $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":funcion"=>$funcion,":correo"=>$correo,":tele"=>$telefono,":rfc"=>$rfc,":titulo"=>$titulo];
 
-        $registros = $conexion->MOSTRAR("SELECT nombre FROM docentes WHERE rfc=:rfc", [":rfc"=>$rfc]);
+        if($roles == 1){
+            //se trata de un espectador externo
+            //tabla de espectadores externos
+            $sql = "INSERT INTO espectadores_externos (nombre,paterno,materno,correo,procedencia) VALUES(:nom,:apep,:apem,:correo,:procedencia)";
+            $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":correo"=>$correo, ":procedencia"=>$procedencia];
+
+            $registros = $conexion->MOSTRAR("SELECT nombre FROM espectadores_externos WHERE correo=:correo", [":correo"=>$correo]);
+
+        }else {
+            $tipos_externos = ["Expositor", "Panelista", "Conferencista"];
+            $titulo = $_POST['titulo'];
+            // se trata de un expositor, panelista, o conferencista
+            $sql = "INSERT INTO ponentes_externos (nombre,paterno,materno,conferencia,titlo,correo) VALUES(:nom,:apep,:apem,:rol,:titulo,:correo)";
+            $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":rol"=>$tipos_externos[$roles-2],":correo"=>$correo,":titulo"=>$titulo];
+
+            $registros = $conexion->MOSTRAR("SELECT nombre FROM ponentes_externos WHERE correo=:correo", [":correo"=>$correo]);
+
+        }
 
         if(count($registros) > 0){
 
-            $mensaje = "El docente ya esta registrado";
+            $mensaje = "Este correo ya esta registrado";
             $error=true;
 
         }else{
@@ -110,20 +124,22 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             if($resultado){
                 $mensaje = "Registro exitoso";
                 $error=false;
+                $identificador = $correo;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;
             }
         }
         
-        $conexion->CERRAR_CONEXION();
-        //regresa el tipo JSON con el mensaje
-        $data = ["mensaje"=> $mensaje,"error"=>$error];
-        header("Content-Type: application/json");
-        echo json_encode($data);
-        
+       
 
     }
+    $conexion->CERRAR_CONEXION();
+    //regresa el tipo JSON con el mensaje
+    $data = ["mensaje"=> $mensaje,"error"=>$error];
+    header("Content-Type: application/json");
+    echo json_encode($data);
+    
     
 }
 
