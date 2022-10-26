@@ -34,6 +34,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             $parametros = [":nom"=>$nombre, ":pa"=>$ap_paterno, ":ma"=>$ap_materno, ":semestre"=>$semestre, ":noControl"=>$numero_control,":rol"=>$roles_estudiantes[$numero_rol-1] ,":correo"=>$correo, ":tele"=>$telefono];
         
             $registros = $conexion->MOSTRAR("SELECT nombre FROM alumnos WHERE no_control=:no_con", [":no_con"=>$numero_control]);
+            
             if(count($registros) > 0){
 
                 $mensaje = "El alumno ya esta registrado";
@@ -46,7 +47,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
                 if($resultado){
                     $mensaje = "Registro exitoso";
                     $error=false;
-                    $identificador = $numero_control;
+                    $identificador =  "alumnos;".$numero_control;
                 }else{
                     $mensaje = "No se ha podido realizar el registro";
                     $error=true;
@@ -81,7 +82,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             if($resultado){
                 $mensaje = "Registro exitoso";
                 $error=false;
-                $identificador = $rfc;
+                $identificador = "docentes;".$rfc;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;
@@ -129,7 +130,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             if($resultado){
                 $mensaje = "Registro exitoso";
                 $error=false;
-                $identificador = $correo;
+                $identificador = "ponentes_externos;".$correo;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;

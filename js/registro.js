@@ -4,14 +4,14 @@ form.addEventListener('submit', registrarAlumno);
 function registrarAlumno(event){
     event.preventDefault();
     let form = new FormData(event.target);
-    fetch("../php/Registro.php",
+    fetch("/php/Registro.php",
     {
         method: 'POST',
         body: form,
     })
     .then(response => response.json())
     .then(data => {
-        data.error ?showAlert(data.mensaje,true,data.identificador):showAlert(data.mensaje,false,data.identificador);
+        data.error ? showAlert(data.mensaje,true,data.identificador):showAlert(data.mensaje,false,data.identificador);
         
     });
 
@@ -29,11 +29,12 @@ function showAlert(mensaje,error,identificador){
           background: error?"linear-gradient(to right, #ff0000, #96c93d)" : "linear-gradient(to right, #00b09b, #96c93d)",
         },
         callback: function() {
-            if(identificador !== "no hay"){
+            /* if(identificador !== "no hay"){
             
                 window.open("../codigo/index.php?identificador="+encodeURIComponent(identificador), '_blank');
             }
-            
+             */
+            window.open("../codigo/index.php?identificador="+encodeURIComponent(identificador), '_blank');
             Toastify.reposition();
           },
           close: true,
