@@ -3,8 +3,8 @@
    require 'phpqrcode/qrlib.php';
 
    $dir='temp/';
-   $identificador=$_GET["identificador"];
-   echo $identificador;
+   $identificador=$_GET['identificador'];
+   echo "POR FAVOR DESCARGA TU CODIGO QR";
    if(!file_exists($dir))
         mkdir($dir);
 
@@ -16,7 +16,7 @@
     $contenido='Hola mundo';
     
     QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-
+       
     echo '<img src="'.$filename.'" />';
 
 ?>
