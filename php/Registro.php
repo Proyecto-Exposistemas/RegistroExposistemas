@@ -5,6 +5,7 @@ $conexion = new CRUD_general();
 $conexion->conexionBD();
 $identificador = "no hay";
 if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) && isset($_POST['am']) && isset($_POST['correo'])){
+
     $nivel = $_POST['identdad'];
     $nombre = $_POST['nombre'];
     $ap_paterno = $_POST['ap'];
@@ -13,7 +14,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
 
 
     if($nivel == 1 && isset($_POST['telefono']) && isset($_POST['numeroControl']) && isset($_POST['semestre']) && isset($_POST["rolEstudiante"])){
-
+        //es un alumno
         $semestre = $_POST['semestre'];
         $numero_control = $_POST['numeroControl'];
         $telefono = $_POST['telefono'];
@@ -56,7 +57,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
 
 
     }else if($nivel == 2 && isset($_POST['telefono']) && isset($_POST['titulo']) && isset($_POST['funcion']) && isset($_POST['rfc'])){
-
+        //es un docente
         $telefono = $_POST['telefono'];
         $titulo = $_POST['titulo'];
         $funcion = $_POST['funcion'];
@@ -88,7 +89,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
         }
 
     }else if($nivel == 3 && isset($_POST['roles']) && isset($_POST['procedencia'])){
-
+        //externos 
         $roles = $_POST["roles"];
         $procedencia = $_POST['procedencia'];
 
@@ -101,12 +102,16 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
 
             $registros = $conexion->MOSTRAR("SELECT nombre FROM espectadores_externos WHERE correo=:correo", [":correo"=>$correo]);
 
-        }else {
+        }else if($roles > 1){
             $tipos_externos = ["Expositor", "Panelista", "Conferencista"];
-            $titulo = $_POST['titulo'];
+            $titulo = "Se ignora";
+            if(isset($_POST['titulo'])){
+                $titulo = $_POST['titulo'];
+            }
+            
             // se trata de un expositor, panelista, o conferencista
-            $sql = "INSERT INTO ponentes_externos (nombre,paterno,materno,conferencia,titlo,correo) VALUES(:nom,:apep,:apem,:rol,:titulo,:correo)";
-            $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":rol"=>$tipos_externos[$roles-2],":correo"=>$correo,":titulo"=>$titulo];
+            $sql = "INSERT INTO ponentes_externos (nombre,paterno,materno,conferencia,titulo,correo) VALUES(:nom,:apep,:apem,:rol,:titulo,:correo)";
+            $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":rol"=>$tipos_externos[$roles-2],":titulo"=>$titulo,":correo"=>$correo];
 
             $registros = $conexion->MOSTRAR("SELECT nombre FROM ponentes_externos WHERE correo=:correo", [":correo"=>$correo]);
 
