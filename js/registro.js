@@ -11,7 +11,7 @@ function registrarAlumno(event){
     })
     .then(response => response.json())
     .then(data => {
-        data.error ?showAlert(data.mensaje,true,data.identificador):showAlert(data.mensaje,false,data.identificador);
+        data.error ? showAlert(data.mensaje,true,data.identificador):showAlert(data.mensaje,false,data.identificador);
         
     });
 
@@ -29,10 +29,12 @@ function showAlert(mensaje,error,identificador){
           background: error?"linear-gradient(to right, #ff0000, #96c93d)" : "linear-gradient(to right, #00b09b, #96c93d)",
         },
         callback: function() {
-            if(identificador != "no hay"){
-                window.open("../codigo/index.php?identificador='"+identificador+"'", '_blank');
-            }
+            /* if(identificador !== "no hay"){
             
+                window.open("../codigo/index.php?identificador="+encodeURIComponent(identificador), '_blank');
+            }
+             */
+            window.open("../codigo/index.php?identificador="+encodeURIComponent(identificador), '_blank');
             Toastify.reposition();
           },
           close: true,

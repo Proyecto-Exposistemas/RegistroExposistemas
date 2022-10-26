@@ -62,9 +62,16 @@ identidad.addEventListener("change", function() {
             if(seleccionRol == "3") {
                 inputTitulo.style.display = "grid"
             }
+            else if(seleccionRol == "4") {
+                inputTitulo.style.display = "grid"
+            }
+            else if(seleccionRol == "2") {
+                inputTitulo.style.display = "grid"
+            }
             else {
                 inputTitulo.style.display = "none"
             }
+
         })
     }
 })

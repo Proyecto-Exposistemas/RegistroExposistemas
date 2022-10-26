@@ -9,7 +9,7 @@
 
     if(isset($_SESSION['user'])){
         $user->setUser($sesion->getUser());
-        include_once("Paginas/administrativo.html");
+        include_once("Paginas/administrativo.php");
 
     }else if(isset($_POST["inputUser"]) && isset($_POST["inputUser"])){
         
@@ -25,11 +25,11 @@
 
         }else{
             $errorLogin ="Nombre de usuario y/o password incorrecto";
-            include_once("Paginas/login.php");
+            include_once("Paginas/login.html");
         }
 
     }else{
-        include_once "Paginas/login.php";
+        include_once "Paginas/login.html";
     }
 
 ?>

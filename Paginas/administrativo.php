@@ -175,6 +175,41 @@
 
           </div>
 
+          <div class="expositores">
+            <!-- Codigo de el select menu -->
+            <div class="opcionesExpositores">
+              <div class="container">
+                <h2>Asistentes de proyecto</h2>
+
+                <div class="select-box" style="margin-top: -25px">
+
+                  <div class="options-container">
+                  </div>
+
+                  <div class="selected">
+                    Seleccione los integrantes del equipo
+                  </div>
+
+                  <div class="search-box">
+                    <input type="text" placeholder="Ingresa un nombre..." />
+                  </div>
+
+                </div>
+      
+              </div>
+
+            </div>
+            <!-- Código del contenedor de nombres -->
+            <div class="contanerPersonas">
+
+              <div class="containerP">
+                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
+                
+              </div>
+            </div>
+
+          </div>
+
           <div class="botones">
             <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
             <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
@@ -287,7 +322,7 @@
       navigation.classList.toggle('active')
     }
   </script>
-  
+  <script src="../SesionesUsuario/session_expiracion.js"></script>
 </body>
 
 </html>
@@ -427,9 +462,7 @@
 <!-- Php para eliminar de la lista de integrantes -->
 <?php  
   /* Revisa si el boton ha sido pulsado */
-  if(isset($_POST['btnEliminar'])){
-    
-  }
+  
 ?>
 
 <!-- Php para -->
