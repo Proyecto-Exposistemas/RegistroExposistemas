@@ -250,10 +250,14 @@
                 <th> Teléfono </th>
 
                 <th>Grupo</th>
+
+                <th>Hora de inicio</th>
+                <th>Hora de fin</th>
               </tr>
             </thead>
 
             <tbody>
+
             </tbody>
 
           </table>

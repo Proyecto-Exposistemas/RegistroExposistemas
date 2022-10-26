@@ -4,7 +4,7 @@
 
    $dir='temp/';
    $identificador=$_GET['identificador'];
-   echo "POR FAVOR DESCARGA TU CODIGO QR";
+   
    if(!file_exists($dir))
         mkdir($dir);
 
@@ -13,10 +13,11 @@
     $tamanio=10;
     $level='M';
     $frameSize=3;
-    $contenido='Hola mundo';
+    $contenido=$identificador;
     
     QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-       
+                                 echo "POR FAVOR DESCARGA TU CODIGO QR";
     echo '<img src="'.$filename.'" />';
 
 ?>
+
