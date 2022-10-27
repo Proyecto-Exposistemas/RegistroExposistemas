@@ -239,27 +239,53 @@
 
             <thead>
               <tr>
-                <th class="sticky"> Nombre </th>
+                <th class="sticky"> Numero de actividad </th>
 
-                <th> Numero de control </th>
+                <th> Nombre de actividad </th>
 
-                <th> Semestre </th>
+                <th> Descripción </th>
 
-                <th> Correo electronico </th>
+                <th> Hora de Inicio </th>
 
-                <th> Teléfono </th>
+                <th> Expositores </th>
 
-                <th>Grupo</th>
+                <th>Asesores</th>
 
-                <th>Hora de inicio</th>
-                <th>Hora de fin</th>
+                <th>Materia</th>
               </tr>
             </thead>
 
             <tbody>
+              <tr>
+                <?php
+                    include_once("../CRUD/CRUD_bd_general.php");
+                    $perro=new CRUD_general();
+                    $perro->conexionBD();
+                
+                    $consulta="SELECT * FROM evento,asesores_evento,alumnos";
+                    $parametro=[":selecion"=>"10"];
+                    $resultado=$perro->Mostrar($consulta);
+                    //var_dump($resultado);
+            
+                    for($i=0;$i<count($resultado);$i++){?>
+                      <td class="sticky"><?php echo $resultado[$i]['no_evento'];?></td>
+                      <td><?php echo $resultado[$i]['evento'];?></td>
+                      <td ><?php echo $resultado[$i]['descripcion'];?></td>
+                      <td><?php echo $resultado[$i]['hora_inicio'];?></td>
+                      <td><?php echo $resultado[$i]['nombre'];?></td>
+                      <td><?php echo $resultado[$i]['rfc'];?></td>
+                      <td><?php echo $resultado[$i]['materia'];?></td>
+                      
+                   </tr>
+                   </tbody>
+                   <?php
+                    }
 
-            </tbody>
-
+                
+                  ?>
+              </tr>
+            </tbody>  
+          
           </table>
         </article>
       </div>
