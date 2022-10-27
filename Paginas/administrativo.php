@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ventna adminstrativo</title>
-  <link rel="stylesheet" href="css/administrativo.css">
+  <link rel="stylesheet" href="../css/administrativo.css">
 </head>
 
 <body>
@@ -361,7 +361,7 @@
       navigation.classList.toggle('active')
     }
   </script>
-  <script src="../SesionesUsuario/session_expiracion.js"></script>
+  <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
 </html>
@@ -430,7 +430,7 @@
 <?php
   include '../conexiones.php';
 
-  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` ORDER BY nombre ASC";
+  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` WHERE rol != 'Espectador' ORDER BY nombre ASC";
   $resultado = mysqli_query($conexion, $consulta);
 
   /* Junta el nombre con sus apellidos y guardalos en un arreglo */
@@ -482,8 +482,7 @@
 
           /* cuenta los elementos de la lista */
           let contador = listaNombres.length;
-          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
+          nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
         }
         else{
           console.log('Ya está en la lista');
@@ -493,7 +492,14 @@
 
   });
 
-
+  function eliminar(id){
+    document.getElementById(id).remove();
+    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
+    let numero = id.replace('contenedor', '');
+    /* Elimina el elemento del array */
+    listaNombres.splice(numero - 1, 1);
+    console.log(listaNombres);
+  }
   
   </script>";
 
@@ -504,4 +510,4 @@
   
 ?>
 
-<!-- Php para -->
+<!-- Php para --

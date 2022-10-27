@@ -477,6 +477,7 @@ form {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     border-radius: 40px;
 }
+
 .table-cebra{
     width: 100%;
     color: #fff;
@@ -487,16 +488,16 @@ form {
 .table-cebra td {
     color: black;
     background-color: white;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border: none;
+    /* border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; */
     width: 250px;
 }
 .table-cebra th {
     color: white;
     background:#668588;
     width: 250px;
-    border-right: 5px solid #ccc;
-    border-bottom: 5px solid #ccc;
+    border: none;
 }
 .table-cebra td:last-child,
 .table-cebra th:last-child {
@@ -510,6 +511,7 @@ form {
 .table-cebra tbody tr:nth-child(2n) {
     background: white;
 }
+
 .table-cebra .sticky {
     position: sticky;
     left: 0;
