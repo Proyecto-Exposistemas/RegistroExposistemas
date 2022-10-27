@@ -273,7 +273,7 @@
 
         <?php
         $recurso = $_POST['recurso'];
-        $cadena = explode(";", $variable);
+        $cadena = explode(";", $recurso);
         /* imprime la primera palabra */
         //echo $cadena[0];
         /* imprime la segunda palabra */
