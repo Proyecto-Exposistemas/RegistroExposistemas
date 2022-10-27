@@ -71,7 +71,6 @@ identidad.addEventListener("change", function() {
             else {
                 inputTitulo.style.display = "none"
             }
-
         })
     }
 })

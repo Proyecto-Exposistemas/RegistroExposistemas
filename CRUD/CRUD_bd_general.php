@@ -54,8 +54,6 @@ class CRUD_general{
             die("Error:".$e->getMessage());
             echo "Linea del error " . $e->getLine();
         }
-        
-       
     }
 
     public function INSERTAR_ELIMINAR_ACTUALIZAR($consultaEscrita, $arrayAsociativo){

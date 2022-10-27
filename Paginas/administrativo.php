@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ventna adminstrativo</title>
-  <link rel="stylesheet" href="../css/administrativo.css">
+  <link rel="stylesheet" href="css/administrativo.css">
 </head>
 
 <body>
@@ -145,41 +145,6 @@
             <div class="opcionesExpositores">
               <div class="container">
                 <h2>Expositores</h2>
-
-                <div class="select-box" style="margin-top: -25px">
-
-                  <div class="options-container">
-                  </div>
-
-                  <div class="selected">
-                    Seleccione los integrantes del equipo
-                  </div>
-
-                  <div class="search-box">
-                    <input type="text" placeholder="Ingresa un nombre..." />
-                  </div>
-
-                </div>
-      
-              </div>
-
-            </div>
-            <!-- Código del contenedor de nombres -->
-            <div class="contanerPersonas">
-
-              <div class="containerP">
-                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
-              </div>
-            </div>
-
-          </div>
-
-          <div class="expositores">
-            <!-- Codigo de el select menu -->
-            <div class="opcionesExpositores">
-              <div class="container">
-                <h2>Asistentes de proyecto</h2>
 
                 <div class="select-box" style="margin-top: -25px">
 
