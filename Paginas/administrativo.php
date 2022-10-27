@@ -175,41 +175,6 @@
 
           </div>
 
-          <div class="expositores">
-            <!-- Codigo de el select menu -->
-            <div class="opcionesExpositores">
-              <div class="container">
-                <h2>Asistentes de proyecto</h2>
-
-                <div class="select-box" style="margin-top: -25px">
-
-                  <div class="options-container">
-                  </div>
-
-                  <div class="selected">
-                    Seleccione los integrantes del equipo
-                  </div>
-
-                  <div class="search-box">
-                    <input type="text" placeholder="Ingresa un nombre..." />
-                  </div>
-
-                </div>
-      
-              </div>
-
-            </div>
-            <!-- Código del contenedor de nombres -->
-            <div class="contanerPersonas">
-
-              <div class="containerP">
-                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
-              </div>
-            </div>
-
-          </div>
-
           <div class="botones">
             <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
             <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
@@ -302,10 +267,80 @@
         });
         /* mandar el resultado de qr a caja de texto */
         scanner.addListener('scan', function(c){
-            document.getElementById('text').value = c;
+        let recurso = document.getElementById('text').value = c;
         });
         </script>
 
+        <?php
+        $recurso = $_POST['recurso'];
+        $cadena = explode(";", $recurso);
+        /* imprime la primera palabra */
+        //echo $cadena[0];
+        /* imprime la segunda palabra */
+        //echo $cadena[1];
+        $hora = date("H:i:s");
+        /* conectar con la base de datos */
+        $conexion = mysqli_connect("localhost", "root", "", "exposistemas");
+        /* variable de tipo array para guardar parametros*/
+        $parametros = array();
+        $parametros[0] = $cadena[1];
+        $parametros[1] = $hora[1];
+
+        if($cadena[0] == "registros_alumnos"){
+          $sql = "INSERT INTO registros_alumnos (no_control, hora) VALUES(:con,:hora)";
+          $parametros = [":con"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+        if($cadena[0] == "registros_docentes"){
+          $sql = "INSERT INTO registros_docentes (RFC, hora) VALUES(:rfc,:hora)";
+          $parametros = [":rfc"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }   
+            }
+
+
+        if($cadena[0] == "registros_externos"){
+            $sql = "INSERT INTO registros_externos (correo, hora) VALUES(:cor,:hora)";
+          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+
+
+        if($cadena[0] == "registros_ponentes_ext"){
+            $sql = "INSERT INTO registros_ponentes_ext (correo, hora) VALUES(:cor,:hora)";
+          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+    
+        /* insertar datos en mysql para la base de datos llamada prueba en la tabla recupera */
+        //$sql = "INSERT INTO ".$cadena[0]." (alu) VALUES ('".$cadena[1]."', '".$hora."')";
+        /* ejecutar la consulta */
+        //mysqli_query($conexion, $sql);
+
+        ?>
 
 
 
@@ -326,7 +361,7 @@
       navigation.classList.toggle('active')
     }
   </script>
-  <script src="../SesionesUsuario/session_expiracion.js"></script>
+  <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
 </html>
@@ -395,7 +430,7 @@
 <?php
   include '../conexiones.php';
 
-  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` ORDER BY nombre ASC";
+  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` WHERE rol != 'Espectador' ORDER BY nombre ASC";
   $resultado = mysqli_query($conexion, $consulta);
 
   /* Junta el nombre con sus apellidos y guardalos en un arreglo */
@@ -447,8 +482,7 @@
 
           /* cuenta los elementos de la lista */
           let contador = listaNombres.length;
-          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
+          nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
         }
         else{
           console.log('Ya está en la lista');
@@ -458,7 +492,14 @@
 
   });
 
-
+  function eliminar(id){
+    document.getElementById(id).remove();
+    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
+    let numero = id.replace('contenedor', '');
+    /* Elimina el elemento del array */
+    listaNombres.splice(numero - 1, 1);
+    console.log(listaNombres);
+  }
   
   </script>";
 
@@ -469,4 +510,4 @@
   
 ?>
 
-<!-- Php para -->
+<!-- Php para --
