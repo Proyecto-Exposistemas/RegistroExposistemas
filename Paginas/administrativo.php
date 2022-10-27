@@ -302,10 +302,80 @@
         });
         /* mandar el resultado de qr a caja de texto */
         scanner.addListener('scan', function(c){
-            document.getElementById('text').value = c;
+        let recurso = document.getElementById('text').value = c;
         });
         </script>
 
+        <?php
+        $recurso = $_POST['recurso'];
+        $cadena = explode(";", $variable);
+        /* imprime la primera palabra */
+        //echo $cadena[0];
+        /* imprime la segunda palabra */
+        //echo $cadena[1];
+        $hora = date("H:i:s");
+        /* conectar con la base de datos */
+        $conexion = mysqli_connect("localhost", "root", "", "exposistemas");
+        /* variable de tipo array para guardar parametros*/
+        $parametros = array();
+        $parametros[0] = $cadena[1];
+        $parametros[1] = $hora[1];
+
+        if($cadena[0] == "registros_alumnos"){
+          $sql = "INSERT INTO registros_alumnos (no_control, hora) VALUES(:con,:hora)";
+          $parametros = [":con"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+        if($cadena[0] == "registros_docentes"){
+          $sql = "INSERT INTO registros_docentes (RFC, hora) VALUES(:rfc,:hora)";
+          $parametros = [":rfc"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }   
+            }
+
+
+        if($cadena[0] == "registros_externos"){
+            $sql = "INSERT INTO registros_externos (correo, hora) VALUES(:cor,:hora)";
+          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+
+
+        if($cadena[0] == "registros_ponentes_ext"){
+            $sql = "INSERT INTO registros_ponentes_ext (correo, hora) VALUES(:cor,:hora)";
+          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
+          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+        if($resultado){
+            $mensaje = "Registro exitoso";
+        }else{
+            $mensaje = "No se ha podido realizar el registro";
+        }
+            }
+    
+        /* insertar datos en mysql para la base de datos llamada prueba en la tabla recupera */
+        //$sql = "INSERT INTO ".$cadena[0]." (alu) VALUES ('".$cadena[1]."', '".$hora."')";
+        /* ejecutar la consulta */
+        //mysqli_query($conexion, $sql);
+
+        ?>
 
 
 
