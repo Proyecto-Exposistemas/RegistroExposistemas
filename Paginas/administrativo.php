@@ -269,7 +269,7 @@
         <div id="video">
         <video id="previsualizacion" width="50%"></video>
         </div>
-        <form action="index.html" method="post" id="formulario" name="formulario">
+        <form action="funcion.html" method="post" id="formulario" name="formulario">
         <label id="resultado">Resultado</label>
         <!-- caja de texto -->
         <div id="caja">
