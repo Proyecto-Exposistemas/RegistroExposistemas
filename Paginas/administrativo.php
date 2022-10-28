@@ -247,13 +247,14 @@
         <label id="resultado">Resultado</label>
         <!-- caja de texto -->
         <div id="caja">
-            <input type="text" id="text" v-model="content">
+            <input type="text" id="text" v-model="content" onChange=actualizar>
         </div>
         <!-- etiqueta script -->
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({
             video: document.getElementById('previsualizacion')
         }); 
+
         Instascan.Camera.getCameras().then(function(cameras){
             if(cameras.length > 0){
                 scanner.start(cameras[0]);
@@ -268,6 +269,7 @@
         /* mandar el resultado de qr a caja de texto */
         scanner.addListener('scan', function(c){
         let recurso = document.getElementById('text').value = c;
+        /* Llama a ejecutar un archivo php*/
         });
         </script>
 
@@ -334,16 +336,8 @@
             $mensaje = "No se ha podido realizar el registro";
         }
             }
-    
-        /* insertar datos en mysql para la base de datos llamada prueba en la tabla recupera */
-        //$sql = "INSERT INTO ".$cadena[0]." (alu) VALUES ('".$cadena[1]."', '".$hora."')";
-        /* ejecutar la consulta */
-        //mysqli_query($conexion, $sql);
 
         ?>
-
-
-
       </div>
       
     </article>
@@ -361,6 +355,7 @@
       navigation.classList.toggle('active')
     }
   </script>
+  
   <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
@@ -455,41 +450,104 @@
   </script>";
 
   echo '<script src="../js/selectbox.js"></script>';
-
-  /* */
 ?>
 
 <!-- Php para cargar la seleccion en la lista de integrantes -->
 <?php
   /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
   echo "<script>
+  let numeros_control2 = " . json_encode($numeros_control) . ";
   let listaOpciones = document.querySelectorAll('.option');
   /* Declara un array que se llame ListaNombres */
   let listaNombres = [];
+  let listaNumeros = [];
 
   let nombresLista = document.querySelector('.containerP');
-  
 
   listaOpciones.forEach(o => {
     o.addEventListener('click', (e) => {
       let valorTexto = e.target.textContent;
       
+      /* Si el valor del texto es diferente de vacio, entonces */
       if(valorTexto != ''){
-        if(!listaNombres.includes(valorTexto)){
-          /* Si el valor del texto ya está en el array, no lo agregues */
-          listaNombres.push(valorTexto);
-          console.log(listaNombres);
+        console.log('Estamos en el primer condicional');
 
-          /* cuenta los elementos de la lista */
-          let contador = listaNombres.length;
-          nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+        if(valorTexto[0] == ' '){
+          console.log('Estamos en el segundo condicional con espacio');
+          console.log('La cadena original es:'+valorTexto);
+
+          let valorTexto2 = valorTexto.trim();
+          valorTexto = valorTexto2;
+
+          console.log('La cadena alterada es:'+valorTexto);
+        
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombres.length; i++){
+            if(listaNombres[i] == valorTexto){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
+
+            /* Agrega el valor al arreglo */
+            listaNombres.push(valorTexto);
+            listaNumeros.push(numeros_control2[listaNombres.length - 1]);
+
+            console.log(listaNombres);
+            console.log(listaNumeros);
+  
+            /* cuenta los elementos de la lista */
+            let contador = listaNombres.length;
+
+            /* Agrega el valor al div */
+            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+          }
+          else{
+            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
+            alert('El nombre ya existe en la lista');
+          }
         }
         else{
-          console.log('Ya está en la lista');
+          console.log('Estamos en el segundo condicional sin espacio');
+          
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombres.length; i++){
+            if(listaNombres[i] == valorTexto){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
+
+            /* Agrega el valor al arreglo */
+            listaNombres.push(valorTexto);
+            listaNumeros.push(numeros_control2[listaNombres.length - 1]);
+
+            console.log(listaNombres);
+            console.log(listaNumeros);
+  
+            /* cuenta los elementos de la lista */
+            let contador = listaNombres.length;
+
+            /* Agrega el valor al div */
+            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+          }
+          else{
+            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
+            alert('El nombre ya existe en la lista');
+          }
         }
       }
     });
-
   });
 
   function eliminar(id){
@@ -499,15 +557,12 @@
     /* Elimina el elemento del array */
     listaNombres.splice(numero - 1, 1);
     console.log(listaNombres);
+
+    /* Elimina el elemento del array */
+    listaNumeros.splice(numero - 1, 1);
+    console.log(listaNumeros);
   }
   
   </script>";
 
 ?>
-<!-- Php para eliminar de la lista de integrantes -->
-<?php  
-  /* Revisa si el boton ha sido pulsado */
-  
-?>
-
-<!-- Php para --
