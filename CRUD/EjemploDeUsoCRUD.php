@@ -21,5 +21,32 @@
         echo "No se pudo insertar";
     }
     $base->CERRAR_CONEXION(); */
+    
+    /*include_once("CRUD_bd_general.php");
+    $perro=new CRUD_general();
+    $perro->conexionBD();
+
+    $consulta="SELECT * FROM evento,alumnos";
+    $parametro=[":selecion"=>"10"];
+    $resultado=$perro->Mostrar($consulta);
+    var_dump($resultado);
+
+    for ($i=0; $i <count($resultado) ; $i++) { 
+        # code...
+        echo "<br>";
+        echo $resultado[$i]["no_evento"]."<br>";
+        echo $resultado[$i]["evento"]."<br>";
+        echo $resultado[$i]["hora_inicio"]."<br>";
+        echo $resultado[$i]["hora_fin"]."<br>";
+        echo $resultado[$i]["descripcion"]."<br>";
+    }
+
+    for ($i=0; $i <count($resultado) ; $i++) { 
+        echo "<br>";
+        echo $resultado[$i][0];
+    }
+     */ 
+    
+
 
 ?>

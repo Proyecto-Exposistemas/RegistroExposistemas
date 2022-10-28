@@ -204,27 +204,53 @@
 
             <thead>
               <tr>
-                <th class="sticky"> Nombre </th>
+                <th class="sticky"> Numero de actividad </th>
 
-                <th> Numero de control </th>
+                <th> Nombre de actividad </th>
 
-                <th> Semestre </th>
+                <th> Descripción </th>
 
-                <th> Correo electronico </th>
+                <th> Hora de Inicio </th>
 
-                <th> Teléfono </th>
+                <th> Expositores </th>
 
-                <th>Grupo</th>
+                <th>Asesores</th>
 
-                <th>Hora de inicio</th>
-                <th>Hora de fin</th>
+                <th>Materia</th>
               </tr>
             </thead>
 
             <tbody>
+              <tr>
+                <?php
+                    include_once("../CRUD/CRUD_bd_general.php");
+                    $perro=new CRUD_general();
+                    $perro->conexionBD();
+                
+                    $consulta="SELECT * FROM evento,asesores_evento,alumnos";
+                    $parametro=[":selecion"=>"10"];
+                    $resultado=$perro->Mostrar($consulta);
+                    //var_dump($resultado);
+            
+                    for($i=0;$i<count($resultado);$i++){?>
+                      <td class="sticky"><?php echo $resultado[$i]['no_evento'];?></td>
+                      <td><?php echo $resultado[$i]['evento'];?></td>
+                      <td ><?php echo $resultado[$i]['descripcion'];?></td>
+                      <td><?php echo $resultado[$i]['hora_inicio'];?></td>
+                      <td><?php echo $resultado[$i]['nombre'];?></td>
+                      <td><?php echo $resultado[$i]['rfc'];?></td>
+                      <td><?php echo $resultado[$i]['materia'];?></td>
+                      
+                   </tr>
+                   </tbody>
+                   <?php
+                    }
 
-            </tbody>
-
+                
+                  ?>
+              </tr>
+            </tbody>  
+          
           </table>
         </article>
       </div>
@@ -243,12 +269,13 @@
         <div id="video">
         <video id="previsualizacion" width="50%"></video>
         </div>
-
+        <form action="index.html" method="post" id="formulario" name="formulario">
         <label id="resultado">Resultado</label>
         <!-- caja de texto -->
         <div id="caja">
             <input type="text" id="text" v-model="content" onChange=actualizar>
         </div>
+        </form>
         <!-- etiqueta script -->
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({
@@ -268,76 +295,17 @@
         });
         /* mandar el resultado de qr a caja de texto */
         scanner.addListener('scan', function(c){
-        let recurso = document.getElementById('text').value = c;
-        /* Llama a ejecutar un archivo php*/
+            let recurso = document.getElementById('text').value = c;
+            var formulario=document.getElementById('formulario');
+            var datos=new FormData(formulario);
+            console.log(datos);
+            console.log(datos.get('text'));
+            fetch('funcion.php',{
+                method: 'POST',
+                body: datos
+            })
         });
         </script>
-
-        <?php
-        $recurso = $_POST['recurso'];
-        $cadena = explode(";", $recurso);
-        /* imprime la primera palabra */
-        //echo $cadena[0];
-        /* imprime la segunda palabra */
-        //echo $cadena[1];
-        $hora = date("H:i:s");
-        /* conectar con la base de datos */
-        $conexion = mysqli_connect("localhost", "root", "", "exposistemas");
-        /* variable de tipo array para guardar parametros*/
-        $parametros = array();
-        $parametros[0] = $cadena[1];
-        $parametros[1] = $hora[1];
-
-        if($cadena[0] == "registros_alumnos"){
-          $sql = "INSERT INTO registros_alumnos (no_control, hora) VALUES(:con,:hora)";
-          $parametros = [":con"=>$cadena[1], ":hora"=>$hora];
-          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-        
-        if($resultado){
-            $mensaje = "Registro exitoso";
-        }else{
-            $mensaje = "No se ha podido realizar el registro";
-        }
-            }
-        if($cadena[0] == "registros_docentes"){
-          $sql = "INSERT INTO registros_docentes (RFC, hora) VALUES(:rfc,:hora)";
-          $parametros = [":rfc"=>$cadena[1], ":hora"=>$hora];
-          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-        
-        if($resultado){
-            $mensaje = "Registro exitoso";
-        }else{
-            $mensaje = "No se ha podido realizar el registro";
-        }   
-            }
-
-
-        if($cadena[0] == "registros_externos"){
-            $sql = "INSERT INTO registros_externos (correo, hora) VALUES(:cor,:hora)";
-          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
-          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-        
-        if($resultado){
-            $mensaje = "Registro exitoso";
-        }else{
-            $mensaje = "No se ha podido realizar el registro";
-        }
-            }
-
-
-        if($cadena[0] == "registros_ponentes_ext"){
-            $sql = "INSERT INTO registros_ponentes_ext (correo, hora) VALUES(:cor,:hora)";
-          $parametros = [":cor"=>$cadena[1], ":hora"=>$hora];
-          $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-        
-        if($resultado){
-            $mensaje = "Registro exitoso";
-        }else{
-            $mensaje = "No se ha podido realizar el registro";
-        }
-            }
-
-        ?>
       </div>
       
     </article>
