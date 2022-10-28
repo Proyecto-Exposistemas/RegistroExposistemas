@@ -430,6 +430,7 @@
   /* Declara un array que se llame ListaNombres */
   let listaNombres = [];
   let listaNumeros = [];
+  let listaContador = [];
 
   let nombresLista = document.querySelector('.containerP');
 
@@ -485,13 +486,16 @@
             /* Agrega el valor al div */
             nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
+            /* Agregar a listaContador */
+            listaContador.push('contenedor'+contador);
+
           }
           else{
             console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
             alert('El nombre ya existe en la lista');
           }
         }
-        else{
+        else{   
           console.log('Estamos en el segundo condicional sin espacio');
           
           /* Verifica que valorTexto no exista en el arreglo */
@@ -529,6 +533,8 @@
             /* Agrega el valor al div */
             nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
+            /* Agregar a listaContador */
+            listaContador.push('contenedor'+ contador);
           }
           else{
             console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
@@ -539,39 +545,15 @@
     });
   });
 
-  /* Copiar el arreglo en una nueva variable */
-  let listaNombresBase = listaNombres;
-  let listaNumerosBase = listaNumeros;
 
   function eliminar(id){
     document.getElementById(id).remove();
 
-    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
-    let posicion = id.replace('contenedor', '');
-
-    /* Convierte el numero a entero */
-    posicion = parseInt(posicion)
-    posicion = posicion - 1
-
-    console.log('El digito a eliminar es: '+ posicion );
-
-    /* Busca la posicion en listaNombresBase y extrae el contenido */
-    let extraccion = listaNombresBase[posicion];  
-
-    /* Busca la posicion en listaNumerosBase y extrae el contenido */
-    let extraccion2 = listaNumerosBase[posicion];
-
-    /* Busca la posicion en listaNombres y elimina el contenido */
-    for (let i = 0; i < listaNombres.length; i++) {
-      if(listaNombres[i] == extraccion){
-        listaNombres.splice(i, 1);
-      }
-    }
-
-    /* Busca la posicion en listaNumeros y elimina el contenido */
-    for (let i = 0; i < listaNumeros.length; i++) {
-      if(listaNumeros[i] == extraccion2){
+    for(let i = 0; i < listaContador.length; i++){
+      if(listaContador[i] == id){
         listaNumeros.splice(i, 1);
+        listaNombres.splice(i, 1);
+        listaContador.splice(i, 1);
       }
     }
 
