@@ -464,14 +464,17 @@
 
             /* Agrega el valor al arreglo */
             listaNombres.push(valorTexto);
-            
-            /* Obtener la posicion de valorTexto en nombre_completo2 */
-            let posicion = nombre_completo2.indexOf(valorTexto);
-            posicion -= 1;
 
-            /* Busca la posición en numeros_control2, extrae el contenido y almacenalo en listaNumeros */
-            listaNumeros.push(numeros_control2[posicion]);
+            let posicion_numero = 0
 
+            for(let i = 0; i < nombre_completo2.length; i++){
+              if(nombre_completo2[i] == valorTexto){
+                posicion_numero = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaNumeros.push(numeros_control2[posicion_numero]);
 
             console.log(listaNombres);
             console.log(listaNumeros);
@@ -505,7 +508,17 @@
 
             /* Agrega el valor al arreglo */
             listaNombres.push(valorTexto);
-            listaNumeros.push(numeros_control2[listaNombres.length - 1]);
+
+            let posicion_numero = 0
+
+            for(let i = 0; i < nombre_completo2.length; i++){
+              if(nombre_completo2[i] == valorTexto){
+                posicion_numero = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaNumeros.push(numeros_control2[posicion_numero]);
 
             console.log(listaNombres);
             console.log(listaNumeros);
