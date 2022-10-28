@@ -424,6 +424,7 @@
 <?php
   /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
   echo "<script>
+  let nombre_completo2 = " . json_encode($nombre_completo) . ";
   let numeros_control2 = " . json_encode($numeros_control) . ";
   let listaOpciones = document.querySelectorAll('.option');
   /* Declara un array que se llame ListaNombres */
@@ -463,7 +464,14 @@
 
             /* Agrega el valor al arreglo */
             listaNombres.push(valorTexto);
-            listaNumeros.push(numeros_control2[listaNombres.length - 1]);
+            
+            /* Obtener la posicion de valorTexto en nombre_completo2 */
+            let posicion = nombre_completo2.indexOf(valorTexto);
+            posicion -= 1;
+
+            /* Busca la posición en numeros_control2, extrae el contenido y almacenalo en listaNumeros */
+            listaNumeros.push(numeros_control2[posicion]);
+
 
             console.log(listaNombres);
             console.log(listaNumeros);
@@ -518,16 +526,44 @@
     });
   });
 
+  /* Copiar el arreglo en una nueva variable */
+  let listaNombresBase = listaNombres;
+  let listaNumerosBase = listaNumeros;
+
   function eliminar(id){
     document.getElementById(id).remove();
-    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
-    let numero = id.replace('contenedor', '');
-    /* Elimina el elemento del array */
-    listaNombres.splice(numero - 1, 1);
-    console.log(listaNombres);
 
-    /* Elimina el elemento del array */
-    listaNumeros.splice(numero - 1, 1);
+    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
+    let posicion = id.replace('contenedor', '');
+
+    /* Convierte el numero a entero */
+    posicion = parseInt(posicion)
+    posicion = posicion - 1
+
+    console.log('El digito a eliminar es: '+ posicion );
+
+    /* Busca la posicion en listaNombresBase y extrae el contenido */
+    let extraccion = listaNombresBase[posicion];  
+
+    /* Busca la posicion en listaNumerosBase y extrae el contenido */
+    let extraccion2 = listaNumerosBase[posicion];
+
+    /* Busca la posicion en listaNombres y elimina el contenido */
+    for (let i = 0; i < listaNombres.length; i++) {
+      if(listaNombres[i] == extraccion){
+        listaNombres.splice(i, 1);
+      }
+    }
+
+    /* Busca la posicion en listaNumeros y elimina el contenido */
+    for (let i = 0; i < listaNumeros.length; i++) {
+      if(listaNumeros[i] == extraccion2){
+        listaNumeros.splice(i, 1);
+      }
+    }
+
+    /* Imprime los arreglos */
+    console.log(listaNombres);
     console.log(listaNumeros);
   }
   
