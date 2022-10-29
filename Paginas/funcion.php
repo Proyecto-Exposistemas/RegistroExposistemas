@@ -1,5 +1,5 @@
 <?php
-        include_once("CRUD_bd_general.php");
+        include_once("../CRUD/CRUD_bd_general.php");
         $conexion = new CRUD_general();
         $conexion->conexionBD();
 
