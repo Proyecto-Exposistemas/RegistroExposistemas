@@ -100,7 +100,7 @@
 
     <article class="container-general" id="RegistroPrograma">
       
-      <!-- Seccion del registro del programa de exposistemas -->
+      <!-- Seccion del registro del programa de exposistemas #######################################3-->
       <div class="card">
         <h1>Registro del programa de exposistemas</h1>
 
@@ -220,7 +220,7 @@
         </form>
       </div>
       
-      <!-- Sección para la emisión del programa de exposistemas -->
+      <!-- Sección para la emisión del programa de exposistemas --> 
       <div class="card">
         <h2>Emisión de constancias</h2>
       </div>
@@ -264,12 +264,31 @@
         </article>
       </div>
 
-      <!-- Sección para el cambio de contraseña -->
+      <!-- Sección para el cambio de contraseña #######################################################3--> 
       <div class="card">
-        <h2>Cambiar la contraseña</h2>
-      </div>
+        <h2>Cambiar la contraseña</h2> 
+        <div class="campos"> 
+          <div class="input-group">
+              <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
+              <label for="contraseña_anterior" class="input-label">Contraseña</label>
+          </div>
 
-      <!-- Seccion para escanear los códigos QR -->
+          <div class="input-group">
+            <input type="text" name="nueva_contraseña" autocomplete="off" id="nueva_contraseña" required class="input">
+            <label for="nueva_contraseña" class="input-label">Nueva contraseña</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
+            <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
+          </div> 
+          <div class="botones">
+            <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="   Guardar   ">
+          </div>
+        </div>
+
+      
+        <!-- Seccion para escanear los códigos QR -->
       <div class="card">
         <h2>Escanear código QR</h2>
         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
@@ -342,7 +361,9 @@
   }else if(isset($_POST['btn-enviar'])){
     insertarDatos();
   }else if(isset($_POST['btn-eliminar'])){
-    eliminarDatos();
+    eliminarDatos(); 
+  }else if(isset($_POST['btn-guardarC'])){
+    cambioContraseña();
   }
 
   /* Funcion para buscar los datos */
@@ -387,6 +408,11 @@
   /* Funcion para eliminar los datos */
   function eliminarDatos(){
     echo "Eliminar datos";
+  } 
+
+  /* Cambio de contrasena */ 
+  function cambioContraseña(){
+     
   }
   
 ?>
