@@ -12,7 +12,7 @@
 <body>
   <section class="container-all">
     <header>
-      <h2>Menú administrativo</h2>
+      <h2 id="home">Menú administrativo</h2>
     </header>
 
     <article class="navigation">
@@ -20,7 +20,7 @@
         <ul>
 
           <li>
-            <a href="#">
+            <a href="#home">
               <span class="icon">
                 <ion-icon name="business-outline"></ion-icon>
                 </ion-icon>
@@ -30,7 +30,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#programa">
               <span class="icon">
                 <ion-icon name="document-text-outline"></ion-icon>
               </span>
@@ -39,7 +39,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#constancias">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -48,7 +48,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#reportesAsistencia">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
@@ -57,7 +57,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#consultaPrograma">
               <span class="icon">
                 <ion-icon name="book-outline"></ion-icon>
               </span>
@@ -66,16 +66,16 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#password">
               <span class="icon">
-                <ion-icon name="finger-print-outline"></ion-icon>
+                <ion-icon name="lock-closed-outline"></ion-icon>
               </span>
               <span class="title">Cambio de contraseña</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
+            <a href="#QR">
               <span class="icon">
                 <ion-icon name="qr-code-outline"></ion-icon>
               </span>
@@ -99,12 +99,12 @@
     </article>
 
     <article class="container-general" id="RegistroPrograma">
-      
+
       <!-- Seccion del registro del programa de exposistemas -->
-      <div class="card">
+      <div class="card" id="programa">
         <h1>Registro del programa de exposistemas</h1>
 
-        <form action="" method="post"> 
+        <form action="" method="post">
 
           <div class="campos">
 
@@ -160,7 +160,7 @@
                   </div>
 
                 </div>
-      
+
               </div>
 
             </div>
@@ -168,8 +168,41 @@
             <div class="contanerPersonas">
 
               <div class="containerP">
-                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
+                <h2 style="margin-bottom: -5px;">Lista de integrantes del equipo</h2>
+
+              </div>
+            </div>
+            
+          </div>
+          
+
+          <div class="asesores">
+            <!-- Codigo de el select menu -->
+            <div class="opcionesAsesores">
+
+              <div class="container2">
+                <h2>Asesores de proyecto</h2>
+
+                <div class="select-box2" style="margin-top: -25px;">
+                  <div class="options-container2">
+
+                  </div>
+
+                  <div class="selected2">
+                    Selecciona los asesores del proyecto
+                  </div>
+
+                  <div class="search-box2">
+                    <input type="text" placeholder="Ingresa un nombre..." />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- Código del contenedor de nombres -->
+            <div class="containerAsistentes">
+              <div class="container2P">
+                <h2 style="margin-bottom: -5px;">Lista de asistentes del proyecto</h2>
               </div>
             </div>
 
@@ -184,19 +217,19 @@
 
         </form>
       </div>
-      
-      <!-- Sección para la emisión del programa de exposistemas -->
-      <div class="card">
+
+      <!-- Sección para la emisión de las constancias -->
+      <div class="card" id="constancias">
         <h2>Emisión de constancias</h2>
       </div>
-      
+
       <!-- Sección para la emisión de reportes de asistencia -->
-      <div class="card">
+      <div class="card" id="reportesAsistencia">
         <h2>Reportes de asistencia</h2>
       </div>
 
       <!-- Sección para la consulta del programa de exposistemas -->
-      <div class="card">
+      <div class="card" id="consultaPrograma">
         <h2>Consulta del programa exposistemas</h2>
         <article class="contenedor-tabla">
 
@@ -233,81 +266,94 @@
                     //var_dump($resultado);
             
                     for($i=0;$i<count($resultado);$i++){?>
-                      <td class="sticky"><?php echo $resultado[$i]['no_evento'];?></td>
-                      <td><?php echo $resultado[$i]['evento'];?></td>
-                      <td ><?php echo $resultado[$i]['descripcion'];?></td>
-                      <td><?php echo $resultado[$i]['hora_inicio'];?></td>
-                      <td><?php echo $resultado[$i]['nombre'];?></td>
-                      <td><?php echo $resultado[$i]['rfc'];?></td>
-                      <td><?php echo $resultado[$i]['materia'];?></td>
-                      
-                   </tr>
-                   </tbody>
-                   <?php
-                    }
+                <td class="sticky">
+                  <?php echo $resultado[$i]['no_evento'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['evento'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['descripcion'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['hora_inicio'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['nombre'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['rfc'];?>
+                </td>
+                <td>
+                  <?php echo $resultado[$i]['materia'];?>
+                </td>
 
+              </tr>
+            </tbody>
+            <?php
+                  }
                 
                   ?>
-              </tr>
-            </tbody>  
-          
+            </tr>
+            </tbody>
+
           </table>
         </article>
       </div>
 
       <!-- Sección para el cambio de contraseña -->
-      <div class="card">
+      <div class="card" id="password">
         <h2>Cambiar la contraseña</h2>
       </div>
 
       <!-- Seccion para escanear los códigos QR -->
-      <div class="card">
+      <div class="card" id="QR">
         <h2>Escanear código QR</h2>
         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
         <label id="titulo">Escanea el codigo QR</label>
         <!-- visualizacion de la camara -->
         <div id="video">
-        <video id="previsualizacion" width="50%"></video>
+          <video id="previsualizacion" width="50%"></video>
         </div>
         <form action="index.html" method="post" id="formulario" name="formulario">
-        <label id="resultado">Resultado</label>
-        <!-- caja de texto -->
-        <div id="caja">
+          <label id="resultado">Resultado</label>
+          <!-- caja de texto -->
+          <div id="caja">
             <input type="text" id="text" v-model="content" onChange=actualizar>
-        </div>
+          </div>
         </form>
         <!-- etiqueta script -->
         <script type="text/javascript">
-            let scanner = new Instascan.Scanner({
+          let scanner = new Instascan.Scanner({
             video: document.getElementById('previsualizacion')
-        }); 
+          });
 
-        Instascan.Camera.getCameras().then(function(cameras){
-            if(cameras.length > 0){
-                scanner.start(cameras[0]);
-            }else{
-                console.error("No se encontraron cámaras");
-                alert("no se han encontrado camaras");
-            } 
-        }).catch(function(e){
+          Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+              scanner.start(cameras[0]);
+            } else {
+              console.error("No se encontraron cámaras");
+              alert("no se han encontrado camaras");
+            }
+          }).catch(function (e) {
             console.error(e);
-            alert("ERROR:"+ e);
-        });
-        /* mandar el resultado de qr a caja de texto */
-        scanner.addListener('scan', function(c){
+            alert("ERROR:" + e);
+          });
+          /* mandar el resultado de qr a caja de texto */
+          scanner.addListener('scan', function (c) {
             let recurso = document.getElementById('text').value = c;
-            var formulario=document.getElementById('formulario');
-            var datos=new FormData(formulario);
+            var formulario = document.getElementById('formulario');
+            var datos = new FormData(formulario);
             console.log(datos);
             console.log(datos.get('text'));
-            fetch('funcion.php',{
-                method: 'POST',
-                body: datos
+            fetch('funcion.php', {
+              method: 'POST',
+              body: datos
             })
-        });
+          });
         </script>
       </div>
-      
+
     </article>
 
   </section>
@@ -323,7 +369,7 @@
       navigation.classList.toggle('active')
     }
   </script>
-  
+
   <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
@@ -406,33 +452,66 @@
   }
   /* Mediante javascrip, en la clase options-contaniner ingresa los datos que tiene el array nombre completo,
   dentro del div, crea un input de tipo check, con el name listaEspositores y el id igual al numero de control */
+  $consulta = "SELECT nombre, paterno, materno, rfc FROM `docentes` ORDER BY nombre ASC";
+  $resultado = mysqli_query($conexion, $consulta);
+
+  /* Junta el nombre con sus apellidos y guardalos en un arreglo */
+  $nombre_completo_asesores = array();
+  $rfc_asesores = array();
+
+  while($fila = mysqli_fetch_array($resultado)){
+    $nombre_completo_asesores[] = $fila['nombre'] . " " . $fila['paterno'] . " " . $fila['materno'];
+    $rfc_asesores[] = $fila['rfc'];
+  } 
+
+  /* imprime todos los arreglos de los asesores */
+  
+
   echo "<script>
     let nombre_completo = " . json_encode($nombre_completo) . ";
     let numeros_control = " . json_encode($numeros_control) . ";
+    let nombre_completo_asesores = " . json_encode($nombre_completo_asesores) . ";
+    let rfc_asesores = " . json_encode($rfc_asesores) . ";
 
     let contenedor = document.querySelector('.options-container');
+    let contenedor2 = document.querySelector('.options-container2');
 
     for(let i = 0; i < nombre_completo.length; i++){
       contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"expositoresParticipantes\" > <label for=\"' + numeros_control[i] + '\"id=\"etiqueta\" >' + nombre_completo[i] + '</label> </div>';
     }
+
+    for(let j = 0; j < nombre_completo_asesores.length; j++){
+      contenedor2.innerHTML += '<div class=\"option2\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + rfc_asesores[j] + '\" name=\"asesoresParticipantes\" > <label for=\"' + rfc_asesores[j] + '\"id=\"etiqueta\" >' + nombre_completo_asesores[j] + '</label> </div>';
+    }
+
   </script>";
 
-  echo '<script src="../js/selectbox.js"></script>';
+  echo '<script src="../js/selectboxCombinado.js"></script>';
+  mysqli_close($conexion);
 ?>
 
-<!-- Php para cargar la seleccion en la lista de integrantes -->
+<!-- Php para cargar la seleccion en la lista de exponentes -->
 <?php
   /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
   echo "<script>
   let nombre_completo2 = " . json_encode($nombre_completo) . ";
   let numeros_control2 = " . json_encode($numeros_control) . ";
+  let nombre_completo_asesores2 = " . json_encode($nombre_completo_asesores) . ";
+  let rfc_asesores2 = " . json_encode($rfc_asesores) . ";
+
   let listaOpciones = document.querySelectorAll('.option');
-  /* Declara un array que se llame ListaNombres */
+  let listaOpciones2 = document.querySelectorAll('.option2');
+
   let listaNombres = [];
   let listaNumeros = [];
   let listaContador = [];
 
+  let listaNombresAsesores = [];
+  let listaRfcAsesores = [];
+  let listaContadorAsesores = [];
+
   let nombresLista = document.querySelector('.containerP');
+  let nombresLista2 = document.querySelector('.container2P');
 
   listaOpciones.forEach(o => {
     o.addEventListener('click', (e) => {
@@ -440,16 +519,11 @@
       
       /* Si el valor del texto es diferente de vacio, entonces */
       if(valorTexto != ''){
-        console.log('Estamos en el primer condicional');
 
         if(valorTexto[0] == ' '){
-          console.log('Estamos en el segundo condicional con espacio');
-          console.log('La cadena original es:'+valorTexto);
 
           let valorTexto2 = valorTexto.trim();
           valorTexto = valorTexto2;
-
-          console.log('La cadena alterada es:'+valorTexto);
         
           /* Verifica que valorTexto no exista en el arreglo */
           let flag = false;
@@ -461,7 +535,6 @@
 
           /* Si el valor no existe en el arreglo, entonces */
           if(flag == false){
-            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
 
             /* Agrega el valor al arreglo */
             listaNombres.push(valorTexto);
@@ -476,9 +549,6 @@
 
             /* Agrega el valor al arreglo */
             listaNumeros.push(numeros_control2[posicion_numero]);
-
-            console.log(listaNombres);
-            console.log(listaNumeros);
   
             /* cuenta los elementos de la lista */
             let contador = listaNombres.length;
@@ -489,6 +559,9 @@
             /* Agregar a listaContador */
             listaContador.push('contenedor'+contador);
 
+            console.log(listaNombres);
+            console.log(listaNumeros);
+            console.log(listaContador);
           }
           else{
             console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
@@ -496,7 +569,6 @@
           }
         }
         else{   
-          console.log('Estamos en el segundo condicional sin espacio');
           
           /* Verifica que valorTexto no exista en el arreglo */
           let flag = false;
@@ -508,7 +580,6 @@
 
           /* Si el valor no existe en el arreglo, entonces */
           if(flag == false){
-            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
 
             /* Agrega el valor al arreglo */
             listaNombres.push(valorTexto);
@@ -523,9 +594,6 @@
 
             /* Agrega el valor al arreglo */
             listaNumeros.push(numeros_control2[posicion_numero]);
-
-            console.log(listaNombres);
-            console.log(listaNumeros);
   
             /* cuenta los elementos de la lista */
             let contador = listaNombres.length;
@@ -535,6 +603,116 @@
 
             /* Agregar a listaContador */
             listaContador.push('contenedor'+ contador);
+
+            console.log(listaNombres);
+            console.log(listaNumeros);
+            console.log(listaContador);
+          }
+          else{
+            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
+            alert('El nombre ya existe en la lista');
+          }
+        }
+      }
+    });
+  });
+
+  listaOpciones2.forEach(h =>{
+    h.addEventListener('click', (E) => {
+      let valorTexto3 = E.target.textContent;
+
+      /* Si el valor del texto es diferente de vacio, entonces */
+      if(valorTexto3 != ''){
+
+        if(valorTexto3[0] == ' '){
+          console.log('Condicional por espaciado.');
+
+          let valorTexto4 = valorTexto3.trim();
+          valorTexto3 = valorTexto4;
+
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombresAsesores.length; i++){
+            if(listaNombresAsesores[i] == valorTexto3){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+
+            /* Agrega el valor al arreglo */
+            listaNombresAsesores.push(valorTexto3);
+
+            let posicion_numero2 = 0
+
+            for(let i = 0; i < nombre_completo_asesores2.length; i++){
+              if(nombre_completo_asesores2[i] == valorTexto3){
+                posicion_numero2 = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
+  
+            /* cuenta los elementos de la lista */
+            let contador2 = listaNombresAsesores.length;
+
+            /* Agrega el valor al div */
+            nombresLista2.innerHTML += '<div class=\"nombres\" id=\"contenedor2'+contador2+'\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar'+ contador2+'\" onClick=eliminar(\"contenedor2'+contador2+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+            /* Agregar a listaContador */
+            listaContadorAsesores.push('contenedor2'+contador2);
+
+            console.log(listaNombresAsesores);
+            console.log(listaRfcAsesores);
+            console.log(listaContadorAsesores);
+          }
+
+          else{
+            alert('El nombre ya existe en la lista');
+          }
+        }
+        else{
+          console.log('Condicional sin espaciado.');
+
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombresAsesores.length; i++){
+            if(listaNombresAsesores[i] == valorTexto3){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+
+            /* Agrega el valor al arreglo */
+            listaNombresAsesores.push(valorTexto3);
+
+            let posicion_numero2 = 0
+
+            for(let i = 0; i < nombre_completo_asesores2.length; i++){
+              if(nombre_completo_asesores2[i] == valorTexto3){
+                posicion_numero2 = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
+  
+            /* cuenta los elementos de la lista */
+            let contador2 = listaNombresAsesores.length;
+
+            /* Agrega el valor al div */
+            listaNombresAsesores.innerHTML += '<div class=\"nombres\" id=\"contenedor2'+contador2+'\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar'+ contador2+'\" onClick=eliminarAsesores(\"contenedor2'+contador2+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+            /* Agregar a listaContador */
+            listaContadorAsesores.push('contenedor2'+ contador2);
+
+            console.log(listaNombresAsesores);
+            console.log(listaRfcAsesores);
+            console.log(listaContadorAsesores);
           }
           else{
             console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
@@ -546,9 +724,13 @@
   });
 
 
+
   function eliminar(id){
     document.getElementById(id).remove();
 
+    console.log('El id es: ' + id);
+
+    /* Eliminación de los campos de manera correcta en la lista */
     for(let i = 0; i < listaContador.length; i++){
       if(listaContador[i] == id){
         listaNumeros.splice(i, 1);
@@ -557,11 +739,24 @@
       }
     }
 
+    for(let i = 0; i < listaContadorAsesores.length; i++){
+      if(listaContadorAsesores[i] == id){
+        listaNombresAsesores.splice(i, 1);
+        listaRfcAsesores.splice(i, 1);
+        listaContadorAsesores.splice(i, 1);
+      }
+    }
+
     /* Imprime los arreglos */
-    console.log(listaNombres);
-    console.log(listaNumeros);
+    console.log('Lista de nombres despues de eliminar: ' + listaNombres);
+    console.log('Lista de ncontrol despues de eliminar: ' + listaNumeros);
+    console.log('Lista de contador1 despues de eliminar: ' + listaContador);
+    console.log('Lista de nombres asesores despues de eliminar: ' + listaNombresAsesores);
+    console.log('Lista de rfc asesores despues de eliminar: ' + listaRfcAsesores);
+    console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores);
   }
   
+
   </script>";
 
 ?>
