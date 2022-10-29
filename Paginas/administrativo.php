@@ -288,11 +288,11 @@
         <div id="video">
         <video id="previsualizacion" width="50%"></video>
         </div>
-        <form action="funcion.html" method="post" id="formulario" name="formulario">
+        <form action="administrativo.php" method="post" id="formulario" name="formulario">
         <label id="resultado">Resultado</label>
         <!-- caja de texto -->
         <div id="caja">
-            <input type="text" id="text" v-model="content" onChange=actualizar>
+            <input type="text" id="text" name="text" v-model="content" onChange=actualizar>
         </div>
         </form>
         <!-- etiqueta script -->
