@@ -175,41 +175,6 @@
 
           </div>
 
-          <div class="expositores">
-            <!-- Codigo de el select menu -->
-            <div class="opcionesExpositores">
-              <div class="container">
-                <h2>Asistentes de proyecto</h2>
-
-                <div class="select-box" style="margin-top: -25px">
-
-                  <div class="options-container">
-                  </div>
-
-                  <div class="selected">
-                    Seleccione los integrantes del equipo
-                  </div>
-
-                  <div class="search-box">
-                    <input type="text" placeholder="Ingresa un nombre..." />
-                  </div>
-
-                </div>
-      
-              </div>
-
-            </div>
-            <!-- Código del contenedor de nombres -->
-            <div class="contanerPersonas">
-
-              <div class="containerP">
-                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
-              </div>
-            </div>
-
-          </div>
-
           <div class="botones">
             <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
             <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
@@ -239,27 +204,53 @@
 
             <thead>
               <tr>
-                <th class="sticky"> Nombre </th>
+                <th class="sticky"> Numero de actividad </th>
 
-                <th> Numero de control </th>
+                <th> Nombre de actividad </th>
 
-                <th> Semestre </th>
+                <th> Descripción </th>
 
-                <th> Correo electronico </th>
+                <th> Hora de Inicio </th>
 
-                <th> Teléfono </th>
+                <th> Expositores </th>
 
-                <th>Grupo</th>
+                <th>Asesores</th>
 
-                <th>Hora de inicio</th>
-                <th>Hora de fin</th>
+                <th>Materia</th>
               </tr>
             </thead>
 
             <tbody>
+              <tr>
+                <?php
+                    include_once("../CRUD/CRUD_bd_general.php");
+                    $perro=new CRUD_general();
+                    $perro->conexionBD();
+                
+                    $consulta="SELECT * FROM evento,asesores_evento,alumnos";
+                    $parametro=[":selecion"=>"10"];
+                    $resultado=$perro->Mostrar($consulta);
+                    //var_dump($resultado);
+            
+                    for($i=0;$i<count($resultado);$i++){?>
+                      <td class="sticky"><?php echo $resultado[$i]['no_evento'];?></td>
+                      <td><?php echo $resultado[$i]['evento'];?></td>
+                      <td ><?php echo $resultado[$i]['descripcion'];?></td>
+                      <td><?php echo $resultado[$i]['hora_inicio'];?></td>
+                      <td><?php echo $resultado[$i]['nombre'];?></td>
+                      <td><?php echo $resultado[$i]['rfc'];?></td>
+                      <td><?php echo $resultado[$i]['materia'];?></td>
+                      
+                   </tr>
+                   </tbody>
+                   <?php
+                    }
 
-            </tbody>
-
+                
+                  ?>
+              </tr>
+            </tbody>  
+          
           </table>
         </article>
       </div>
@@ -297,17 +288,19 @@
         <div id="video">
         <video id="previsualizacion" width="50%"></video>
         </div>
-
+        <form action="funcion.html" method="post" id="formulario" name="formulario">
         <label id="resultado">Resultado</label>
         <!-- caja de texto -->
         <div id="caja">
-            <input type="text" id="text" v-model="content">
+            <input type="text" id="text" v-model="content" onChange=actualizar>
         </div>
+        </form>
         <!-- etiqueta script -->
         <script type="text/javascript">
             let scanner = new Instascan.Scanner({
             video: document.getElementById('previsualizacion')
         }); 
+
         Instascan.Camera.getCameras().then(function(cameras){
             if(cameras.length > 0){
                 scanner.start(cameras[0]);
@@ -321,13 +314,17 @@
         });
         /* mandar el resultado de qr a caja de texto */
         scanner.addListener('scan', function(c){
-            document.getElementById('text').value = c;
+            let recurso = document.getElementById('text').value = c;
+            var formulario=document.getElementById('formulario');
+            var datos=new FormData(formulario);
+            console.log(datos);
+            console.log(datos.get('text'));
+            fetch('funcion.php',{
+                method: 'POST',
+                body: datos
+            })
         });
         </script>
-
-
-
-
       </div>
       
     </article>
@@ -345,7 +342,8 @@
       navigation.classList.toggle('active')
     }
   </script>
-  <script src="../SesionesUsuario/session_expiracion.js"></script>
+  
+  <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
 </html>
@@ -421,7 +419,7 @@
 <?php
   include '../conexiones.php';
 
-  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` ORDER BY nombre ASC";
+  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` WHERE rol != 'Espectador' ORDER BY nombre ASC";
   $resultado = mysqli_query($conexion, $consulta);
 
   /* Junta el nombre con sus apellidos y guardalos en un arreglo */
@@ -446,53 +444,168 @@
   </script>";
 
   echo '<script src="../js/selectbox.js"></script>';
-
-  /* */
 ?>
 
 <!-- Php para cargar la seleccion en la lista de integrantes -->
 <?php
   /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
   echo "<script>
+  let nombre_completo2 = " . json_encode($nombre_completo) . ";
+  let numeros_control2 = " . json_encode($numeros_control) . ";
   let listaOpciones = document.querySelectorAll('.option');
   /* Declara un array que se llame ListaNombres */
   let listaNombres = [];
+  let listaNumeros = [];
 
   let nombresLista = document.querySelector('.containerP');
-  
 
   listaOpciones.forEach(o => {
     o.addEventListener('click', (e) => {
       let valorTexto = e.target.textContent;
       
+      /* Si el valor del texto es diferente de vacio, entonces */
       if(valorTexto != ''){
-        if(!listaNombres.includes(valorTexto)){
-          /* Si el valor del texto ya está en el array, no lo agregues */
-          listaNombres.push(valorTexto);
-          console.log(listaNombres);
+        console.log('Estamos en el primer condicional');
 
-          /* cuenta los elementos de la lista */
-          let contador = listaNombres.length;
-          nombresLista.innerHTML += '<div class=\"nombres\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\"><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+        if(valorTexto[0] == ' '){
+          console.log('Estamos en el segundo condicional con espacio');
+          console.log('La cadena original es:'+valorTexto);
 
+          let valorTexto2 = valorTexto.trim();
+          valorTexto = valorTexto2;
+
+          console.log('La cadena alterada es:'+valorTexto);
+        
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombres.length; i++){
+            if(listaNombres[i] == valorTexto){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
+
+            /* Agrega el valor al arreglo */
+            listaNombres.push(valorTexto);
+
+            let posicion_numero = 0
+
+            for(let i = 0; i < nombre_completo2.length; i++){
+              if(nombre_completo2[i] == valorTexto){
+                posicion_numero = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaNumeros.push(numeros_control2[posicion_numero]);
+
+            console.log(listaNombres);
+            console.log(listaNumeros);
+  
+            /* cuenta los elementos de la lista */
+            let contador = listaNombres.length;
+
+            /* Agrega el valor al div */
+            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+          }
+          else{
+            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
+            alert('El nombre ya existe en la lista');
+          }
         }
         else{
-          console.log('Ya está en la lista');
+          console.log('Estamos en el segundo condicional sin espacio');
+          
+          /* Verifica que valorTexto no exista en el arreglo */
+          let flag = false;
+          for(let i = 0; i < listaNombres.length; i++){
+            if(listaNombres[i] == valorTexto){
+              flag = true;
+            }
+          }
+
+          /* Si el valor no existe en el arreglo, entonces */
+          if(flag == false){
+            console.log('Estamos en el tercer condicional al validar que no exista el valor en el arreglo');
+
+            /* Agrega el valor al arreglo */
+            listaNombres.push(valorTexto);
+
+            let posicion_numero = 0
+
+            for(let i = 0; i < nombre_completo2.length; i++){
+              if(nombre_completo2[i] == valorTexto){
+                posicion_numero = i;
+              }
+            }
+
+            /* Agrega el valor al arreglo */
+            listaNumeros.push(numeros_control2[posicion_numero]);
+
+            console.log(listaNombres);
+            console.log(listaNumeros);
+  
+            /* cuenta los elementos de la lista */
+            let contador = listaNombres.length;
+
+            /* Agrega el valor al div */
+            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor'+contador+'\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar'+ contador+'\" onClick=eliminar(\"contenedor'+contador+'\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+          }
+          else{
+            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
+            alert('El nombre ya existe en la lista');
+          }
         }
       }
     });
-
   });
 
+  /* Copiar el arreglo en una nueva variable */
+  let listaNombresBase = listaNombres;
+  let listaNumerosBase = listaNumeros;
 
+  function eliminar(id){
+    document.getElementById(id).remove();
+
+    /* Elimina la palabra 'contenedor' del id y guardalo en un let */
+    let posicion = id.replace('contenedor', '');
+
+    /* Convierte el numero a entero */
+    posicion = parseInt(posicion)
+    posicion = posicion - 1
+
+    console.log('El digito a eliminar es: '+ posicion );
+
+    /* Busca la posicion en listaNombresBase y extrae el contenido */
+    let extraccion = listaNombresBase[posicion];  
+
+    /* Busca la posicion en listaNumerosBase y extrae el contenido */
+    let extraccion2 = listaNumerosBase[posicion];
+
+    /* Busca la posicion en listaNombres y elimina el contenido */
+    for (let i = 0; i < listaNombres.length; i++) {
+      if(listaNombres[i] == extraccion){
+        listaNombres.splice(i, 1);
+      }
+    }
+
+    /* Busca la posicion en listaNumeros y elimina el contenido */
+    for (let i = 0; i < listaNumeros.length; i++) {
+      if(listaNumeros[i] == extraccion2){
+        listaNumeros.splice(i, 1);
+      }
+    }
+
+    /* Imprime los arreglos */
+    console.log(listaNombres);
+    console.log(listaNumeros);
+  }
   
   </script>";
 
 ?>
-<!-- Php para eliminar de la lista de integrantes -->
-<?php  
-  /* Revisa si el boton ha sido pulsado */
-  
-?>
-
-<!-- Php para -->
