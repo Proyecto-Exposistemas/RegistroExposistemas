@@ -1,10 +1,14 @@
 <?php
+        include_once("CRUD_bd_general.php");
+        $conexion = new CRUD_general();
+        $conexion->conexionBD();
+
         $recurso = $_POST['text'];
         $cadena = explode(";", $recurso);
     
         $hora = date("H:i:s");
         /* conectar con la base de datos */
-        $conexion = mysqli_connect("localhost", "root", "", "exposistemas");
+        //$conexion = mysqli_connect("localhost", "root", "", "exposistemas");
 
         if($cadena[0] == "registros_alumnos"){
           $sql = "INSERT INTO registros_alumnos (no_control, hora) VALUES(:con,:hora)";
