@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generación codigo qr</title>
-    <link rel="stylesheet" href="/css/estilo_pagina.css">
+    <link rel="stylesheet" href="/css/estilo_pagina_qr.css">
 </head>
 <body>
   <div class="contenedor_titulo" >  
   <h1>POR FAVOR DESCARGA TU CODIGO QR</h1>
   </div>
-  <div class="container">
   <?php
    
      require 'phpqrcode/qrlib.php';
@@ -34,7 +33,7 @@
      echo '<img src="'.$filename.'" />';
 
     ?>
-  </div>  
+ 
 </body>
 </html>
 
