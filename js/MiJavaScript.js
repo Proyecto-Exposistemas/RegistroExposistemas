@@ -8,6 +8,8 @@ let rfc_asesores = [];
 let contenedor = document.querySelector('.options-container');
 let contenedor2 = document.querySelector('.options-container2');
 
+Archivos();
+
 for (let i = 0; i < nombre_completo.length; i++) {
   contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"expositoresParticipantes\" > <label for=\"' + numeros_control[i] + '\"id=\"etiqueta\" >' + nombre_completo[i] + '</label> </div>';
 }
@@ -369,7 +371,7 @@ const filterList2 = searchTerm => {
   });
 };
 
-Archivos();
+
 
 /* Funcion archivos */
 function Archivos() {
@@ -378,8 +380,9 @@ function Archivos() {
   }, true).then(response => response.json())
     .then(data => {
       nombre_completo = data.nombre_completo_Exponentes;
-      numeros_control = data.numeros_control_Exponentes;
-      nombre_completo_Asesores = data.nombre_completo_Asesores;
-      rfc_Asesores = data.rfc_Asesores;
+      numeros_control = data.no_control_Exponentes;
+      nombre_completo_asesores = data.nombre_completo_docentes;
+      rfc_asesores = data.rfc_docentes;
+     
     });
 }

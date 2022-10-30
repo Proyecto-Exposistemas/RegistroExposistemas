@@ -391,7 +391,7 @@
     }
   </script>
 
-  <script src="SesionesUsuario/session_expiracion.js"></script>
+  <script src="../SesionesUsuario/session_expiracion.js"></script>
   <script src="../js/MiJavaScript.js"></script>
 </body>
 
