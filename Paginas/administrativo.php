@@ -39,7 +39,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="../Paginas/constancias.html">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
