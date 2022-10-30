@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ventna adminstrativo</title>
-  <link rel="stylesheet" href="../css/administrativo.css">
+  <link rel="stylesheet" href="css/administrativo.css">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="../Paginas/constancias.html">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -84,7 +84,7 @@
           </li>
 
           <li>
-            <a href="../SesionesUsuario/logout.php">
+            <a href="SesionesUsuario/logout.php">
               <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>
@@ -99,12 +99,12 @@
     </article>
 
     <article class="container-general" id="RegistroPrograma">
-      
+
       <!-- Seccion del registro del programa de exposistemas #######################################3-->
       <div class="card">
         <h1>Registro del programa de exposistemas</h1>
 
-        <form action="" method="post"> 
+        <form action="" method="post">
 
           <div class="campos">
 
@@ -160,7 +160,7 @@
                   </div>
 
                 </div>
-      
+
               </div>
 
             </div>
@@ -169,7 +169,7 @@
 
               <div class="containerP">
                 <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
-                
+
               </div>
             </div>
 
@@ -184,15 +184,25 @@
 
         </form>
       </div>
-      
-      <!-- Sección para la emisión del programa de exposistemas --> 
+
+      <!-- Sección para la emisión del programa de exposistemas -->
       <div class="card">
         <h2>Emisión de constancias</h2>
       </div>
-      
+
       <!-- Sección para la emisión de reportes de asistencia -->
       <div class="card">
-        <h2>Reportes de asistencia</h2>
+        <h2>Reporte de alumnos ausentes</h2>
+        <?php
+          include("reportes_alumnos.php");
+        ?>
+      </div>
+
+      <div class="card">
+        <h2>Reporte de externos ausentes</h2>
+        <?php
+          include("reportes_externos.php");
+        ?>
       </div>
 
       <!-- Sección para la consulta del programa de exposistemas -->
@@ -253,22 +263,27 @@
                    <?php
                     }
 
-                
-                  ?>
               </tr>
-            </tbody>  
-          
+            </tbody>
+          <?php
+                }
+
+
+          ?>
+          </tr>
+          </tbody>
+
           </table>
         </article>
       </div>
 
-      <!-- Sección para el cambio de contraseña #######################################################3--> 
+      <!-- Sección para el cambio de contraseña #######################################################3-->
       <div class="card">
-        <h2>Cambiar la contraseña</h2> 
-        <div class="campos"> 
+        <h2>Cambiar la contraseña</h2>
+        <div class="campos">
           <div class="input-group">
-              <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
-              <label for="contraseña_anterior" class="input-label">Contraseña</label>
+            <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
+            <label for="contraseña_anterior" class="input-label">Contraseña</label>
           </div>
 
           <div class="input-group">
@@ -279,61 +294,61 @@
           <div class="input-group">
             <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
             <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
-          </div> 
+          </div>
           <div class="botones">
             <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="   Guardar   ">
           </div>
         </div>
 
-      
-        <!-- Seccion para escanear los códigos QR -->
-      <div class="card">
-        <h2>Escanear código QR</h2>
-        <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-        <label id="titulo">Escanea el codigo QR</label>
-        <!-- visualizacion de la camara -->
-        <div id="video">
-        <video id="previsualizacion" width="50%"></video>
-        </div>
-        <form action="funcion.html" method="post" id="formulario" name="formulario">
-        <label id="resultado">Resultado</label>
-        <!-- caja de texto -->
-        <div id="caja">
-            <input type="text" id="text" v-model="content" onChange=actualizar>
-        </div>
-        </form>
-        <!-- etiqueta script -->
-        <script type="text/javascript">
-            let scanner = new Instascan.Scanner({
-            video: document.getElementById('previsualizacion')
-        }); 
 
-        Instascan.Camera.getCameras().then(function(cameras){
-            if(cameras.length > 0){
+        <!-- Seccion para escanear los códigos QR -->
+        <div class="card">
+          <h2>Escanear código QR</h2>
+          <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+          <label id="titulo">Escanea el codigo QR</label>
+          <!-- visualizacion de la camara -->
+          <div id="video">
+            <video id="previsualizacion" width="50%"></video>
+          </div>
+          <form action="funcion.html" method="post" id="formulario" name="formulario">
+            <label id="resultado">Resultado</label>
+            <!-- caja de texto -->
+            <div id="caja">
+              <input type="text" id="text" v-model="content" onChange=actualizar>
+            </div>
+          </form>
+          <!-- etiqueta script -->
+          <script type="text/javascript">
+            let scanner = new Instascan.Scanner({
+              video: document.getElementById('previsualizacion')
+            });
+
+            Instascan.Camera.getCameras().then(function(cameras) {
+              if (cameras.length > 0) {
                 scanner.start(cameras[0]);
-            }else{
+              } else {
                 console.error("No se encontraron cámaras");
                 alert("no se han encontrado camaras");
-            } 
-        }).catch(function(e){
-            console.error(e);
-            alert("ERROR:"+ e);
-        });
-        /* mandar el resultado de qr a caja de texto */
-        scanner.addListener('scan', function(c){
-            let recurso = document.getElementById('text').value = c;
-            var formulario=document.getElementById('formulario');
-            var datos=new FormData(formulario);
-            console.log(datos);
-            console.log(datos.get('text'));
-            fetch('funcion.php',{
+              }
+            }).catch(function(e) {
+              console.error(e);
+              alert("ERROR:" + e);
+            });
+            /* mandar el resultado de qr a caja de texto */
+            scanner.addListener('scan', function(c) {
+              let recurso = document.getElementById('text').value = c;
+              var formulario = document.getElementById('formulario');
+              var datos = new FormData(formulario);
+              console.log(datos);
+              console.log(datos.get('text'));
+              fetch('funcion.php', {
                 method: 'POST',
                 body: datos
-            })
-        });
-        </script>
-      </div>
-      
+              })
+            });
+          </script>
+        </div>
+
     </article>
 
   </section>
@@ -345,11 +360,11 @@
     let navigation = document.querySelector('.navigation')
     let toggle = document.querySelector('.toggle')
 
-    toggle.onclick = function () {
+    toggle.onclick = function() {
       navigation.classList.toggle('active')
     }
   </script>
-  
+
   <script src="SesionesUsuario/session_expiracion.js"></script>
 </body>
 
@@ -358,88 +373,92 @@
 
 <!-- Php para las funciones de los botones -->
 <?php
-  /* Obten el boton que está siendo presionado */
-  if(isset($_POST['btn-buscar'])){
-    buscarDatos();
-  }else if(isset($_POST['btn-actualizar'])){
-    actualizarDatos();
-  }else if(isset($_POST['btn-enviar'])){
-    insertarDatos();
-  }else if(isset($_POST['btn-eliminar'])){
-    eliminarDatos(); 
-  }else if(isset($_POST['btn-guardarC'])){
-    cambioContraseña();
+/* Obten el boton que está siendo presionado */
+if (isset($_POST['btn-buscar'])) {
+  buscarDatos();
+} else if (isset($_POST['btn-actualizar'])) {
+  actualizarDatos();
+} else if (isset($_POST['btn-enviar'])) {
+  insertarDatos();
+} else if (isset($_POST['btn-eliminar'])) {
+  eliminarDatos();
+} else if (isset($_POST['btn-guardarC'])) {
+  cambioContraseña();
+}
+
+/* Funcion para buscar los datos */
+function buscarDatos()
+{
+  echo "Buscar datos";
+}
+
+/* Funcion para actualizar los datos */
+function actualizarDatos()
+{
+  echo "Actualizar datos";
+}
+
+/* Funcion para insertar los datos */
+function insertarDatos()
+{
+  // Conexión a la base de datos 
+  include 'conexiones.php';
+
+  /* echo "Insertar datos"; */
+  $nombre_actividad = $_POST['NombreActividad'];
+  $numero_actividad = $_POST['NumeroActividad'];
+  $tema_actividad = $_POST['temaActividad'];
+  $materia = $_POST['Materia'];
+  $hora_inicio = $_POST['HoraInicio'];
+  $hora_fin = $_POST['HoraFinal'];
+
+  $hora_inicio = $hora_inicio . ":00";
+  $hora_fin = $hora_fin . ":00";
+
+  $consulta = "INSERT INTO `evento` (`no_evento`, `evento`, `hora_inicio`, `hora_fin`) VALUES ($numero_actividad, '$nombre_actividad', '$hora_inicio', '$hora_fin')";
+
+  $resultado = mysqli_query($conexion, $consulta);
+
+  if ($resultado) {
+    /* lanza una alerta que confirme el registro */
+    echo "<script>alert('Registro exitoso')</script>";
+  } else {
+    /* lanza una alerta que confirme el registro */
+    echo "<script>alert('Registro fallido')</script>";
   }
+}
 
-  /* Funcion para buscar los datos */
-  function buscarDatos(){
-    echo "Buscar datos";
-  }
+/* Funcion para eliminar los datos */
+function eliminarDatos()
+{
+  echo "Eliminar datos";
+}
 
-  /* Funcion para actualizar los datos */
-  function actualizarDatos(){
-    echo "Actualizar datos";
-  }
+/* Cambio de contrasena */
+function cambioContraseña()
+{
+}
 
-  /* Funcion para insertar los datos */
-  function insertarDatos(){
-    // Conexión a la base de datos 
-    include '../conexiones.php';
-
-    /* echo "Insertar datos"; */
-    $nombre_actividad = $_POST['NombreActividad'];
-    $numero_actividad = $_POST['NumeroActividad'];
-    $tema_actividad = $_POST['temaActividad'];
-    $materia = $_POST['Materia'];
-    $hora_inicio = $_POST['HoraInicio'];
-    $hora_fin = $_POST['HoraFinal'];
-
-    $hora_inicio = $hora_inicio . ":00";
-    $hora_fin = $hora_fin . ":00";
-
-    $consulta = "INSERT INTO `evento` (`no_evento`, `evento`, `hora_inicio`, `hora_fin`) VALUES ($numero_actividad, '$nombre_actividad', '$hora_inicio', '$hora_fin')";
-
-    $resultado = mysqli_query($conexion, $consulta);
-
-    if($resultado){
-        /* lanza una alerta que confirme el registro */
-        echo "<script>alert('Registro exitoso')</script>";
-    }else{
-        /* lanza una alerta que confirme el registro */
-        echo "<script>alert('Registro fallido')</script>";
-    }
-  }
-
-  /* Funcion para eliminar los datos */
-  function eliminarDatos(){
-    echo "Eliminar datos";
-  } 
-
-  /* Cambio de contrasena */ 
-  function cambioContraseña(){
-     
-  }
-  
 ?>
 
 <!-- Php para cargar los campos en el selectbox -->
 <?php
-  include '../conexiones.php';
+include 'conexiones.php';
 
-  $consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` WHERE rol != 'Espectador' ORDER BY nombre ASC";
-  $resultado = mysqli_query($conexion, $consulta);
+$consulta = "SELECT nombre, paterno, materno, no_control FROM `alumnos` WHERE rol != 'Espectador' ORDER BY nombre ASC";
+$resultado = mysqli_query($conexion, $consulta);
 
-  /* Junta el nombre con sus apellidos y guardalos en un arreglo */
-  $nombre_completo = array();
-  $numeros_control = array();
+/* Junta el nombre con sus apellidos y guardalos en un arreglo */
+$nombre_completo = array();
+$numeros_control = array();
 
-  while($fila = mysqli_fetch_array($resultado)){
-    $nombre_completo[] = $fila['nombre'] . " " . $fila['paterno'] . " " . $fila['materno'];
-    $numeros_control[] = $fila['no_control'];
-  }
-  /* Mediante javascrip, en la clase options-contaniner ingresa los datos que tiene el array nombre completo,
+while ($fila = mysqli_fetch_array($resultado)) {
+  $nombre_completo[] = $fila['nombre'] . " " . $fila['paterno'] . " " . $fila['materno'];
+  $numeros_control[] = $fila['no_control'];
+}
+/* Mediante javascrip, en la clase options-contaniner ingresa los datos que tiene el array nombre completo,
   dentro del div, crea un input de tipo check, con el name listaEspositores y el id igual al numero de control */
-  echo "<script>
+echo "<script>
     let nombre_completo = " . json_encode($nombre_completo) . ";
     let numeros_control = " . json_encode($numeros_control) . ";
 
@@ -450,13 +469,13 @@
     }
   </script>";
 
-  echo '<script src="../js/selectbox.js"></script>';
+echo '<script src="js/selectbox.js"></script>';
 ?>
 
 <!-- Php para cargar la seleccion en la lista de integrantes -->
 <?php
-  /* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
-  echo "<script>
+/* obten el valor del radio que está siendo presionado del conjunto expositoresParticipantes con javascript*/
+echo "<script>
   let nombre_completo2 = " . json_encode($nombre_completo) . ";
   let numeros_control2 = " . json_encode($numeros_control) . ";
   let listaOpciones = document.querySelectorAll('.option');
