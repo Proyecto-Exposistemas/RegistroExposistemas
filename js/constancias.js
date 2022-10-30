@@ -65,6 +65,9 @@ function MostrarBotones() {
 }
 
 
+/**
+ * It checks if the user has a template and/or certificates uploaded, and if so, it displays a message.
+ */
 function Archivos() {
     fetch("../php/comprobar_archivos.php",{
         method: "POST"
@@ -82,7 +85,7 @@ function Archivos() {
             info_existencia2.style = "float:right;";
             div_informacion.appendChild(info_existencia2);
             MostrarBotones();
-          
+        
         }
 
         
