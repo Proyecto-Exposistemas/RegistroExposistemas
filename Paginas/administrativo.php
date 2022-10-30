@@ -261,8 +261,9 @@
                    </tr>
                    </tbody>
                    <?php
-                    }
-
+                    
+                  ?>  
+                  }
               </tr>
             </tbody>
           <?php
