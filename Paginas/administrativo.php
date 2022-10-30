@@ -224,22 +224,29 @@
               <tr>
                 <?php
                     include_once("../CRUD/CRUD_bd_general.php");
-                    $perro=new CRUD_general();
-                    $perro->conexionBD();
+                    $con=new CRUD_general();
+                    $con->conexionBD();
                 
-                    $consulta="SELECT * FROM evento,asesores_evento,alumnos";
-                    $parametro=[":selecion"=>"10"];
-                    $resultado=$perro->Mostrar($consulta);
+                    $consulta="SELECT DISTINCT evento.no_evento,evento.evento,evento.descripcion,evento.hora_inicio,alumnos.nombre,docentes.nombre,asesores_evento.materia
+                    FROM evento,alumnos,evento_alumnos,docentes,asesores_evento WHERE alumnos.no_control=evento_alumnos.no_control and docentes.rfc=asesores_evento.rfc and evento.no_evento=evento_alumnos.no_evento and evento.no_evento=asesores_evento.no_evento ORDER BY evento.no_evento";
+                    $consulta_2="SELECT *FROM asesores_evento";
+                    $parametro=[":selecion"=>"selecion_2"];
+                    $resultado=$con->Mostrar($consulta);
+                    $resultado_2=$con->Mostrar($consulta_2);
                     //var_dump($resultado);
             
                     for($i=0;$i<count($resultado);$i++){?>
-                      <td class="sticky"><?php echo $resultado[$i]['no_evento'];?></td>
+                      <td><?php echo $resultado[$i]['no_evento'];?></td>
                       <td><?php echo $resultado[$i]['evento'];?></td>
                       <td ><?php echo $resultado[$i]['descripcion'];?></td>
                       <td><?php echo $resultado[$i]['hora_inicio'];?></td>
                       <td><?php echo $resultado[$i]['nombre'];?></td>
-                      <td><?php echo $resultado[$i]['rfc'];?></td>
+                      <td><?php echo $resultado[$i]['nombre'];?></td>
                       <td><?php echo $resultado[$i]['materia'];?></td>
+
+                      
+                      
+                      
                       
                    </tr>
                    </tbody>
