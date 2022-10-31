@@ -18,11 +18,11 @@
 
   $consulta = "SELECT nombre, paterno, materno, correo FROM ponentes_externos ORDER BY nombre ASC";
   $resultado = $base->Mostrar($consulta);
-
+  //agrega a un arreglo
   for($i=0; $i < count($resultado); $i++) {
-    $nombre_completo_Exponentes[$i+count($nombre_completo_Exponentes)] = $resultado[$i]["nombre"]." ".$resultado[$i]["paterno"]." ".$resultado[$i]["materno"];
-    $no_control_Exponentes[$i+count($no_control_Exponentes)] = $resultado[$i]["correo"];
-  }
+    array_push($nombre_completo_Exponentes,$resultado[$i]["nombre"]." ".$resultado[$i]["paterno"]." ".$resultado[$i]["materno"]);
+    array_push($no_control_Exponentes,$resultado[$i]["correo"]);
+  } 
 
   $consulta = "SELECT nombre, paterno, materno, rfc FROM docentes WHERE nombre != :nombre ORDER BY nombre ASC";
   $parametros = [":nombre"=>"Super"];
