@@ -10,7 +10,7 @@ fetch("../PhpConsultas/prueba.php", {
   });
 
 function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_asesores) {
-  alert(nombre_completo.length);
+  
 
   var contenedor = document.querySelector('.options-container');
   var contenedor2 = document.querySelector('.options-container2');
