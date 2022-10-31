@@ -9,6 +9,14 @@ fetch("../PhpConsultas/prueba.php", {
     
   });
 
+  var listaNombres = [];
+  var listaNumeros = [];
+  var listaContador = [];
+
+  var listaNombresAsesores = [];
+  var listaRfcAsesores = [];
+  var listaContadorAsesores = [];
+
 function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_asesores) {
   
 
@@ -31,17 +39,10 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
   var listaOpciones = document.querySelectorAll('.option');
   var listaOpciones2 = document.querySelectorAll('.option2');
 
-  var listaNombres = [];
-  var listaNumeros = [];
-  var listaContador = [];
-
-  var listaNombresAsesores = [];
-  var listaRfcAsesores = [];
-  var listaContadorAsesores = [];
-
   var nombresLista = document.querySelector('.containerP');
   var nombresLista2 = document.querySelector('.container2P');
 
+  /* Seccion de los estudiantes */
   listaOpciones.forEach(o => {
     o.addEventListener('click', (e) => {
       var valorTexto = e.target.textContent;
@@ -148,6 +149,7 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
 
   });
 
+  /* Sección de los asesores */
   listaOpciones2.forEach(h => {
     h.addEventListener('click', (E) => {
       var valorTexto3 = E.target.textContent;
@@ -364,16 +366,11 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
     }
 
     /* Imprime los arreglos */
-    /* console.log('Lista de nombres despues de eliminar: ' + listaNombres);
+    console.log('Lista de nombres despues de eliminar: ' + listaNombres);
     console.log('Lista de ncontrol despues de eliminar: ' + listaNumeros);
     console.log('Lista de contador1 despues de eliminar: ' + listaContador);
     console.log('Lista de nombres asesores despues de eliminar: ' + listaNombresAsesores);
     console.log('Lista de rfc asesores despues de eliminar: ' + listaRfcAsesores);
-    console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores); */
-
-    /* Guardar los arreglos en variables que sirvan para Php */
-    var listaNombresAsesoresPhp = JSON.stringify(listaNombresAsesores);
-    var listaRfcAsesoresPhp = JSON.stringify(listaRfcAsesores);
-    var listaNombresExponentesPhp = JSON.stringify(listaNombres);
-    var listaNumerosExponentesPhp = JSON.stringify(listaNumeros);
+    console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores);
+    
   }
