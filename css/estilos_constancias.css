@@ -58,9 +58,25 @@ h2 {
     opacity: 0;
 }  
 
-.conte1{  
+/*.conte1{  
     width: 220px;  
-    margin: -5.2em 2em;
+    margin: -5.2em 2em; 
+    border: 2px solid red ;
+}*/
+
+.sub{  
+    height: 3.2em;  
+    text-decoration: none; 
+    background-color: #546678; 
+    color: white; 
+    text-align: center; 
+    padding: 16px 20px; 
+    border-radius: 5px; 
+    box-shadow: 0px 3px 0px #282e48;
+    font-weight: bold; 
+    align-items: center; 
+    display: flex; 
+    margin: -6.4em 25em; 
 }
 
 .descarga{ 
@@ -72,13 +88,23 @@ h2 {
     border-radius: 5px; 
     box-shadow: 0px 3px 0px #282e48;
     font-weight: bold; 
-    align-items: center;
+    align-items: center; 
+    display: flex; 
+    margin: 8em 14em; 
 } 
 
-.texto{ 
-    height: 2em; 
-    width: auto;
-    align-items: center; 
-    border: 2px solid #282e48; 
-    margin: auto 13em; 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

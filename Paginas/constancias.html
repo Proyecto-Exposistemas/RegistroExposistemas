@@ -19,18 +19,19 @@
             </div>
             <div class="campos" style="float: center;">  
                 <h3>Seleccionar plantilla</h3>
-                <input type="file"   accept=".docx" name="file" id="plantilla" >
+                <input class="subir" type="file"   accept=".docx" name="file" id="plantilla" >
             </div>  
-            <input type="submit" value="Subir Archivo">
+            <div>  
+            <input class="sub" type="submit" value="Subir Archivo">
         </form> 
-        <form action="" id="formulario_generar">
+        <form action="" id="formulario_generar"><br>
             
             <div class="conte1" style="float: right;">
                 <a  id="alumnos" href="../GeneradorConstancias/constancias/ConstanciasAlumnos.docx" download="ConstanciaAlumnos" hidden> Descargar constancia alumnos</a>  
                 <a  id="docentes" href="../GeneradorConstancias/constancias/ConstanciasDocentes.docx" download="ConstanciaDocentes" hidden> Descargar constancia docentes</a>  
                 <a  id="externos" href="../GeneradorConstancias/constancias/ConstanciasExternos.docx" download="ConstanciaExternos" hidden> Descargar constancia externos</a>  
             </div> 
-            <input type="submit" value="Generar constancia">
+            <input class="descarga" type="submit" value="Generar constancia">
         </form>
     </div>
     <script src="../js/constancias.js"></script>
