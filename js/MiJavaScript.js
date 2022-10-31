@@ -343,34 +343,51 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
   };
 }
 
-  function eliminar(id) {
-    document.getElementById(id).remove();
+function eliminar(id) {
+  document.getElementById(id).remove();
 
-    console.log('El id es: ' + id);
+  console.log('El id es: ' + id);
 
-    /* Eliminación de los campos de manera correcta en la lista */
-    for (var i = 0; i < listaContador.length; i++) {
-      if (listaContador[i] == id) {
-        listaNumeros.splice(i, 1);
-        listaNombres.splice(i, 1);
-        listaContador.splice(i, 1);
-      }
+  /* Eliminación de los campos de manera correcta en la lista */
+  for (var i = 0; i < listaContador.length; i++) {
+    if (listaContador[i] == id) {
+      listaNumeros.splice(i, 1);
+      listaNombres.splice(i, 1);
+      listaContador.splice(i, 1);
     }
-
-    for (var i = 0; i < listaContadorAsesores.length; i++) {
-      if (listaContadorAsesores[i] == id) {
-        listaNombresAsesores.splice(i, 1);
-        listaRfcAsesores.splice(i, 1);
-        listaContadorAsesores.splice(i, 1);
-      }
-    }
-
-    /* Imprime los arreglos */
-    console.log('Lista de nombres despues de eliminar: ' + listaNombres);
-    console.log('Lista de ncontrol despues de eliminar: ' + listaNumeros);
-    console.log('Lista de contador1 despues de eliminar: ' + listaContador);
-    console.log('Lista de nombres asesores despues de eliminar: ' + listaNombresAsesores);
-    console.log('Lista de rfc asesores despues de eliminar: ' + listaRfcAsesores);
-    console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores);
-    
   }
+
+  for (var i = 0; i < listaContadorAsesores.length; i++) {
+    if (listaContadorAsesores[i] == id) {
+      listaNombresAsesores.splice(i, 1);
+      listaRfcAsesores.splice(i, 1);
+      listaContadorAsesores.splice(i, 1);
+    }
+  }
+
+  /* Imprime los arreglos */
+  console.log('Lista de nombres despues de eliminar: ' + listaNombres);
+  console.log('Lista de ncontrol despues de eliminar: ' + listaNumeros);
+  console.log('Lista de contador1 despues de eliminar: ' + listaContador);
+  console.log('Lista de nombres asesores despues de eliminar: ' + listaNombresAsesores);
+  console.log('Lista de rfc asesores despues de eliminar: ' + listaRfcAsesores);
+  console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores);
+  
+}
+
+function enviarDatos(event){
+  event.preventDefault();
+
+  /* almacenar los datos de los arreglos */
+  var formularioDatos = new FormData();
+
+  
+
+  fetch("../PhpConsultas/insertarDatos.php", {
+    method: "POST",
+    body: form
+  }).then(response => response.json())
+  .then(data =>{
+    alert(data.mensaje)
+  });
+}

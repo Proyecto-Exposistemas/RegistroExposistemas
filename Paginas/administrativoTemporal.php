@@ -209,10 +209,10 @@
           </div>
 
           <div class="botones">
-            <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
-            <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
+            <input type="button" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
+            <input type="button" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
             <input type="submit" class="btn" name="btn-enviar" id="btn-enviar" value="Ingresar registro">
-            <input type="submit" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
+            <input type="button" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
           </div>
 
         </form>
