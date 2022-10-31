@@ -208,10 +208,10 @@
           </div>
 
           <div class="botones">
-            <input type="submit" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
-            <input type="submit" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
+            <input type="button" class="btn" name="btn-buscar" id="btn-buscar" value="Buscar registro">
+            <input type="button" class="btn" name="btn-actualizar" id="btn-actualizar" value="Actualizar Registro">
             <input type="submit" class="btn" name="btn-enviar" id="btn-enviar" value="Ingresar registro">
-            <input type="submit" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
+            <input type="button" class="btn" name="btn-eliminar" id="btn-eliminar" value="Eliminar registro">
           </div>
 
         </form>
@@ -250,22 +250,60 @@
                     $con=new CRUD_general();
                     $con->conexionBD();
                 
-                    $consulta="SELECT DISTINCT evento.no_evento,evento.evento,evento.descripcion,evento.hora_inicio,alumnos.nombre,docentes.nombre,asesores_evento.materia
+                    /* $consulta="SELECT DISTINCT evento.no_evento,evento.evento,evento.descripcion,evento.hora_inicio,alumnos.nombre,docentes.nombre,asesores_evento.materia
                     FROM evento,alumnos,evento_alumnos,docentes,asesores_evento WHERE alumnos.no_control=evento_alumnos.no_control and docentes.rfc=asesores_evento.rfc and evento.no_evento=evento_alumnos.no_evento and evento.no_evento=asesores_evento.no_evento ORDER BY evento.no_evento";
                     $consulta_2="SELECT *FROM asesores_evento";
                     $parametro=[":selecion"=>"selecion_2"];
                     $resultado=$con->Mostrar($consulta);
-                    $resultado_2=$con->Mostrar($consulta_2);
+                    $resultado_2=$con->Mostrar($consulta_2); */
                     //var_dump($resultado);
-            
-                    for($i=0;$i<count($resultado);$i++){?>
-                      <td><?php echo $resultado[$i]['no_evento'];?></td>
-                      <td><?php echo $resultado[$i]['evento'];?></td>
-                      <td ><?php echo $resultado[$i]['descripcion'];?></td>
-                      <td><?php echo $resultado[$i]['hora_inicio'];?></td>
-                      <td><?php echo $resultado[$i]['nombre'];?></td>
-                      <td><?php echo $resultado[$i]['nombre'];?></td>
-                      <td><?php echo $resultado[$i]['materia'];?></td>
+                    $consulta_evento  = "SELECT DISTINCT evento.no_evento, evento.evento, evento.descripcion, 
+                    evento.hora_inicio, asesores_evento.materia 
+                    FROM evento, asesores_evento 
+                    WHERE evento.no_evento = asesores_evento.no_evento";
+                    $resultadoE = $con->MOSTRAR($consulta_evento);
+
+                    $consulta_asesores = "SELECT DISTINCT docentes.nombre, docentes.paterno 
+                    FROM asesores_evento, docentes, evento WHERE evento.no_evento = :numero 
+                    AND evento.no_evento = asesores_evento.no_evento 
+                    AND docentes.rfc = asesores_evento.rfc";
+
+                    $consulta_alumnos = "SELECT DISTINCT alumnos.nombre, alumnos.paterno
+                    FROM evento, evento_alumnos, alumnos 
+                    WHERE evento.no_evento = :numero
+                    AND evento.no_evento = evento_alumnos.no_evento 
+                    AND evento_alumnos.no_control = alumnos.no_control";
+
+                    $consulta_externos = "SELECT DISTINCT ponentes_externos.nombre, ponentes_externos.paterno
+                    FROM evento, ponentes_externos, evento_externos 
+                    WHERE evento.no_evento = :numero AND evento.no_evento = evento_externos.no_evento 
+                    AND evento_externos.correo = ponentes_externos.correo";
+
+
+                    for($i=0;$i<count($resultadoE);$i++){?>
+                      <td><?php echo $resultadoE[$i]['no_evento'];?></td>
+                      <td><?php echo $resultadoE[$i]['evento'];?></td>
+                      <td ><?php echo $resultadoE[$i]['descripcion'];?></td>
+                      <td><?php echo $resultadoE[$i]['hora_inicio'];?></td>
+
+                      <td><?php
+                          $resultado_alumnos = $con->MOSTRAR($consulta_alumnos,[":numero"=>$resultadoE[$i]['no_evento']]);
+                          for ($j=0; $j < count($resultado_alumnos); $j++) { 
+                              echo $resultado_alumnos[$j]["nombre"]." " . $resultado_alumnos[$j]["paterno"]."<br>";
+                          }
+                          $resultado_externos = $con->MOSTRAR($consulta_externos,[":numero"=>$resultadoE[$i]['no_evento']]);
+                          for ($j=0; $j < count($resultado_externos); $j++) { 
+                              echo $resultado_externos[$j]["nombre"]." ". $resultado_externos[$j]["paterno"]."<br>";
+                          }
+                       ?></td>
+                      <td><?php
+                          $resultado_asesores = $con->MOSTRAR($consulta_asesores,[":numero"=>$resultadoE[$i]['no_evento']]);
+                          for ($j=0; $j < count($resultado_asesores); $j++) { 
+                              echo $resultado_asesores[$j]["nombre"]." ".$resultado_asesores[$j]["paterno"]."<br>";
+                          }
+                       ?></td>
+
+                      <td><?php echo $resultadoE[$i]['materia'];?></td>
                   </tr>
               </tr>
           <?php
@@ -318,7 +356,7 @@
         <div id="video">
           <video id="previsualizacion" width="50%"></video>
         </div>
-        <form action="funcion.html" method="post" id="formulario" name="formulario">
+        <form action="funcion.php" method="post" id="formulario" name="formulario">
           <label id="resultado">Resultado</label>
           <!-- caja de texto -->
           <div id="caja">
@@ -349,7 +387,8 @@
             var datos = new FormData(formulario);
             console.log(datos);
             console.log(datos.get('text'));
-            fetch('funcion.php', {
+            datos.append("text",c);
+            fetch('../Paginas/funcion.php', {
               method: 'POST',
               body: datos
             })
