@@ -40,7 +40,7 @@
           </li>
 
           <li>
-            <a href="../Paginas/constancias.html">
+            <a href="../paginas/constancias.php">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -49,7 +49,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="../paginas/reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>

@@ -34,11 +34,11 @@ class User_password extends CRUD_general{
 
     }
 }
-/* 
-$user = new User_password();
+
+/* $user = new User_password();
 $user->conexionBD();
 $user->InsertarAdministrador("QWER12345678", "123");
-$user->CERRAR_CONEXION();
- */
+$user->CERRAR_CONEXION(); */
+
 
 ?>

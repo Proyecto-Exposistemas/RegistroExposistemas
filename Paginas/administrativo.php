@@ -39,7 +39,7 @@
           </li>
 
           <li>
-            <a href="../Paginas/constancias.html">
+            <a href="../Paginas/constancias.php">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -278,28 +278,34 @@
         </article>
       </div>
 
-      <!-- Sección para el cambio de contraseña #######################################################3-->
+      <!-- Sección para el cambio de contraseña #######################################################-->
       <div class="card">
         <h2>Cambiar la contraseña</h2>
-        <div class="campos">
-          <div class="input-group">
-            <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
-            <label for="contraseña_anterior" class="input-label">Contraseña</label>
+        
+        <form action="" method="post" id="form2">
+          
+          <div class="campos">
+            <div class="input-group">
+              <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
+              <label for="contraseña_anterior" class="input-label">Contraseña</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="nueva_contraseña" autocomplete="off" id="nueva_contraseña" required class="input">
+              <label for="nueva_contraseña" class="input-label">Nueva contraseña</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
+              <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
+            </div>
           </div>
 
-          <div class="input-group">
-            <input type="text" name="nueva_contraseña" autocomplete="off" id="nueva_contraseña" required class="input">
-            <label for="nueva_contraseña" class="input-label">Nueva contraseña</label>
-          </div>
-
-          <div class="input-group">
-            <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
-            <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
-          </div>
           <div class="botones">
-            <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="   Guardar   ">
+              <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="Guardar">
           </div>
-        </div>
+
+        </form>
       </div>
 
         <!-- Seccion para escanear los códigos QR -->
