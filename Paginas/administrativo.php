@@ -175,39 +175,36 @@
 
           </div>
 
-          <div class="expositores">
+          <div class="asesores">
             <!-- Codigo de el select menu -->
-            <div class="opcionesExpositores">
-              <div class="container">
-                <h2>Expositores</h2>
+            <div class="opcionesAsesores">
 
-                <div class="select-box" style="margin-top: -25px">
+              <div class="container2">
+                <h2>Asesores de proyecto</h2>
 
-                  <div class="options-container">
+                <div class="select-box2" style="margin-top: -25px;">
+                  <div class="options-container2">
+
                   </div>
 
-                  <div class="selected">
-                    Seleccione los integrantes del equipo
+                  <div class="selected2">
+                    Selecciona los asesores del proyecto
                   </div>
 
-                  <div class="search-box">
+                  <div class="search-box2">
                     <input type="text" placeholder="Ingresa un nombre..." />
                   </div>
-
                 </div>
-
               </div>
 
             </div>
             <!-- Código del contenedor de nombres -->
-            <div class="contanerPersonas">
-
-              <div class="containerP">
-                <h2 style="margin-bottom: -5px;">Lista de integrantes del equipo</h2>
-
+            <div class="containerAsistentes">
+              <div class="container2P">
+                <h2 style="margin-bottom: -5px;">Lista de asistentes del proyecto</h2>
               </div>
             </div>
-            
+
           </div>
 
           <div class="botones">
