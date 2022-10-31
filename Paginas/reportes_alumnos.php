@@ -19,9 +19,9 @@
     <article class="navigation">
       <nav>
         <ul>
-
+          
           <li>
-            <a href="../paginas/administrativo.php">
+            <a href="../Paginas/administrativo.php">
               <span class="icon">
                 <ion-icon name="business-outline" id="LogoRetorno"></ion-icon>
                 </ion-icon>
@@ -40,7 +40,7 @@
           </li>
 
           <li>
-            <a href="../paginas/constancias.php">
+            <a href="../Paginas/constancias.php">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -49,7 +49,7 @@
           </li>
 
           <li>
-            <a href="../paginas/reportes_alumnos.php">
+            <a href="../Paginas/reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
@@ -85,7 +85,7 @@
           </li>
 
           <li>
-            <a href="SesionesUsuario/logout.php">
+            <a href="../SesionesUsuario/logout.php">
               <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>

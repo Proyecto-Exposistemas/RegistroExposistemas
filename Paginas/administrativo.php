@@ -20,7 +20,7 @@
         <ul>
 
           <li>
-            <a href="#">
+            <a href="">
               <span class="icon">
                 <ion-icon name="business-outline"></ion-icon>
                 </ion-icon>
@@ -48,7 +48,7 @@
           </li>
 
           <li>
-            <a href="../paginas/reportes_alumnos.php">
+            <a href="../Paginas/reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
@@ -84,7 +84,7 @@
           </li>
 
           <li>
-            <a href="SesionesUsuario/logout.php">
+            <a href="../SesionesUsuario/logout.php">
               <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>
@@ -283,7 +283,7 @@
         <h2>Cambiar la contraseña</h2>
         
         <form action="" method="post" id="form2">
-          
+
           <div class="campos">
             <div class="input-group">
               <input type="text" name="contraseña_anterior" autocomplete="off" id="contraseña_anterior" required class="input">
@@ -299,6 +299,7 @@
               <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
               <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
             </div>
+            
           </div>
 
           <div class="botones">
@@ -372,8 +373,9 @@
     }
   </script>
 
-  <script src="SesionesUsuario/session_expiracion.js"></script>
+  <script src="../SesionesUsuario/session_expiracion.js"></script>
   <script src="../js/MiJavaScript.js"></script>
+  <script src="../js/passwords.js"></script>
 </body>
 
 </html>

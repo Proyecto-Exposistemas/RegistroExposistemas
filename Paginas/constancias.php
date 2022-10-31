@@ -19,7 +19,7 @@
         <ul>
   
           <li>
-            <a href="../paginas/administrativo.php">
+            <a href="../Paginas/administrativo.php">
               <span class="icon">
                 <ion-icon name="business-outline" id="LogoReturn"></ion-icon>
                 </ion-icon>
@@ -47,7 +47,7 @@
           </li>
   
           <li>
-            <a href="../reportes_alumnos.php">
+            <a href="../Paginas/reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
@@ -83,7 +83,7 @@
           </li>
   
           <li>
-            <a href="SesionesUsuario/logout.php">
+            <a href="../SesionesUsuario/logout.php">
               <span class="icon">
                 <ion-icon name="log-out-outline"></ion-icon>
               </span>
@@ -137,7 +137,6 @@
   <!-- Importacion de los íconos de Ionic -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="../js/linkHome.js"></script>
   <!-- Creacion del script general -->
   <script>
     let navigation = document.querySelector('.navigation')
