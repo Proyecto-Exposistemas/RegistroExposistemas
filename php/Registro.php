@@ -47,7 +47,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
                 if($resultado){
                     $mensaje = "Registro exitoso";
                     $error=false;
-                    $identificador =  "alumnos;".$numero_control;
+                    $identificador =  "registros_alumnos;".$numero_control;
                 }else{
                     $mensaje = "No se ha podido realizar el registro";
                     $error=true;
@@ -82,7 +82,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             if($resultado){
                 $mensaje = "Registro exitoso";
                 $error=false;
-                $identificador = "docentes;".$rfc;
+                $identificador = "registros_docentes;".$rfc;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;
@@ -127,10 +127,15 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
 
             $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
        
-            if($resultado){
+            if($resultado && $roles == 1 ){
                 $mensaje = "Registro exitoso";
                 $error=false;
-                $identificador = "ponentes_externos;".$correo;
+                $identificador = "registros_externos;".$correo;
+
+            }else if($resultado && $roles > 1 ){
+                $mensaje = "Registro exitoso";
+                $error=false;
+                $identificador = "registros_ponentes_ext;".$correo;
             }else{
                 $mensaje = "No se ha podido realizar el registro";
                 $error=true;
