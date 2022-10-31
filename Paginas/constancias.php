@@ -19,7 +19,7 @@
         <ul>
   
           <li>
-            <a href="#">
+            <a href="../paginas/administrativo.php">
               <span class="icon">
                 <ion-icon name="business-outline" id="LogoReturn"></ion-icon>
                 </ion-icon>
@@ -38,7 +38,7 @@
           </li>
   
           <li>
-            <a href="../Paginas/constancias.html">
+            <a href="../Paginas/constancias.php">
               <span class="icon">
                 <ion-icon name="newspaper-outline"></ion-icon>
               </span>
@@ -47,7 +47,7 @@
           </li>
   
           <li>
-            <a href="#">
+            <a href="../reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
