@@ -10,6 +10,92 @@
 </head>
 
 <body>
+    <section class="container-general">
+
+    <article class="navigation">
+      <nav>
+        <ul>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="business-outline"></ion-icon>
+                </ion-icon>
+              </span>
+              <span class="title">Exposistemas ISC</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="document-text-outline"></ion-icon>
+              </span>
+              <span class="title">Registro del Programa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="../Paginas/constancias.html">
+              <span class="icon">
+                <ion-icon name="newspaper-outline"></ion-icon>
+              </span>
+              <span class="title">Emisión de constancias</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+              <span class="title">Reportes de asistencia</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="book-outline"></ion-icon>
+              </span>
+              <span class="title">Consulta del Programa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="finger-print-outline"></ion-icon>
+              </span>
+              <span class="title">Cambio de contraseña</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </span>
+              <span class="title">Escanear QR</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="SesionesUsuario/logout.php">
+              <span class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </span>
+              <span class="title">Cerrar sesión</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="toggle"></div>
+      </nav>
+    </article>
+
+
     <div class="card">
         <!-- <h2>Reportes de asistencia alumnos</h2> -->
         <article class="contenedor-tabla">
@@ -159,6 +245,20 @@
             </table>
         </article>
     </div>
+    </section>
+
+    <!-- Importacion de los íconos de Ionic -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Creacion del script general -->
+  <script>
+    let navigation = document.querySelector('.navigation')
+    let toggle = document.querySelector('.toggle')
+
+    toggle.onclick = function() {
+      navigation.classList.toggle('active')
+    }
+  </script>
 </body>
 
 </html>
