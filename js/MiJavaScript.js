@@ -1,4 +1,6 @@
-
+//formulario 
+const formulario_tabla = document.getElementById("form1");
+formulario_tabla.addEventListener("submit", enviarDatos);
 /* Funcion archivos */
 fetch("../PhpConsultas/prueba.php", {
   method: "POST"
@@ -378,16 +380,60 @@ function eliminar(id) {
 function enviarDatos(event){
   event.preventDefault();
 
-  /* almacenar los datos de los arreglos */
-  var formularioDatos = new FormData();
+  if(listaNumeros.length == 0 || listaRfcAsesores.length == 0){
+      alert("Debe elegir asesores y alumnos");
+  }else{
+    /* almacenar los datos de los arreglos */
+    var formularioDatos = new FormData(document.getElementById("form1"));
+
+    listaNumeros.forEach(alumno=>{
+      formularioDatos.append("Alumnos[]",alumno);
+    });
+
+    listaRfcAsesores.forEach(maestro=>{
+      formularioDatos.append("Maestros[]",maestro);
+    });
+    
+    
+
+    fetch("../PhpConsultas/insertarDatos.php", {
+      method: "POST",
+      body: formularioDatos
+    }).then(response => response.json())
+    .then(data =>{
+      alert(data.mensaje)
+    });
+  }
 
   
-
-  fetch("../PhpConsultas/insertarDatos.php", {
-    method: "POST",
-    body: form
-  }).then(response => response.json())
-  .then(data =>{
-    alert(data.mensaje)
-  });
 }
+
+function BuscarDatos(){
+  
+    /* almacenar los datos de los arreglos */
+    var formularioDatos = new FormData(document.getElementById("form1"));
+    
+
+    fetch("../PhpConsultas/buscarDatos.php", {
+      method: "POST",
+      body: formularioDatos
+    }).then(response => response.json())
+    .then(data =>{
+        alert(data.mensaje);
+    });
+  
+}
+
+function Establecer_datos(nombre_a,numero_evento,descripcion_e,materia_e,inicio,final,alumnos_e,maestros_e) {
+    const nombre = document.getElementById("NombreActividad");
+    const no_evento = document.getElementById("NumeroActividad");
+    const descripcion = document.getElementById("temaActividad");
+    const materia = document.getElementById("Materia");
+    const hora_inicio = document.getElementById("HoraInicio");
+    const hora_final = document.getElementById("HoraFinal");
+    var lista_alumnos = alumnos_e;
+    var lista_maestros = maestros_e;
+
+}
+  
+
