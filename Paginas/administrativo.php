@@ -48,7 +48,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="../paginas/reportes_alumnos.php">
               <span class="icon">
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
@@ -216,12 +216,6 @@
 
         </form>
       </div>
-
-      <!-- Sección para la emisión del programa de exposistemas -->
-      <div class="card">
-        <h2>Emisión de constancias</h2>
-      </div>
-
 
       <!-- Sección para la consulta del programa de exposistemas -->
       <div class="card">
