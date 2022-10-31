@@ -10,32 +10,118 @@
 </head>
 
 <body>
-  <div class="card">
-    <!-- <h2>Reportes de asistencia alumnos</h2> -->
-    <article class="contenedor-tabla">
 
-      <table class="table-cebra">
-        <thead>
-          <tr>
-            <th class="sticky">Nombre(s)</th>
+  <section class="container-general">
+    
+    <article class="navigation">
+      <nav>
+        <ul>
 
-            <th>Apellido paterno</th>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="business-outline"></ion-icon>
+                </ion-icon>
+              </span>
+              <span class="title">Exposistemas ISC</span>
+            </a>
+          </li>
 
-            <th>Apellido materno</th>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="document-text-outline"></ion-icon>
+              </span>
+              <span class="title">Registro del Programa</span>
+            </a>
+          </li>
 
-            <th>Número de control</th>
+          <li>
+            <a href="../Paginas/constancias.html">
+              <span class="icon">
+                <ion-icon name="newspaper-outline"></ion-icon>
+              </span>
+              <span class="title">Emisión de constancias</span>
+            </a>
+          </li>
 
-            <th>Semeste</th>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+              <span class="title">Reportes de asistencia</span>
+            </a>
+          </li>
 
-            <th>No. de registros</th>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="book-outline"></ion-icon>
+              </span>
+              <span class="title">Consulta del Programa</span>
+            </a>
+          </li>
 
-            <th>Registro 1</th>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="finger-print-outline"></ion-icon>
+              </span>
+              <span class="title">Cambio de contraseña</span>
+            </a>
+          </li>
 
-            <th>Registro 2</th>
-          </tr>
-        </thead>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon name="qr-code-outline"></ion-icon>
+              </span>
+              <span class="title">Escanear QR</span>
+            </a>
+          </li>
 
-        <?php
+          <li>
+            <a href="SesionesUsuario/logout.php">
+              <span class="icon">
+                <ion-icon name="log-out-outline"></ion-icon>
+              </span>
+              <span class="title">Cerrar sesión</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="toggle"></div>
+      </nav>
+    </article>
+
+    <div class="card">
+      <!-- <h2>Reportes de asistencia alumnos</h2> -->
+      <article class="contenedor-tabla">
+
+        <table class="table-cebra">
+          <thead>
+            <tr>
+              <th class="sticky">Nombre(s)</th>
+
+              <th>Apellido paterno</th>
+
+              <th>Apellido materno</th>
+
+              <th>Número de control</th>
+
+              <th>Semeste</th>
+
+              <th>No. de registros</th>
+
+              <th>Registro 1</th>
+
+              <th>Registro 2</th>
+            </tr>
+          </thead>
+
+          <?php
         include_once("CRUD/CRUD_bd_general.php");
         $obj = new CRUD_general();
         $obj->conexionBD();
@@ -78,14 +164,30 @@
 
         ?>
 
-            <td class="sticky"><?php echo $resultado[$i]['nombre']; ?></td>
-            <td><?php echo $resultado[$i]['paterno']; ?></td>
-            <td><?php echo $resultado[$i]['materno']; ?></td>
-            <td><?php echo $resultado[$i]['no_control']; ?></td>
-            <td><?php echo $resultado[$i]['semestre']; ?></td>
-            <td><?php echo $no_registros ?></td>
-            <td><?php echo $registros[0] ?></td>
-            <td><?php echo $registros[1] ?></td>
+          <td class="sticky">
+            <?php echo $resultado[$i]['nombre']; ?>
+          </td>
+          <td>
+            <?php echo $resultado[$i]['paterno']; ?>
+          </td>
+          <td>
+            <?php echo $resultado[$i]['materno']; ?>
+          </td>
+          <td>
+            <?php echo $resultado[$i]['no_control']; ?>
+          </td>
+          <td>
+            <?php echo $resultado[$i]['semestre']; ?>
+          </td>
+          <td>
+            <?php echo $no_registros ?>
+          </td>
+          <td>
+            <?php echo $registros[0] ?>
+          </td>
+          <td>
+            <?php echo $registros[1] ?>
+          </td>
 
 
           <?php
@@ -94,15 +196,28 @@
 
           </tr>
           </tbody>
-        <?php
+          <?php
         }
 
         ?>
-      </table>
-    </article>
-  </div>
-</body>
+        </table>
+      </article>
+    </div>
+    
+  </section>
+  <!-- Importacion de los íconos de Ionic -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Creacion del script general -->
+  <script>
+    let navigation = document.querySelector('.navigation')
+    let toggle = document.querySelector('.toggle')
 
+    toggle.onclick = function() {
+      navigation.classList.toggle('active')
+    }
+  </script>
+</body>
 </html>
 
 <?php
