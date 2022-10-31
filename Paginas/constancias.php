@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Constancias</title>
+  <link rel="stylesheet" href="../css/administrativo.css">
   <link rel="stylesheet" href="/css/toast_alert.css">
-  <link rel="stylesheet" href="/css/estilos_constancias.css">
-
 
 </head>
 
@@ -22,7 +21,7 @@
           <li>
             <a href="#">
               <span class="icon">
-                <ion-icon name="business-outline"></ion-icon>
+                <ion-icon name="business-outline" id="LogoReturn"></ion-icon>
                 </ion-icon>
               </span>
               <span class="title">Exposistemas ISC</span>
@@ -98,31 +97,38 @@
       </nav>
     </article>
   
-    <div class="card" style="float: center;">
+    <div class="card">
   
       <form action="" enctype="multipart/form-data" id="formulario">
         <h2>Constancias </h2>
-        <div id="informacion">
-        </div>
-        <div class="campos" style="float: center;">
+        <div id="informacion" class="informacion"></div>
+
+        <div class="campos">
           <h3>Seleccionar plantilla</h3>
-          <input class="subir" type="file" accept=".docx" name="file" id="plantilla">
+          <input class="" type="file" accept=".docx" name="file" id="plantilla">
         </div>
+
         <div>
-          <input class="sub" type="submit" value="Subir Archivo">
+          <input class="btn" type="submit" value="Subir Archivo">
+        </div>
+
       </form>
+
       <form action="" id="formulario_generar"><br>
   
-        <div class="conte1" style="float: right;">
-          <a id="alumnos" href="../GeneradorConstancias/constancias/ConstanciasAlumnos.docx" download="ConstanciaAlumnos"
-            hidden> Descargar constancia alumnos</a>
-          <a id="docentes" href="../GeneradorConstancias/constancias/ConstanciasDocentes.docx"
-            download="ConstanciaDocentes" hidden> Descargar constancia docentes</a>
-          <a id="externos" href="../GeneradorConstancias/constancias/ConstanciasExternos.docx"
-            download="ConstanciaExternos" hidden> Descargar constancia externos</a>
+        <div class="conte1">
+          <a id="alumnos" href="../GeneradorConstancias/constancias/ConstanciasAlumnos.docx" download="ConstanciaAlumnos" hidden> Descargar constancia alumnos</a>
+
+          <a id="docentes" href="../GeneradorConstancias/constancias/ConstanciasDocentes.docx" download="ConstanciaDocentes" hidden> Descargar constancia docentes</a>
+
+          <a id="externos" href="../GeneradorConstancias/constancias/ConstanciasExternos.docx" download="ConstanciaExternos" hidden> Descargar constancia externos</a>
+
         </div>
-        <input class="descarga" type="submit" value="Generar constancia">
+
+        <input class="btn" type="submit" value="Generar constancia">
+
       </form>
+
     </div>
 
   </section>
@@ -131,6 +137,7 @@
   <!-- Importacion de los íconos de Ionic -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="../js/linkHome.js"></script>
   <!-- Creacion del script general -->
   <script>
     let navigation = document.querySelector('.navigation')

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ventna adminstrativo</title>
-  <link rel="stylesheet" href="css/administrativo.css">
+  <link rel="stylesheet" href="../css/administrativo.css">
 </head>
 
 <body>
@@ -104,7 +104,7 @@
       <div class="card">
         <h1>Registro del programa de exposistemas</h1>
 
-        <form action="" method="post">
+        <form action="" method="post" id="form1">
 
           <div class="campos">
 
@@ -222,23 +222,10 @@
         <h2>Emisión de constancias</h2>
       </div>
 
-      <!-- Sección para la emisión de reportes de asistencia -->
-      <div class="card">
-        <h2>Reporte de alumnos ausentes</h2>
-        <?php
-          include("reportes_alumnos.php");
-        ?>
-      </div>
-
-      <div class="card">
-        <h2>Reporte de externos ausentes</h2>
-        <?php
-          include("reportes_externos.php");
-        ?>
-      </div>
 
       <!-- Sección para la consulta del programa de exposistemas -->
       <div class="card">
+
         <h2>Consulta del programa exposistemas</h2>
         <article class="contenedor-tabla">
 
@@ -285,23 +272,10 @@
                       <td><?php echo $resultado[$i]['nombre'];?></td>
                       <td><?php echo $resultado[$i]['nombre'];?></td>
                       <td><?php echo $resultado[$i]['materia'];?></td>
-
-                      
-                      
-                      
-                      
-                   </tr>
-                   </tbody>
-                   <?php
-                    
-                  ?>  
-                  }
+                  </tr>
               </tr>
-            </tbody>
           <?php
                 }
-
-
           ?>
           </tr>
           </tbody>
@@ -332,55 +306,55 @@
             <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="   Guardar   ">
           </div>
         </div>
-
+      </div>
 
         <!-- Seccion para escanear los códigos QR -->
-        <div class="card">
-          <h2>Escanear código QR</h2>
-          <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-          <label id="titulo">Escanea el codigo QR</label>
-          <!-- visualizacion de la camara -->
-          <div id="video">
-            <video id="previsualizacion" width="50%"></video>
-          </div>
-          <form action="funcion.html" method="post" id="formulario" name="formulario">
-            <label id="resultado">Resultado</label>
-            <!-- caja de texto -->
-            <div id="caja">
-              <input type="text" id="text" v-model="content" onChange=actualizar>
-            </div>
-          </form>
-          <!-- etiqueta script -->
-          <script type="text/javascript">
-            let scanner = new Instascan.Scanner({
-              video: document.getElementById('previsualizacion')
-            });
-
-            Instascan.Camera.getCameras().then(function(cameras) {
-              if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-              } else {
-                console.error("No se encontraron cámaras");
-                alert("no se han encontrado camaras");
-              }
-            }).catch(function(e) {
-              console.error(e);
-              alert("ERROR:" + e);
-            });
-            /* mandar el resultado de qr a caja de texto */
-            scanner.addListener('scan', function(c) {
-              let recurso = document.getElementById('text').value = c;
-              var formulario = document.getElementById('formulario');
-              var datos = new FormData(formulario);
-              console.log(datos);
-              console.log(datos.get('text'));
-              fetch('funcion.php', {
-                method: 'POST',
-                body: datos
-              })
-            });
-          </script>
+      <div class="card">
+        <h2>Escanear código QR</h2>
+        <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+        <label id="titulo">Escanea el codigo QR</label>
+        <!-- visualizacion de la camara -->
+        <div id="video">
+          <video id="previsualizacion" width="50%"></video>
         </div>
+        <form action="funcion.html" method="post" id="formulario" name="formulario">
+          <label id="resultado">Resultado</label>
+          <!-- caja de texto -->
+          <div id="caja">
+            <input type="text" id="text" v-model="content" onChange=actualizar>
+          </div>
+        </form>
+        <!-- etiqueta script -->
+        <script type="text/javascript">
+          let scanner = new Instascan.Scanner({
+            video: document.getElementById('previsualizacion')
+          });
+
+          Instascan.Camera.getCameras().then(function(cameras) {
+            if (cameras.length > 0) {
+              scanner.start(cameras[0]);
+            } else {
+              console.error("No se encontraron cámaras");
+              alert("no se han encontrado camaras");
+            }
+          }).catch(function(e) {
+            console.error(e);
+            alert("ERROR:" + e);
+          });
+          /* mandar el resultado de qr a caja de texto */
+          scanner.addListener('scan', function(c) {
+            let recurso = document.getElementById('text').value = c;
+            var formulario = document.getElementById('formulario');
+            var datos = new FormData(formulario);
+            console.log(datos);
+            console.log(datos.get('text'));
+            fetch('funcion.php', {
+              method: 'POST',
+              body: datos
+            })
+          });
+        </script>
+      </div>
 
     </article>
 

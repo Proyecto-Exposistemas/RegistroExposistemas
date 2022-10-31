@@ -76,13 +76,13 @@ function Archivos() {
         if(data.template){
             const info_existencia = document.createElement("p");
             info_existencia.innerHTML = "Ya tiene una plantilla cargada";
-            info_existencia.style = "float:left;";
+            /* info_existencia.style = "float:left;"; */
             div_informacion.appendChild(info_existencia);
         }
         if(data.constancias){
             const info_existencia2 = document.createElement("p");
             info_existencia2.innerHTML = "Ya tiene unas constancias generadas";
-            info_existencia2.style = "float:right;";
+            /* info_existencia2.style = "float:right;"; */
             div_informacion.appendChild(info_existencia2);
             MostrarBotones();
         
