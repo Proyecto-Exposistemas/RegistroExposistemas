@@ -1,58 +1,58 @@
 
 /* Seccion para ingresar los datos a los arreglos */
-let nombre_completo = [];
-let numeros_control = [];
-let nombre_completo_asesores = [];
-let rfc_asesores = [];
+var nombre_completo = [];
+var numeros_control = [];
+var nombre_completo_asesores = [];
+var rfc_asesores = [];
 
-let contenedor = document.querySelector('.options-container');
-let contenedor2 = document.querySelector('.options-container2');
+var contenedor = document.querySelector('.options-container');
+var contenedor2 = document.querySelector('.options-container2');
 
 Archivos();
 
-for (let i = 0; i < nombre_completo.length; i++) {
+for (var i = 0; i < nombre_completo.length; i++) {
   contenedor.innerHTML += '<div class=\"option\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + numeros_control[i] + '\" name=\"expositoresParticipantes\" > <label for=\"' + numeros_control[i] + '\"id=\"etiqueta\" >' + nombre_completo[i] + '</label> </div>';
 }
 
-for (let j = 0; j < nombre_completo_asesores.length; j++) {
+for (var j = 0; j < nombre_completo_asesores.length; j++) {
   contenedor2.innerHTML += '<div class=\"option2\" style=\"display: block;\"> <input type=\"radio\" class=\"radio\" id=\"' + rfc_asesores[j] + '\" name=\"asesoresParticipantes\" > <label for=\"' + rfc_asesores[j] + '\"id=\"etiqueta\" >' + nombre_completo_asesores[j] + '</label> </div>';
 }
 
 /* Seccion para mandar los datos a la lista lateral y eliminarlos */
-let nombre_completo2 = nombre_completo;
-let numeros_control2 = numeros_control;
-let nombre_completo_asesores2 = nombre_completo_asesores;
-let rfc_asesores2 = rfc_asesores;
+var nombre_completo2 = nombre_completo;
+var numeros_control2 = numeros_control;
+var nombre_completo_asesores2 = nombre_completo_asesores;
+var rfc_asesores2 = rfc_asesores;
 
-let listaOpciones = document.querySelectorAll('.option');
-let listaOpciones2 = document.querySelectorAll('.option2');
+var listaOpciones = document.querySelectorAll('.option');
+var listaOpciones2 = document.querySelectorAll('.option2');
 
-let listaNombres = [];
-let listaNumeros = [];
-let listaContador = [];
+var listaNombres = [];
+var listaNumeros = [];
+var listaContador = [];
 
-let listaNombresAsesores = [];
-let listaRfcAsesores = [];
-let listaContadorAsesores = [];
+var listaNombresAsesores = [];
+var listaRfcAsesores = [];
+var listaContadorAsesores = [];
 
-let nombresLista = document.querySelector('.containerP');
-let nombresLista2 = document.querySelector('.container2P');
+var nombresLista = document.querySelector('.containerP');
+var nombresLista2 = document.querySelector('.container2P');
 
 listaOpciones.forEach(o => {
   o.addEventListener('click', (e) => {
-    let valorTexto = e.target.textContent;
+    var valorTexto = e.target.textContent;
 
     /* Si el valor del texto es diferente de vacio, entonces */
     if (valorTexto != '') {
 
       if (valorTexto[0] == ' ') {
 
-        let valorTexto2 = valorTexto.trim();
+        var valorTexto2 = valorTexto.trim();
         valorTexto = valorTexto2;
 
         /* Verifica que valorTexto no exista en el arreglo */
-        let flag = false;
-        for (let i = 0; i < listaNombres.length; i++) {
+        var flag = false;
+        for (var i = 0; i < listaNombres.length; i++) {
           if (listaNombres[i] == valorTexto) {
             flag = true;
           }
@@ -64,9 +64,9 @@ listaOpciones.forEach(o => {
           /* Agrega el valor al arreglo */
           listaNombres.push(valorTexto);
 
-          let posicion_numero = 0
+          var posicion_numero = 0
 
-          for (let i = 0; i < nombre_completo2.length; i++) {
+          for (var i = 0; i < nombre_completo2.length; i++) {
             if (nombre_completo2[i] == valorTexto) {
               posicion_numero = i;
             }
@@ -76,7 +76,7 @@ listaOpciones.forEach(o => {
           listaNumeros.push(numeros_control2[posicion_numero]);
 
           /* cuenta los elementos de la lista */
-          let contador = listaNombres.length;
+          var contador = listaNombres.length;
 
           /* Agrega el valor al div */
           nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
@@ -96,8 +96,8 @@ listaOpciones.forEach(o => {
       else {
 
         /* Verifica que valorTexto no exista en el arreglo */
-        let flag = false;
-        for (let i = 0; i < listaNombres.length; i++) {
+        var flag = false;
+        for (var i = 0; i < listaNombres.length; i++) {
           if (listaNombres[i] == valorTexto) {
             flag = true;
           }
@@ -109,9 +109,9 @@ listaOpciones.forEach(o => {
           /* Agrega el valor al arreglo */
           listaNombres.push(valorTexto);
 
-          let posicion_numero = 0
+          var posicion_numero = 0
 
-          for (let i = 0; i < nombre_completo2.length; i++) {
+          for (var i = 0; i < nombre_completo2.length; i++) {
             if (nombre_completo2[i] == valorTexto) {
               posicion_numero = i;
             }
@@ -121,7 +121,7 @@ listaOpciones.forEach(o => {
           listaNumeros.push(numeros_control2[posicion_numero]);
 
           /* cuenta los elementos de la lista */
-          let contador = listaNombres.length;
+          var contador = listaNombres.length;
 
           /* Agrega el valor al div */
           nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
@@ -146,7 +146,7 @@ listaOpciones.forEach(o => {
 
 listaOpciones2.forEach(h => {
   h.addEventListener('click', (E) => {
-    let valorTexto3 = E.target.textContent;
+    var valorTexto3 = E.target.textContent;
 
     /* Si el valor del texto es diferente de vacio, entonces */
     if (valorTexto3 != '') {
@@ -154,12 +154,12 @@ listaOpciones2.forEach(h => {
       if (valorTexto3[0] == ' ') {
         console.log('Condicional por espaciado.');
 
-        let valorTexto4 = valorTexto3.trim();
+        var valorTexto4 = valorTexto3.trim();
         valorTexto3 = valorTexto4;
 
         /* Verifica que valorTexto no exista en el arreglo */
-        let flag = false;
-        for (let i = 0; i < listaNombresAsesores.length; i++) {
+        var flag = false;
+        for (var i = 0; i < listaNombresAsesores.length; i++) {
           if (listaNombresAsesores[i] == valorTexto3) {
             flag = true;
           }
@@ -171,9 +171,9 @@ listaOpciones2.forEach(h => {
           /* Agrega el valor al arreglo */
           listaNombresAsesores.push(valorTexto3);
 
-          let posicion_numero2 = 0
+          var posicion_numero2 = 0
 
-          for (let i = 0; i < nombre_completo_asesores2.length; i++) {
+          for (var i = 0; i < nombre_completo_asesores2.length; i++) {
             if (nombre_completo_asesores2[i] == valorTexto3) {
               posicion_numero2 = i;
             }
@@ -183,7 +183,7 @@ listaOpciones2.forEach(h => {
           listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
 
           /* cuenta los elementos de la lista */
-          let contador2 = listaNombresAsesores.length;
+          var contador2 = listaNombresAsesores.length;
 
           /* Agrega el valor al div */
           nombresLista2.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminar(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
@@ -204,8 +204,8 @@ listaOpciones2.forEach(h => {
         console.log('Condicional sin espaciado.');
 
         /* Verifica que valorTexto no exista en el arreglo */
-        let flag = false;
-        for (let i = 0; i < listaNombresAsesores.length; i++) {
+        var flag = false;
+        for (var i = 0; i < listaNombresAsesores.length; i++) {
           if (listaNombresAsesores[i] == valorTexto3) {
             flag = true;
           }
@@ -217,9 +217,9 @@ listaOpciones2.forEach(h => {
           /* Agrega el valor al arreglo */
           listaNombresAsesores.push(valorTexto3);
 
-          let posicion_numero2 = 0
+          var posicion_numero2 = 0
 
-          for (let i = 0; i < nombre_completo_asesores2.length; i++) {
+          for (var i = 0; i < nombre_completo_asesores2.length; i++) {
             if (nombre_completo_asesores2[i] == valorTexto3) {
               posicion_numero2 = i;
             }
@@ -229,7 +229,7 @@ listaOpciones2.forEach(h => {
           listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
 
           /* cuenta los elementos de la lista */
-          let contador2 = listaNombresAsesores.length;
+          var contador2 = listaNombresAsesores.length;
 
           /* Agrega el valor al div */
           listaNombresAsesores.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminarAsesores(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
@@ -257,7 +257,7 @@ function eliminar(id) {
   console.log('El id es: ' + id);
 
   /* Eliminación de los campos de manera correcta en la lista */
-  for (let i = 0; i < listaContador.length; i++) {
+  for (var i = 0; i < listaContador.length; i++) {
     if (listaContador[i] == id) {
       listaNumeros.splice(i, 1);
       listaNombres.splice(i, 1);
@@ -265,7 +265,7 @@ function eliminar(id) {
     }
   }
 
-  for (let i = 0; i < listaContadorAsesores.length; i++) {
+  for (var i = 0; i < listaContadorAsesores.length; i++) {
     if (listaContadorAsesores[i] == id) {
       listaNombresAsesores.splice(i, 1);
       listaRfcAsesores.splice(i, 1);
@@ -282,10 +282,10 @@ function eliminar(id) {
   console.log('Lista de contador2 despues de eliminar: ' + listaContadorAsesores); */
 
   /* Guardar los arreglos en variables que sirvan para Php */
-  let listaNombresAsesoresPhp = JSON.stringify(listaNombresAsesores);
-  let listaRfcAsesoresPhp = JSON.stringify(listaRfcAsesores);
-  let listaNombresExponentesPhp = JSON.stringify(listaNombres);
-  let listaNumerosExponentesPhp = JSON.stringify(listaNumeros);
+  var listaNombresAsesoresPhp = JSON.stringify(listaNombresAsesores);
+  var listaRfcAsesoresPhp = JSON.stringify(listaRfcAsesores);
+  var listaNombresExponentesPhp = JSON.stringify(listaNombres);
+  var listaNumerosExponentesPhp = JSON.stringify(listaNumeros);
 }
 
 /* Funcionalidad de los selectbox */
@@ -327,7 +327,7 @@ searchBox.addEventListener("keyup", function (e) {
 const filterList = searchTerm => {
   searchTerm = searchTerm.toLowerCase();
   optionsList.forEach(option => {
-    let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+    var label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
     if (label.indexOf(searchTerm) != -1) {
       option.style.display = "block";
     } else {
@@ -362,7 +362,7 @@ searchBox2.addEventListener("keyup", function (e) {
 const filterList2 = searchTerm => {
   searchTerm = searchTerm.toLowerCase();
   optionsList2.forEach(option => {
-    let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+    var label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
     if (label.indexOf(searchTerm) != -1) {
       option.style.display = "block";
     } else {
@@ -383,6 +383,6 @@ function Archivos() {
       numeros_control = data.no_control_Exponentes;
       nombre_completo_asesores = data.nombre_completo_docentes;
       rfc_asesores = data.rfc_docentes;
-     
+    
     });
 }
