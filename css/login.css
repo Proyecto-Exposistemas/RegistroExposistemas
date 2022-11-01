@@ -107,7 +107,7 @@ form.sign-in-form {
   align-items: center;
 }
 
-#roles, #identidad, #rolEstudiante {
+#roles, #identidad, #rolEstudiante, #inputFuncion {
   background: transparent;
   border: none;
   outline: none;
@@ -138,6 +138,14 @@ form.sign-in-form {
 }
 
 #rolEstudiante option {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  outline: none;
+  border-radius: 0 0 55px 55px;
+}
+
+#inputFuncion option {
   background: #f0f0f0;
   color: #333;
   border: none;
