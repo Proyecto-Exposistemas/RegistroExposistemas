@@ -25,5 +25,6 @@ function enviarPass(event){
     }).then(response => response.json())
     .then(data => {
         alert(data.mensaje);
+        /* console.log(data); */
     });
 }
