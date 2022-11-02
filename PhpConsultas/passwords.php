@@ -14,27 +14,27 @@
     $password_bd = $resultado[0]['password'];
 
     /* $password_hash = password_hash($pass, PASSWORD_DEFAULT); */
-    $password_actual_hash = hash('sha512', $password_actual);
 
-    if($password_actual_hash == $password_bd){
+    if(password_verify($password_actual,$password_bd)){
+
         if($password_nueva == $password_comprobar){
+            $password_hash = password_hash($password_nueva, PASSWORD_DEFAULT);
 
-            $password_nueva_hash = hash('sha512', $password_nueva);
+            $consulta = "UPDATE administradores SET password = :password WHERE rfc = :rfc";
+            $parametros = [":password"=>$password_hash,":rfc"=>"QWER12345678"];
 
-            $sql = "UPDATE administradores SET password=:pass WHERE rfc=:rfc";
-            $parametros = [":pass"=>$password_nueva_hash, ":rfc"=>"QWER12345678"];
-            $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);
-            
-            
+            $resultado = $conexion->ACTUALIZAR($consulta,$parametros);
+
             if($resultado){
-                $mensaje_evento = "Se actualizo la contraseña con exito";
-                $data =["mensaje"=>$mensaje_evento];
+                $mensaje = "Contraseña actualizada correctamente";
+                $data = ["mensaje"=>$mensaje];
                 header("Content-Type: application/json");
                 echo json_encode($data);
+
             }
             else{
-                $mensaje_evento = "No se pudo actualizar la contraseña";
-                $data =["mensaje"=>$mensaje_evento];
+                $mensaje = "Error al actualizar contraseña";
+                $data = ["mensaje"=>$mensaje];
                 header("Content-Type: application/json");
                 echo json_encode($data);
             }
@@ -47,9 +47,10 @@
         }
     }
     else{
-        $mensaje = "La contraseña actual no coincide con la contraseña de la base de datos";
+        $mensaje = "Contraseña incorrecta";
         $data = ["mensaje"=>$mensaje];
         header("Content-Type: application/json");
         echo json_encode($data);
     }
+    
 ?>
