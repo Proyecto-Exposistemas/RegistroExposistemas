@@ -671,3 +671,7 @@ form {
     align-items: center;
     justify-items: stretch;
 }
+
+tr:hover {
+    background-color: #82aaae;
+}

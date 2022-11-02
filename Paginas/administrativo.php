@@ -297,13 +297,13 @@
                           for ($j=0; $j < count($resultado_externos); $j++) { 
                               echo $resultado_externos[$j]["nombre"]." ". $resultado_externos[$j]["paterno"]."<br>";
                           }
-                       ?></td>
+                      ?></td>
                       <td><?php
                           $resultado_asesores = $con->MOSTRAR($consulta_asesores,[":numero"=>$resultadoE[$i]['no_evento']]);
                           for ($j=0; $j < count($resultado_asesores); $j++) { 
                               echo $resultado_asesores[$j]["nombre"]." ".$resultado_asesores[$j]["paterno"]."<br>";
                           }
-                       ?></td>
+                      ?></td>
 
                       <td><?php echo $resultadoE[$i]['materia'];?></td>
                   </tr>
