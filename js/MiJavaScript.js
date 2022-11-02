@@ -1,6 +1,22 @@
 //formulario 
 const formulario_tabla = document.getElementById("form1");
-formulario_tabla.addEventListener("submit", enviarDatos);
+formulario_tabla.addEventListener("submit", EnviarDatos);
+//boton de buscar
+const boton_buscar = document.getElementById("btn-buscar");
+boton_buscar.addEventListener("click", BuscarDatos);
+//boton eliminar
+const boton_eliminar = document.getElementById("btn-eliminar");
+boton_eliminar.addEventListener("click", EliminarDatos);
+//boton de actualizar
+const boton_actualizar = document.getElementById("btn-actualizar");
+boton_actualizar.addEventListener("click", ActualizarDatos);
+//inputs de la interfaz administrador para el registro del evento
+const numero_evento = document.getElementById("NumeroActividad");
+const nombre = document.getElementById("NombreActividad");
+const descripcion = document.getElementById("temaActividad");
+const materia = document.getElementById("Materia");
+const hora_inicio = document.getElementById("HoraInicio");
+const hora_final = document.getElementById("HoraFinal");
 /* Funcion archivos */
 fetch("../PhpConsultas/prueba.php", {
   method: "POST"
@@ -131,7 +147,7 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
             var contador = listaNombres.length;
 
             /* Agrega el valor al div */
-            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
             /* Agregar a listaContador */
             listaContador.push('contenedor' + contador);
@@ -240,7 +256,7 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
             var contador2 = listaNombresAsesores.length;
 
             /* Agrega el valor al div */
-            listaNombresAsesores.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminarAsesores(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+            listaNombresAsesores.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminarAsesores(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
             /* Agregar a listaContador */
             listaContadorAsesores.push('contenedor2' + contador2);
@@ -377,14 +393,15 @@ function eliminar(id) {
   
 }
 
-function enviarDatos(event){
+function EnviarDatos(event){
   event.preventDefault();
 
   if(listaNumeros.length == 0 || listaRfcAsesores.length == 0){
-      alert("Debe elegir asesores y alumnos");
+    showAlert("Debe elegir asesores y alumnos",true)
+    
   }else{
     /* almacenar los datos de los arreglos */
-    var formularioDatos = new FormData(document.getElementById("form1"));
+    var formularioDatos = new FormData(formulario_tabla);
 
     listaNumeros.forEach(alumno=>{
       formularioDatos.append("Alumnos[]",alumno);
@@ -401,7 +418,13 @@ function enviarDatos(event){
       body: formularioDatos
     }).then(response => response.json())
     .then(data =>{
-      alert(data.mensaje)
+      
+      if(data.error == false){
+        Limpiar_arreglos();
+        Limpiar_contenedores();
+        Limpiar_inputs();
+      }
+      data.error ?showAlert(data.mensaje,true):showAlert(data.mensaje,false);
     });
   }
 
@@ -411,7 +434,7 @@ function enviarDatos(event){
 function BuscarDatos(){
   
     /* almacenar los datos de los arreglos */
-    var formularioDatos = new FormData(document.getElementById("form1"));
+    var formularioDatos = new FormData(formulario_tabla);
     
 
     fetch("../PhpConsultas/buscarDatos.php", {
@@ -419,21 +442,174 @@ function BuscarDatos(){
       body: formularioDatos
     }).then(response => response.json())
     .then(data =>{
-        alert(data.mensaje);
+
+        if (data.mensaje == null) {
+          Establecer_datos(data.evento, data.alumnos,data.alumnos_llaves,data.mestros, data.maestros_llaves);
+        } else {
+
+          data.error ?showAlert(data.mensaje,true):showAlert(data.mensaje,false);
+        }
+        
     });
   
 }
 
-function Establecer_datos(nombre_a,numero_evento,descripcion_e,materia_e,inicio,final,alumnos_e,maestros_e) {
-    const nombre = document.getElementById("NombreActividad");
-    const no_evento = document.getElementById("NumeroActividad");
-    const descripcion = document.getElementById("temaActividad");
-    const materia = document.getElementById("Materia");
-    const hora_inicio = document.getElementById("HoraInicio");
-    const hora_final = document.getElementById("HoraFinal");
-    var lista_alumnos = alumnos_e;
-    var lista_maestros = maestros_e;
+function Establecer_datos(lista_evento,lista_alumnos,lista_alumnos_llaves, lista_maestros, lista_maestros_llaves) {
+  if(lista_evento.length == 6){
+    nombre.value = lista_evento[1];
+    descripcion.value = lista_evento[4];
+    
+    materia.value = lista_evento[5];
+    hora_inicio.value = lista_evento[2];
+    hora_final.value = lista_evento[3];
+  }
 
+  Limpiar_arreglos();
+  //limpia los ontenedores
+  const nombresLista = document.querySelector('.containerP');
+  const nombresLista2 = document.querySelector('.container2P');
+
+  Limpiar_contenedores()
+
+  for (let i = 0; i < lista_alumnos.length; i++) {
+
+    listaNombres.push(lista_alumnos[i]);
+    listaNumeros.push(lista_alumnos_llaves[i]);
+
+    var contador = listaNombres.length;
+    /* Agrega el valor al div */
+    nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + lista_alumnos[i].trim() + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+    /* Agregar a listaContador */
+    listaContador.push('contenedor' + contador);
+
+  }
+
+  for (let j = 0; j < lista_maestros .length; j++) {
+
+    listaNombresAsesores.push(lista_maestros[j]);
+    listaRfcAsesores.push(lista_maestros_llaves[j]);
+
+    var contador2 = listaNombresAsesores.length;
+  
+    nombresLista2.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + lista_maestros[j].trim() + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminar(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
+
+    /* Agregar a listaContador */
+    listaContadorAsesores.push('contenedor2' + contador2);
+
+  }
+
+
+}
+
+function EliminarDatos() {
+  /* almacenar los datos de los arreglos */
+  var formularioDatos = new FormData(formulario_tabla);
+    
+
+  fetch("../PhpConsultas/eliminarDatos.php", {
+    method: "POST",
+    body: formularioDatos
+  }).then(response => response.json())
+  .then(data =>{
+    if(data.error == false){
+      Limpiar_arreglos();
+      Limpiar_contenedores();
+      Limpiar_inputs();
+    }
+    data.error ?showAlert(data.mensaje,true):showAlert(data.mensaje,false);
+      
+  });
+}
+
+function ActualizarDatos(){
+
+  if(listaNumeros.length == 0 || listaRfcAsesores.length == 0){
+    showAlert("Debe elegir asesores y alumnos",true)
+    
+  }else{
+    /* almacenar los datos de los arreglos */
+    var formularioDatos = new FormData(formulario_tabla);
+
+    listaNumeros.forEach(alumno=>{
+      formularioDatos.append("Alumnos[]",alumno);
+    });
+
+    listaRfcAsesores.forEach(maestro=>{
+      formularioDatos.append("Maestros[]",maestro);
+    });
+    
+    
+
+    fetch("../PhpConsultas/actualizarDatos.php", {
+      method: "POST",
+      body: formularioDatos
+    }).then(response => response.json())
+    .then(data =>{
+      
+      if(data.error == false){
+        Limpiar_arreglos();
+        Limpiar_contenedores();
+        Limpiar_inputs();
+      }
+      data.error ?showAlert(data.mensaje,true):showAlert(data.mensaje,false);
+    });
+  }
+
+  
+}
+function Limpiar_inputs() {
+  numero_evento.value = "";
+  nombre.value = "";
+  descripcion.value = "";
+  materia.value = "";
+  hora_inicio.value = "";
+  hora_final.value = "";
+}
+
+function Limpiar_contenedores() {
+  const nombresLista = document.querySelector('.containerP');
+  const nombresLista2 = document.querySelector('.container2P');
+
+  nombresLista.replaceChildren();
+  nombresLista2.replaceChildren();
+}
+function Limpiar_arreglos() {
+  while(listaNombres.length > 0) {
+    listaNombres.pop();
+  }
+  while(listaNumeros.length > 0) {
+    listaNumeros.pop();
+  }
+
+  while(listaContador.length > 0) {
+    listaContador.pop();
+  }
+  while(listaNombresAsesores.length > 0) {
+    listaNombresAsesores.pop();
+  }
+
+  while(listaRfcAsesores.length > 0) {
+    listaRfcAsesores.pop();
+  }
+  while(listaContadorAsesores.length > 0) {
+    listaContadorAsesores.pop();
+  }
+}
+
+//alertas
+function showAlert(mensaje,error){
+  Toastify({
+      text: mensaje,
+      duration: 3000,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: error?"linear-gradient(to right, #ff0000, #96c93d)" : "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
 }
   
 

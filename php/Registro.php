@@ -57,37 +57,46 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
         
 
 
-    }else if($nivel == 2 && isset($_POST['telefono']) && isset($_POST['titulo']) && isset($_POST['funcion']) && isset($_POST['rfc'])){
+    }else if($nivel == 2 && isset($_POST['telefono']) && isset($_POST['titulo']) && isset($_POST['inputFuncion']) && isset($_POST['rfc'])){
         //es un docente
         $telefono = $_POST['telefono'];
         $titulo = $_POST['titulo'];
-        $funcion = $_POST['funcion'];
+        $funcion = $_POST['inputFuncion'];
         $rfc = $_POST['rfc'];
 
-        //tabla de docentes
-        $sql = "INSERT INTO docentes (nombre,paterno,materno,funcion,correo,telefono,rfc,titulo) VALUES(:nom,:apep,:apem,:funcion,:correo,:tele,:rfc,:titulo)";
-        $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":funcion"=>$funcion,":correo"=>$correo,":tele"=>$telefono,":rfc"=>$rfc,":titulo"=>$titulo];
+        if(strcmp($funcion,"0") != 0){
+            //si no elige una funcion 
+            //tabla de docentes
+            $sql = "INSERT INTO docentes (nombre,paterno,materno,funcion,correo,telefono,rfc,titulo) VALUES(:nom,:apep,:apem,:funcion,:correo,:tele,:rfc,:titulo)";
+            $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":funcion"=>$funcion,":correo"=>$correo,":tele"=>$telefono,":rfc"=>$rfc,":titulo"=>$titulo];
 
-        $registros = $conexion->MOSTRAR("SELECT nombre FROM docentes WHERE rfc=:rfc", [":rfc"=>$rfc]);
+            $registros = $conexion->MOSTRAR("SELECT nombre FROM docentes WHERE rfc=:rfc", [":rfc"=>$rfc]);
 
-        if(count($registros) > 0){
+            if(count($registros) > 0){
 
-            $mensaje = "El docente ya esta registrado";
+                $mensaje = "El docente ya esta registrado";
+                $error=true;
+
+            }else{
+
+                $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
+        
+                if($resultado){
+                    $mensaje = "Registro exitoso";
+                    $error=false;
+                    $identificador = "registros_docentes;".$rfc;
+                }else{
+                    $mensaje = "No se ha podido realizar el registro";
+                    $error=true;
+                }
+            }
+        }else{
+            $mensaje = "Debes elegir la función del docente";
             $error=true;
 
-        }else{
-
-            $resultado = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql,$parametros);  
-       
-            if($resultado){
-                $mensaje = "Registro exitoso";
-                $error=false;
-                $identificador = "registros_docentes;".$rfc;
-            }else{
-                $mensaje = "No se ha podido realizar el registro";
-                $error=true;
-            }
         }
+
+        
 
     }else if($nivel == 3 && isset($_POST['roles']) && isset($_POST['procedencia'])){
         //externos 

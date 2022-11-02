@@ -2,7 +2,7 @@
 require_once("../CRUD/CRUD_bd_general.php");
 $conexion = new CRUD_general();
 $conexion->conexionBD();
-$mensaje_evento = "No se pudo registrar el evento";
+$mensaje_evento = "No se pudo actualizar el evento";
 $error = true;
 
 if( isset($_POST["Alumnos"]) && isset($_POST["Maestros"]) 
@@ -26,14 +26,21 @@ if( isset($_POST["Alumnos"]) && isset($_POST["Maestros"])
     $resultado_evento = $conexion->MOSTRAR($sql_evento, $parametros_eventos);
 
     if(count($resultado_evento)>0){
-        $mensaje_evento = "El evento que intenta registrar ya existe";
-    }else{
 
-        $sql_evento  = "INSERT INTO evento (no_evento,evento,hora_inicio,hora_fin,descripcion)VALUES(:numero,:nombre,:inicio,:fin,:descripcion)";
+        $sql_evento  = "UPDATE evento SET evento=:nombre, hora_inicio=:inicio, hora_fin=:fin,descripcion=:descripcion
+                        WHERE no_evento=:numero";
         $parametros_evento = [":numero"=>$numero_evento, ":nombre"=>$nombre_evento,
                             ":inicio"=>$hora_inicio, ":fin"=>$hora_fin, ":descripcion"=>$descripcion];
         $resultado_evento = $conexion->INSERTAR_ELIMINAR_ACTUALIZAR($sql_evento,$parametros_evento);
 
+        //eliminamos mestros, alumnos, externos de sus tablas para insertarlos de nuevo en caso de que sea asi
+        $conexion->INSERTAR_ELIMINAR_ACTUALIZAR("DELETE  FROM evento_alumnos WHERE no_evento=:numero",$parametros_eventos);
+        $conexion->INSERTAR_ELIMINAR_ACTUALIZAR("DELETE  FROM evento_externos WHERE no_evento=:numero",$parametros_eventos);
+        $conexion->INSERTAR_ELIMINAR_ACTUALIZAR("DELETE  FROM asesores_evento WHERE no_evento=:numero",$parametros_eventos);
+        
+
+
+        //insertamos lo que viene en las listas
         for ($i=0; $i < count($lista_maestros) ; $i++) { 
 
             $sql_evento_asesores = "INSERT INTO asesores_evento (no_evento, rfc,materia) VALUES (:numero,:rfc,:materia)";
@@ -58,9 +65,13 @@ if( isset($_POST["Alumnos"]) && isset($_POST["Maestros"])
 
 
         if($resultado_evento){
-            $mensaje_evento = "Se registro el evento con exito";
+            $mensaje_evento = "Se actualizo el evento con exito";
             $error = false;
         } 
+       
+    }else{
+
+       $mensaje_evento = "El evento que intenta actualizar no existe";
 
     }
 
@@ -71,6 +82,11 @@ if( isset($_POST["Alumnos"]) && isset($_POST["Maestros"])
 $data =["mensaje"=>$mensaje_evento, "error"=>$error];
 header("Content-Type: application/json");
 echo json_encode($data);
+
+
+
+
+
 
 
 ?>

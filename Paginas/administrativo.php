@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ventna adminstrativo</title>
   <link rel="stylesheet" href="../css/administrativo.css">
+  <link rel="stylesheet" href="/css/toast_alert.css">
 </head>
 
 <body>
@@ -166,9 +167,9 @@
             </div>
             <!-- Código del contenedor de nombres -->
             <div class="contanerPersonas">
-
-              <div class="containerP">
                 <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
+              <div class="containerP">
+                
 
               </div>
             </div>
@@ -200,8 +201,9 @@
             </div>
             <!-- Código del contenedor de nombres -->
             <div class="containerAsistentes">
+              <h2 style="margin-bottom: -5px;">Lista de asistentes del proyecto</h2>
               <div class="container2P">
-                <h2 style="margin-bottom: -5px;">Lista de asistentes del proyecto</h2>
+                
               </div>
             </div>
 
@@ -415,6 +417,7 @@
   <script src="../SesionesUsuario/session_expiracion.js"></script>
   <script src="../js/MiJavaScript.js"></script>
   <script src="../js/passwords.js"></script>
+  <script src="../js/toast_alert.js"></script>
 </body>
 
 </html>

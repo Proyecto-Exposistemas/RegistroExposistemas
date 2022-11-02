@@ -18,7 +18,7 @@ class User_password extends CRUD_general{
     public function InsertarAdministrador($user, $pass){
         /** se hace uso de las transacciones para poder insertar en dos tablas a al vez */
 
-        $password_hash = hash('sha512', $pass);
+        $password_hash = password_hash($pass, PASSWORD_DEFAULT);
         
         $ya_existe = $this->BuscarAdmin($user); 
 
@@ -34,11 +34,11 @@ class User_password extends CRUD_general{
 
     }
 }
-
+/*
 $user = new User_password();
 $user->conexionBD();
 $user->InsertarAdministrador("QWER12345678", "123");
 $user->CERRAR_CONEXION();
 
-
+*/
 ?>
