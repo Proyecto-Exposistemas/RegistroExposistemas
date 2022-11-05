@@ -476,7 +476,7 @@ form.sign-in-form {
   text-transform: uppercase;
 }
 a{
-  animation-duration: 40s;
+  animation-duration: 120s;
   animation-name: slidein;
 }
 @keyframes slidein {
