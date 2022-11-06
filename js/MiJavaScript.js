@@ -63,104 +63,41 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
   /* Seccion de los estudiantes */
   listaOpciones.forEach(o => {
     o.addEventListener('click', (e) => {
-      var valorTexto = e.target.textContent;
+      var valorTexto = (e.target.textContent).trim();
 
       /* Si el valor del texto es diferente de vacio, entonces */
       if (valorTexto != '') {
 
-        if (valorTexto[0] == ' ') {
+        if (listaNombres.includes(valorTexto) == false) {
 
-          var valorTexto2 = valorTexto.trim();
-          valorTexto = valorTexto2;
+          /* Agrega el valor al arreglo */
+          listaNombres.push(valorTexto);
 
-          /* Verifica que valorTexto no exista en el arreglo */
-          var flag = false;
-          for (var i = 0; i < listaNombres.length; i++) {
-            if (listaNombres[i] == valorTexto) {
-              flag = true;
+          var posicion_numero = 0
+
+          for (var i = 0; i < nombre_completo2.length; i++) {
+            if (nombre_completo2[i] == valorTexto) {
+              posicion_numero = i;
             }
           }
 
-          /* Si el valor no existe en el arreglo, entonces */
-          if (flag == false) {
+          /* Agrega el valor al arreglo */
+          listaNumeros.push(numeros_control2[posicion_numero]);
 
-            /* Agrega el valor al arreglo */
-            listaNombres.push(valorTexto);
+          /* cuenta los elementos de la lista */
+          var contador = listaNombres.length;
 
-            var posicion_numero = 0
+          /* Agrega el valor al div */
+          nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
-            for (var i = 0; i < nombre_completo2.length; i++) {
-              if (nombre_completo2[i] == valorTexto) {
-                posicion_numero = i;
-              }
-            }
+          /* Agregar a listaContador */
+          listaContador.push('contenedor' + contador);
 
-            /* Agrega el valor al arreglo */
-            listaNumeros.push(numeros_control2[posicion_numero]);
-
-            /* cuenta los elementos de la lista */
-            var contador = listaNombres.length;
-
-            /* Agrega el valor al div */
-            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
-            /* Agregar a listaContador */
-            listaContador.push('contenedor' + contador);
-
-            console.log(listaNombres);
-            console.log(listaNumeros);
-            console.log(listaContador);
-          }
-          else {
-            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
-            alert('El nombre ya existe en la lista');
-          }
+         
+        }else {
+          alert('El nombre ya existe en la lista');
         }
-        else {
-
-          /* Verifica que valorTexto no exista en el arreglo */
-          var flag = false;
-          for (var i = 0; i < listaNombres.length; i++) {
-            if (listaNombres[i] == valorTexto) {
-              flag = true;
-            }
-          }
-
-          /* Si el valor no existe en el arreglo, entonces */
-          if (flag == false) {
-
-            /* Agrega el valor al arreglo */
-            listaNombres.push(valorTexto);
-
-            var posicion_numero = 0
-
-            for (var i = 0; i < nombre_completo2.length; i++) {
-              if (nombre_completo2[i] == valorTexto) {
-                posicion_numero = i;
-              }
-            }
-
-            /* Agrega el valor al arreglo */
-            listaNumeros.push(numeros_control2[posicion_numero]);
-
-            /* cuenta los elementos de la lista */
-            var contador = listaNombres.length;
-
-            /* Agrega el valor al div */
-            nombresLista.innerHTML += '<div class=\"nombres\" id=\"contenedor' + contador + '\"> <p class=\"nombreExpoenente\">' + valorTexto + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btnEliminar' + contador + '\" onClick=eliminar(\"contenedor' + contador + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
-            /* Agregar a listaContador */
-            listaContador.push('contenedor' + contador);
-
-            console.log(listaNombres);
-            console.log(listaNumeros);
-            console.log(listaContador);
-          }
-          else {
-            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
-            alert('El nombre ya existe en la lista');
-          }
-        }
+        
       }
     });
     /* Guardar los arreglos en variables que sirvan para php */
@@ -170,108 +107,40 @@ function cajas(nombre_completo, numeros_control, nombre_completo_asesores, rfc_a
   /* Sección de los asesores */
   listaOpciones2.forEach(h => {
     h.addEventListener('click', (E) => {
-      var valorTexto3 = E.target.textContent;
+      var valorTexto3 = (E.target.textContent).trim();
 
       /* Si el valor del texto es diferente de vacio, entonces */
       if (valorTexto3 != '') {
 
-        if (valorTexto3[0] == ' ') {
-          console.log('Condicional por espaciado.');
+        if (listaNombresAsesores.includes(valorTexto3) == false) {
+          /* Agrega el valor al arreglo */
+          listaNombresAsesores.push(valorTexto3);
 
-          var valorTexto4 = valorTexto3.trim();
-          valorTexto3 = valorTexto4;
+          var posicion_numero2 = 0
 
-          /* Verifica que valorTexto no exista en el arreglo */
-          var flag = false;
-          for (var i = 0; i < listaNombresAsesores.length; i++) {
-            if (listaNombresAsesores[i] == valorTexto3) {
-              flag = true;
+          for (var i = 0; i < nombre_completo_asesores2.length; i++) {
+            if (nombre_completo_asesores2[i] == valorTexto3) {
+              posicion_numero2 = i;
             }
           }
 
-          /* Si el valor no existe en el arreglo, entonces */
-          if (flag == false) {
+          /* Agrega el valor al arreglo */
+          listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
 
-            /* Agrega el valor al arreglo */
-            listaNombresAsesores.push(valorTexto3);
+          /* cuenta los elementos de la lista */
+          var contador2 = listaNombresAsesores.length;
 
-            var posicion_numero2 = 0
+          /* Agrega el valor al div */
+          nombresLista2.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminar(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
 
-            for (var i = 0; i < nombre_completo_asesores2.length; i++) {
-              if (nombre_completo_asesores2[i] == valorTexto3) {
-                posicion_numero2 = i;
-              }
-            }
-
-            /* Agrega el valor al arreglo */
-            listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
-
-            /* cuenta los elementos de la lista */
-            var contador2 = listaNombresAsesores.length;
-
-            /* Agrega el valor al div */
-            nombresLista2.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"submit\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminar(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
-            /* Agregar a listaContador */
-            listaContadorAsesores.push('contenedor2' + contador2);
-
-            console.log(listaNombresAsesores);
-            console.log(listaRfcAsesores);
-            console.log(listaContadorAsesores);
-          }
-
-          else {
+          /* Agregar a listaContador */
+          listaContadorAsesores.push('contenedor2' + contador2);
+          
+        }else {
             alert('El nombre ya existe en la lista');
-          }
-        }
-        else {
-          console.log('Condicional sin espaciado.');
-
-          /* Verifica que valorTexto no exista en el arreglo */
-          var flag = false;
-          for (var i = 0; i < listaNombresAsesores.length; i++) {
-            if (listaNombresAsesores[i] == valorTexto3) {
-              flag = true;
-            }
-          }
-
-          /* Si el valor no existe en el arreglo, entonces */
-          if (flag == false) {
-
-            /* Agrega el valor al arreglo */
-            listaNombresAsesores.push(valorTexto3);
-
-            var posicion_numero2 = 0
-
-            for (var i = 0; i < nombre_completo_asesores2.length; i++) {
-              if (nombre_completo_asesores2[i] == valorTexto3) {
-                posicion_numero2 = i;
-              }
-            }
-
-            /* Agrega el valor al arreglo */
-            listaRfcAsesores.push(rfc_asesores2[posicion_numero2]);
-
-            /* cuenta los elementos de la lista */
-            var contador2 = listaNombresAsesores.length;
-
-            /* Agrega el valor al div */
-            listaNombresAsesores.innerHTML += '<div class=\"nombres\" id=\"contenedor2' + contador2 + '\"> <p class=\"nombreAsistente\">' + valorTexto3 + '</p> <button class=\"btnEliminar\" type\"button\" name=\"btn2Eliminar' + contador2 + '\" onClick=eliminarAsesores(\"contenedor2' + contador2 + '\")><ion-icon name=\"backspace-outline\" class=\"iconoBoton\"></ion-icon></button> </div>';
-
-            /* Agregar a listaContador */
-            listaContadorAsesores.push('contenedor2' + contador2);
-
-            console.log(listaNombresAsesores);
-            console.log(listaRfcAsesores);
-            console.log(listaContadorAsesores);
-
-          }
-          else {
-            console.log('Estamos en el tercer condicional al validar que si existe el valor en el arreglo')
-            alert('El nombre ya existe en la lista');
-          }
         }
       }
+
     });
   });
 
