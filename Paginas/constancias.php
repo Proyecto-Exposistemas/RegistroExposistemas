@@ -19,7 +19,7 @@
         <ul>
 
           <li>
-            <a href="http://localhost/">
+            <a href="../Paginas/administrativo.php">
               <span class="icon">
                 <ion-icon name="business-outline" id="LogoReturn"></ion-icon>
                 </ion-icon>
@@ -130,6 +130,13 @@
       </form>
 
       <form action="../CrearExcel/excel.php" id="formulario_excel">
+        <label>Seleccione la fehca del evento</label>
+        <?php
+        $fecha = date("Y") . '-' . date("m") . '-' . date("d");
+        //echo $fecha;
+        ?>
+        <input type="date" id="fecha" name="fecha" value="<?php echo $fecha; ?>" min="<?php $fecha; ?>" max="<?php date("Y") . "-12-31" ?>">
+
         <input class="btn" type="submit" value="Generar excel">
       </form>
 

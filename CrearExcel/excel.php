@@ -1,10 +1,11 @@
 <?php
-    setlocale(LC_ALL, "es_ES");
+    //setlocale(LC_ALL, "es_ES");
     //importar la libreria
     require 'vendor/autoload.php';
 
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
     use PhpOffice\PhpSpreadsheet\Writer\Xls;
+    use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
     use PhpOffice\PhpSpreadsheet\IOFactory;
 
     //instanciar la clase
@@ -25,9 +26,13 @@
     $obj->conexionBD();
 
     //obtener la fecha en español
+    $getDate = $_GET["fecha"];
+
+    $date = separarFecha($getDate);
+    
     $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     
-    $fecha = date("d") . ' de ' . $meses[date("m")-1] . ' de ' . date("Y");
+    $fecha = $date[2] . ' de ' . $meses[$date[1]-1] . ' de ' . $date[0];
 
     //sacar los datos para las constancias de alumnos
     $consulta = "SELECT alumnos.nombre as nombre, alumnos.paterno as paterno, alumnos.materno as materno, evento.evento as evento
@@ -107,6 +112,33 @@
     $writer->save('php://output');
 
     //volver a la ventana
-    include_once("../Paginas/constancias.php");
+    //include_once("../Paginas/constancias.php");
+
+    function separarFecha($fecha){
+        $year = '';
+        $mes = '';
+        $dia = '';
+
+        
+
+        for($i=0; $i<=3; $i++){
+            $year = $year . $fecha[$i];
+            //echo $year . '<br>';
+        }
+
+        for ($i = 5; $i <= 6; $i++) {
+            $mes = $mes . $fecha[$i];
+            //echo $mes . '<br>';
+        }
+
+        for ($i = 8; $i <= 9; $i++) {
+            $dia = $dia . $fecha[$i];
+            //echo $dia . '<br>';
+        }
+
+        $date = [$year, $mes, $dia,];
+
+        return $date;
+    }
 
 ?>
