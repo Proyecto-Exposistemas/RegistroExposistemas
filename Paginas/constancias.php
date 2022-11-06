@@ -19,7 +19,7 @@
         <ul>
   
           <li>
-            <a href="../Paginas/administrativo.php">
+            <a href="http://localhost/">
               <span class="icon">
                 <ion-icon name="business-outline" id="LogoReturn"></ion-icon>
                 </ion-icon>

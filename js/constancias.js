@@ -41,7 +41,7 @@ function GenerarArchivo(event) {
     let form = new FormData();
     form.append("generar",true);
 
-    fetch("/php/Generar_constancias.php",{
+    fetch("../php/Generar_constancias.php",{
         method: "POST",
         body: form
     }).then(response => response.json())
