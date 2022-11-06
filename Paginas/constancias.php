@@ -17,7 +17,7 @@
     <article class="navigation">
       <nav>
         <ul>
-  
+
           <li>
             <a href="http://localhost/">
               <span class="icon">
@@ -27,7 +27,7 @@
               <span class="title">Exposistemas ISC</span>
             </a>
           </li>
-  
+
           <li>
             <a href="#">
               <span class="icon">
@@ -36,7 +36,7 @@
               <span class="title">Registro del Programa</span>
             </a>
           </li>
-  
+
           <li>
             <a href="../Paginas/constancias.php">
               <span class="icon">
@@ -45,7 +45,7 @@
               <span class="title">Emisión de constancias</span>
             </a>
           </li>
-  
+
           <li>
             <a href="../Paginas/reportes_alumnos.php">
               <span class="icon">
@@ -54,7 +54,7 @@
               <span class="title">Reportes de asistencia</span>
             </a>
           </li>
-  
+
           <li>
             <a href="#">
               <span class="icon">
@@ -63,7 +63,7 @@
               <span class="title">Consulta del Programa</span>
             </a>
           </li>
-  
+
           <li>
             <a href="#">
               <span class="icon">
@@ -72,7 +72,7 @@
               <span class="title">Cambio de contraseña</span>
             </a>
           </li>
-  
+
           <li>
             <a href="#">
               <span class="icon">
@@ -81,7 +81,7 @@
               <span class="title">Escanear QR</span>
             </a>
           </li>
-  
+
           <li>
             <a href="../SesionesUsuario/logout.php">
               <span class="icon">
@@ -90,15 +90,15 @@
               <span class="title">Cerrar sesión</span>
             </a>
           </li>
-  
+
         </ul>
-  
+
         <div class="toggle"></div>
       </nav>
     </article>
-  
+
     <div class="card">
-  
+
       <form action="" enctype="multipart/form-data" id="formulario">
         <h2>Constancias </h2>
         <div id="informacion" class="informacion"></div>
@@ -115,7 +115,7 @@
       </form>
 
       <form action="" id="formulario_generar"><br>
-  
+
         <div class="conte1">
           <a id="alumnos" href="../GeneradorConstancias/constancias/ConstanciasAlumnos.docx" download="ConstanciaAlumnos" hidden> Descargar constancia alumnos</a>
 
@@ -127,6 +127,10 @@
 
         <input class="btn" type="submit" value="Generar constancia">
 
+      </form>
+
+      <form action="../CrearExcel/excel.php" id="formulario_excel">
+        <input class="btn" type="submit" value="Generar excel">
       </form>
 
     </div>
