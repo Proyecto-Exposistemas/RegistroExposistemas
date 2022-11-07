@@ -316,7 +316,8 @@ form.sign-in-form {
 
   .signin-signup,
   .container.sign-up-mode .signin-signup {
-    left: 50%;
+    left: 24%;
+    top: 70%;
   }
 
   .panels-container {
@@ -487,3 +488,4 @@ form.sign-in-form {
 #cajaRolEstudiante {
   display: none;
 }
+

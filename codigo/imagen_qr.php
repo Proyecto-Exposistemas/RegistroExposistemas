@@ -34,7 +34,7 @@
                     $contenido=$identificador;
                 
                 QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                echo "POR FAVOR DESCARGA TU CODIGO QR";
+                echo "Lo necesitarás para entrar a la sala";
                 echo '<img src="'.$filename.'" />';
               ?>
         </div>

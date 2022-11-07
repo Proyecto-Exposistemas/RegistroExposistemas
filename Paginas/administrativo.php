@@ -23,7 +23,7 @@
           <li>
             <a href="">
               <span class="icon">
-                <ion-icon name="business-outline"></ion-icon>
+                <ion-icon name="home-outline"></ion-icon>
                 </ion-icon>
               </span>
               <span class="title">Exposistemas ISC</span>
@@ -58,7 +58,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href=http://localhost/">
               <span class="icon">
                 <ion-icon name="book-outline"></ion-icon>
               </span>
@@ -67,7 +67,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="http://localhost/">
               <span class="icon">
                 <ion-icon name="finger-print-outline"></ion-icon>
               </span>
@@ -76,7 +76,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="http://localhost/">
               <span class="icon">
                 <ion-icon name="qr-code-outline"></ion-icon>
               </span>
