@@ -252,17 +252,10 @@
                     $con=new CRUD_general();
                     $con->conexionBD();
                 
-                    /* $consulta="SELECT DISTINCT evento.no_evento,evento.evento,evento.descripcion,evento.hora_inicio,alumnos.nombre,docentes.nombre,asesores_evento.materia
-                    FROM evento,alumnos,evento_alumnos,docentes,asesores_evento WHERE alumnos.no_control=evento_alumnos.no_control and docentes.rfc=asesores_evento.rfc and evento.no_evento=evento_alumnos.no_evento and evento.no_evento=asesores_evento.no_evento ORDER BY evento.no_evento";
-                    $consulta_2="SELECT *FROM asesores_evento";
-                    $parametro=[":selecion"=>"selecion_2"];
-                    $resultado=$con->Mostrar($consulta);
-                    $resultado_2=$con->Mostrar($consulta_2); */
-                    //var_dump($resultado);
-                    $consulta_evento  = "SELECT DISTINCT evento.no_evento, evento.evento, evento.descripcion, 
+                    $consulta_evento  = "SELECT DISTINCT  evento.no_evento, evento.evento, evento.descripcion, 
                     evento.hora_inicio, asesores_evento.materia 
                     FROM evento, asesores_evento 
-                    WHERE evento.no_evento = asesores_evento.no_evento";
+                    WHERE evento.no_evento = asesores_evento.no_evento ORDER BY evento.no_evento ASC";
                     $resultadoE = $con->MOSTRAR($consulta_evento);
 
                     $consulta_asesores = "SELECT DISTINCT docentes.nombre, docentes.paterno 
