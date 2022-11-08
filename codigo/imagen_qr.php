@@ -34,7 +34,7 @@
                     $contenido=$identificador;
                 
                 QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                echo "<span>Lo necesitarás para entrar a la sala<span>";
+                echo "<span>Lo necesitarás para entrar a la sala</span>";
                 echo '<img src="'.$filename.'" />';
               ?>
         </div>
