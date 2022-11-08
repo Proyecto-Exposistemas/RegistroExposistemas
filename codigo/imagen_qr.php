@@ -14,8 +14,8 @@
     <div class="forms-container">
       <form action="">
         <div class="signin-signup">
-            <h2>Toma tu QR</h2>
-            <h4>Captura una screenshot de tu código</h4>
+            <h2>Aqui tienes tu QR</h2>
+            <h4><span>Toma</span> una <span>screenshot</span> de tu código QR</h4>
 
             <?php
                 require 'phpqrcode/qrlib.php';
@@ -34,7 +34,7 @@
                     $contenido=$identificador;
                 
                 QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                echo "Lo necesitarás para entrar a la sala";
+                echo "<span>Lo necesitarás para entrar a la sala<span>";
                 echo '<img src="'.$filename.'" />';
               ?>
         </div>

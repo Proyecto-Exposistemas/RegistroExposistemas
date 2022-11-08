@@ -489,3 +489,7 @@ form.sign-in-form {
   display: none;
 }
 
+span{
+  color: red;
+  font-weight: 800;
+}
