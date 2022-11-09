@@ -16,7 +16,7 @@
       <div class="signin-signup">
 
         <form method="POST" class="sign-in-form" id="formulario">
-          <h2 class="title">Registro ExpoSistemas</h2>
+          <h2 class="title">Confirma tus datos</h2>
 
           <div class="input-field">
             <i class="fas fa-user"></i>
@@ -41,7 +41,7 @@
           <div class="input-field" id="cajaIdentidad">
             <i class="fas fa-clipboard"></i>
             <div class="options">
-              
+
               <select name="identdad" id="identidad">
                 <option value="0">¿Quién Eres?</option>
                 <option value="1">Estudiante</option>
@@ -55,7 +55,7 @@
           <div class="input-field" id="cajaRoles">
             <i class="fas fa-clipboard"></i>
             <div class="options">
-              
+
               <select name="roles" id="roles">
                 <option value="0">Selecciona un rol</option>
                 <option value="1">Espectador</option>
@@ -79,12 +79,12 @@
           <div class="input-field" id="cajaRolEstudiante">
             <i class="fas fa-clipboard"></i>
             <div class="options">
-                
-                <select name="rolEstudiante" id="rolEstudiante">
-                  <option value="0">Selecciona un rol</option>
-                  <option value="1">Espectador</option>
-                  <option value="2">Expositor</option>
-                </select>
+
+              <select name="rolEstudiante" id="rolEstudiante">
+                <option value="0">Selecciona un rol</option>
+                <option value="1">Espectador</option>
+                <option value="2">Expositor</option>
+              </select>
             </div>
 
           </div>
@@ -101,7 +101,7 @@
 
           <div class="input-field" id="cajaFuncion">
             <i class="fas fa-award"></i>
-            
+
             <select name="inputFuncion" id="inputFuncion">
               <option value="0">Selecciona una funcion</option>
               <option value="Coordinador del programa general">Coordinador del programa general</option>
@@ -117,30 +117,18 @@
             <i class="fas fa-id-card"></i>
             <input id="rfc" type="text" placeholder="RFC" name="rfc" autocomplete="off" />
           </div>
-          
+
           <div class="input-field" id="cajaProcedencia">
             <i class="fas fa-map-marker-alt"></i>
             <input id="lugar" type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
           </div>
-          
+
           <a href="/codigo/ventana_auxiliar_qr.php">Ventana auxiliar qr</a>
-          <input  id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar"  />
+          <input id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar" />
 
         </form>
+
         <form method="POST" class="sign-up-form">
-          <h2 class="title">Iniciar sesión administrador</h2>
-
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input type="text" placeholder="Usuario" name="inputUser" class="" autocomplete="off" />
-          </div>
-
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Contraseña" name="inputPassword" class="" autocomplete="off" />
-          </div>
-
-          <input type="submit" value="Iniciar sesión" class="btn solid" />
         </form>
 
       </div>
@@ -149,13 +137,11 @@
     <div class="panels-container">
       <div class="panel left-panel" id="panel1">
         <div class="content">
-          <h3 class="mensaje1">¿Eres un administrador?</h3>
-          <p class="mensaje1">Si eres un administrador, inicia sesión para poder ingresar a el sistema.</p>
-          <button class="btn transparent boton1" id="sign-up-btn">
-            Iniciar sesión
-          </button>
+          <h3 class="mensaje1"></h3>
+          <p class="mensaje1"></p>
+          
         </div>
-        <img src="img/logo-ISC-removebg.png" class="image" alt="" />
+        <img src="../img/logo-ISC-removebg.png" class="image" alt="" />
       </div>
 
       <div class="panel right-panel" id="panel2">
@@ -180,7 +166,7 @@
   <script src="js/registro.js"></script>
   <!-- <script src="js/java.js"></script> -->
   <script src="js/toast_alert.js"></script>
-  
+
 </body>
 
 </html>
