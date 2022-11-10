@@ -19,6 +19,7 @@ input {
   overflow: hidden;
 }
 
+
 .forms-container {
   position: absolute;
   width: 100%;
@@ -173,6 +174,7 @@ form.sign-in-form {
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
+  
 }
 
 .btn:hover {
