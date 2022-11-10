@@ -125,7 +125,9 @@
             <input id="lugar" type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
           </div>
           
-          <button id="open" type="button" class="btn solid" >Registrarse</button>
+          <a href="/codigo/ventana_auxiliar_qr.php">Dar click en este enlance si perdiste tu codigo qr</a>
+          <input  id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar"  />
+
         </form>
 
         <form method="POST" class="sign-up-form">
@@ -148,45 +150,19 @@
     </div>
 
     <div id="modal_container" class="modal-container">
-      <div class="modal">
-        <h2>Confirma que tus datos sean correctos</h2>
-  
-        <div class="datos">
-          <h4>Nombre:</h4>
-          <p id="nombre">Alejandro</p>
+      <div class="modal-card">
+        <div class="modal">
+          <h2>Confirma que tus datos sean correctos</h2>
+
         </div>
-  
-        <div class="datos">
-          <h4>Apellido paterno:</h4>
-          <p id="apellidoPaterno">Gordo</p>
-        </div>
-  
-        <div class="datos">
-          <h4>Apellido materno:</h4>
-          <p id="apellidoMaterno">Barajas</p>
-        </div>
-  
-        <div class="datos">
-          <h4>Correo:</h4>
-          <p id="correo">Rui0990987@gmail.com</p>
-        </div>
-  
-        <div class="datos">
-          <h4>Identidad:</h4>
-          <p id="seccion">Estudiante</p>
-        </div>
-  
-        <div class="datos">
-          <h4>Rol:</h4>
-          <p id="rol">Espectador</p>
-        </div>
-  
+
         <div class="botones">
-          <button id="close" class="btn Deny">Cancelar</button>
-          <button id="confirmar" class="submit btn">Aceptar</button>
+          <input type="button" id="close" class="btn Deny" value="Cancelar" />
+          <input type="button" id="confirmar" class="submit btn" value="Registrar"/>
         </div>
-  
+        
       </div>
+
     </div>
 
     <div class="panels-container">
@@ -221,8 +197,9 @@
   <script src="../js/app.js"></script>
   <script src="../js/campos.js"></script>
   <script src="../js/registro.js"></script>
-  <script src="js/toast_alert.js"></script>
+  <script src="../js/toast_alert.js"></script>
   <script src="../js/modal.js"></script>
+
 </body>
 
 </html>

@@ -100,34 +100,33 @@
               <i class="fas fa-map-marker-alt"></i>
               <input id="lugar" type="text" placeholder="Correo" name="procedencia" autocomplete="off" />
             </div>
-            <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"  />
+            <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"/>
         </div>
 
-      </form>
-
-      <div class="Contenedor_codigo_qr">
-          <?php
-            require 'phpqrcode/qrlib.php';
-
-            $dir='temp/';
-            $identificador=$_GET['identificador'];
-            
-            if(!file_exists($dir))
-                    mkdir($dir);
-
-                $filename= $dir.'test.png';
-                
-                $tamanio=10;
-                $level='M';
-                $frameSize=3;
-                $contenido=$identificador;
-            
-            QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-            echo "POR FAVOR DESCARGA TU CODIGO QR";
-            echo '<img src="'.$filename.'" />';
-          ?>
-        </div>   
+      </form> 
     </div>
+    <?php
+            require 'phpqrcode/qrlib.php';
+            $nivel = $_POST['identdad'];
+            $dir='temp/';
+
+            if($nivel==0)
+              echo "Entre en la condicional";
+              $numero_control = $_POST['numeroControl'];
+              if(!file_exists($dir))
+                      mkdir($dir);
+
+                  $filename= $dir.'test.png';
+                  
+                  $tamanio=10;
+                  $level='M';
+                  $frameSize=3;
+                  $contenido=$numero_control;
+              
+              QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
+              echo "POR FAVOR DESCARGA TU CODIGO QR";
+              echo '<img src="'.$filename.'" />';
+          ?> 
 
     <div class="panels-container">
       <div class="panel left-panel" id="panel1">
