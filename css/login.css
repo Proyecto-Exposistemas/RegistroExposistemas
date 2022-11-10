@@ -407,8 +407,9 @@ form.sign-in-form {
 
 @media (max-width: 570px) {
   .title {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
   }
+
   .input-field {
     max-width: 450px;
     width: 100%;
@@ -470,6 +471,7 @@ form.sign-in-form {
   .texto2{
     display: none;
   }
+  
 }
 
 .campoUppercase {
