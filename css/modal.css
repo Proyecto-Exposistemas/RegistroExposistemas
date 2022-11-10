@@ -29,7 +29,7 @@
     z-index: 10;
 }
 
-.modal {
+/* .modal {
     background-color: #fff;
     width: 600px;
     max-width: 100%;
@@ -37,7 +37,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     text-align: center;
-}
+} */
 
 .modal h2 {
     margin: 0;
@@ -83,4 +83,14 @@
     background-position: right bottom;
     color: #FFF;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-card{
+    background-color: #fff;
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center
 }
