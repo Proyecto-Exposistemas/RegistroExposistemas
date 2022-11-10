@@ -35,7 +35,7 @@ function obtenerDatos() {
     let rolUsuario = document.getElementById("rolEstudiante").value;
     let semestre = document.getElementById("semestre").value;
 
-    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de identidad:</h4> <p class="identidad">Estudiante</p> </div>';
+    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de registro:</h4> <p class="identidad">Estudiante</p> </div>';
 
     cuerpoModal.innerHTML += '<div class="datos"> <h4>Teléfono:</h4> <p class="tel">' + telefono + '</p> </div>';
 
@@ -56,7 +56,7 @@ function obtenerDatos() {
     let funcionUsuario = document.getElementById("inputFuncion").value;
     let rfcUsuario = document.getElementById("rfc").value;
 
-    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de identidad:</h4> <p class="identidad">Docente</p> </div>';
+    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de registro:</h4> <p class="identidad">Docente</p> </div>';
 
     cuerpoModal.innerHTML += '<div class="datos"> <h4>Teléfono:</h4> <p class="tel">' + telefono + '</p> </div>';
 
@@ -71,7 +71,7 @@ function obtenerDatos() {
     let rolUsuario = document.getElementById("roles").value;
     let procedenciaUsuario = document.getElementById("lugar").value;
 
-    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de identidad:</h4> <p class="identidad">Externo</p> </div>';
+    cuerpoModal.innerHTML += '<div class="datos"> <h4>Tipo de registro:</h4> <p class="identidad">Externo</p> </div>';
 
     if (rolUsuario == 1) {
       cuerpoModal.innerHTML += '<div class="datos"> <h4>Rol:</h4> <p class="rol">Espectador</p> </div>';
