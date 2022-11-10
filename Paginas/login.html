@@ -7,6 +7,7 @@
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/login.css" />
   <link rel="stylesheet" href="/css/toast_alert.css">
+  <link rel="stylesheet" href="../css/modal.css">
   <title>Iniciar sesión o registrarse</title>
 </head>
 
@@ -123,10 +124,9 @@
             <input id="lugar" type="text" placeholder="Lugar de procedencia" name="procedencia" autocomplete="off" />
           </div>
           
-          <a href="/codigo/ventana_auxiliar_qr.php">Ventana auxiliar qr</a>
-          <input  id="btn" type="submit" value="Registrarse" class="btn solid" id="enviar"  />
-
+          <button id="open" type="button" class="btn solid" >Registrarse</button>
         </form>
+
         <form method="POST" class="sign-up-form">
           <h2 class="title">Iniciar sesión administrador</h2>
 
@@ -146,6 +146,48 @@
       </div>
     </div>
 
+    <div id="modal_container" class="modal-container">
+      <div class="modal">
+        <h2>Confirma que tus datos sean correctos</h2>
+  
+        <div class="datos">
+          <h4>Nombre:</h4>
+          <p id="nombre">Alejandro</p>
+        </div>
+  
+        <div class="datos">
+          <h4>Apellido paterno:</h4>
+          <p id="apellidoPaterno">Gordo</p>
+        </div>
+  
+        <div class="datos">
+          <h4>Apellido materno:</h4>
+          <p id="apellidoMaterno">Barajas</p>
+        </div>
+  
+        <div class="datos">
+          <h4>Correo:</h4>
+          <p id="correo">Rui0990987@gmail.com</p>
+        </div>
+  
+        <div class="datos">
+          <h4>Identidad:</h4>
+          <p id="seccion">Estudiante</p>
+        </div>
+  
+        <div class="datos">
+          <h4>Rol:</h4>
+          <p id="rol">Espectador</p>
+        </div>
+  
+        <div class="botones">
+          <button id="close" class="btn Deny">Cancelar</button>
+          <button id="confirmar" class="submit btn">Aceptar</button>
+        </div>
+  
+      </div>
+    </div>
+
     <div class="panels-container">
       <div class="panel left-panel" id="panel1">
         <div class="content">
@@ -155,7 +197,7 @@
             Iniciar sesión
           </button>
         </div>
-        <img src="img/logo-ISC-removebg.png" class="image" alt="" />
+        <img src="../img/logo-ISC.png" class="image" alt="" />
       </div>
 
       <div class="panel right-panel" id="panel2">
@@ -175,12 +217,11 @@
 
   </div>
 
-  <script src="js/app.js"></script>
-  <script src="js/campos.js"></script>
-  <script src="js/registro.js"></script>
-  <!-- <script src="js/java.js"></script> -->
+  <script src="../js/app.js"></script>
+  <script src="../js/campos.js"></script>
+  <script src="../js/registro.js"></script>
   <script src="js/toast_alert.js"></script>
-  
+  <script src="../js/modal.js"></script>
 </body>
 
 </html>
