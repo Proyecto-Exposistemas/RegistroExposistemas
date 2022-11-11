@@ -111,6 +111,7 @@
                    $_GET['procedencia'];
                    $_GET['rfc'];
                    $_POST['generar'];
+                   $contenido['Hola mundo'];
                  }
                 $bandera=FALSE;
                 $nivel=['identidad'];
