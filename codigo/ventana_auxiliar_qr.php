@@ -13,6 +13,7 @@
 <body>
   <div class="container" id="circulo">
     <div class="forms-container">
+      <br><br><br><br><br>
       <form action="">
         <div class="signin-signup">
             <h2>Toma tu QR</h2>
@@ -101,18 +102,16 @@
               <input id="lugar" type="text" placeholder="Correo" name="procedencia" autocomplete="off" />
             </div>
             <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"/>
-        </div>
-
-      </form> 
-    </div>
-    <?php
+             <?php
             require 'phpqrcode/qrlib.php';
             $nivel = $_POST['identdad'];
             $dir='temp/';
+            $numero_control = $_GET['numeroControl'];
+            $rfc=$_GET['rfc'];
+            $correo=$_GET['procedencia'];
+            $bandera=FALSE;
 
-            if($nivel==0)
-              echo "Entre en la condicional";
-              $numero_control = $_POST['numeroControl'];
+            if($nivel==1 || $nivel==2 || $nivel==3)
               if(!file_exists($dir))
                       mkdir($dir);
 
@@ -121,12 +120,23 @@
                   $tamanio=10;
                   $level='M';
                   $frameSize=3;
-                  $contenido=$numero_control;
-              
-              QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-              echo "POR FAVOR DESCARGA TU CODIGO QR";
-              echo '<img src="'.$filename.'" />';
+                  if($nivel==1 && $bandera==FALSE)
+                      $contenido=$numero_control;
+                      $bandera=TRUE;
+                  if($nivel==2 && $bandera==FALSE)
+                      $contenido=$rfc;
+                      $bandera=TRUE;  
+                  if($nivel==3 && $bandera==FALSE)
+                      $contenido=$correo;
+                      $bandera=TRUE;      
+                  if($bandera==TRUE)
+                    QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
+                    echo '<img src="'.$filename.'" />';
+
           ?> 
+        </div>
+      </form> 
+    </div>
 
     <div class="panels-container">
       <div class="panel left-panel" id="panel1">
@@ -139,10 +149,9 @@
       </div>
 
     </div>
-
   </div>
+
   <script src="/js/campos_ventana_auxiliar.js"></script>
 
 </body>
-
 </html>
