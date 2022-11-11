@@ -1,5 +1,5 @@
 <?php
-
+//sube la template
 $data = ["mensaje"=>"No se pudo subir archivo", "error"=>true];
 
 if(isset($_FILES["file"]["name"]) && isset($_FILES["file"]["tmp_name"])){

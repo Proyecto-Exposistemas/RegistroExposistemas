@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ventana auxiliar código qr</title>
+  <title>Recuperación código qr </title>
   <link rel="stylesheet" href="../css/logincopy.css">
   <link rel="shortcut icon" href="/img/logo-ISC.ico" type="image/x-icon">
 </head>
@@ -13,10 +13,12 @@
 <body>
   <div class="container" id="circulo">
     <div class="forms-container">
+      <br><br><br><br><br>
       <form action="">
+         <br><br><br><br><br><br><br><br><br><br>
         <div class="signin-signup">
-            <h2>Toma tu QR</h2>
-            <h4>Captura una screenshot de tu código</h4>
+            <h2>Retoma captura de tu codigo qr </h2>
+            <h4>Ya que si no lo llevas no podras ingresar</h4>
             <div class="input-field" id="cajaIdentidad">
               <i class="fas fa-clipboard"></i>
               <div class="options">
@@ -100,33 +102,43 @@
               <i class="fas fa-map-marker-alt"></i>
               <input id="lugar" type="text" placeholder="Correo" name="procedencia" autocomplete="off" />
             </div>
-            <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"  />
+            <input  id="btn" type="submit" value="Generar" name="generar" class="btn solid" id="enviar"/>
+             <?php
+                require 'phpqrcode/qrlib.php';
+                if(isset($_REQUEST['generar'])){
+                  $nivel = $_REQUEST['identdad'];
+                  $numero_control = $_REQUEST['numeroControl'];
+                  $rfc=$_REQUEST['rfc'];
+                  $correo=$_REQUEST['procedencia'];
+                }
+                $bandera=FALSE;
+                $dir='temp/';
+
+                if($nivel==1 || $nivel==2 || $nivel==3)
+                  if(!file_exists($dir))
+                          mkdir($dir);
+
+                      $filename= $dir.'test.png';
+                      
+                      $tamanio=10;
+                      $level='M';
+                      $frameSize=3;
+                      if($nivel==1 && $bandera==FALSE)
+                          $contenido=$numero_control;
+                          $bandera=TRUE;
+                      if($nivel==2 && $bandera==FALSE)
+                          $contenido=$rfc;
+                          $bandera=TRUE; 
+                      if($nivel==3 && $bandera==FALSE)
+                          $contenido=$correo;
+                          $bandera=TRUE;     
+                      if($bandera==TRUE)
+                        QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
+                        echo '<img src="'.$filename.'" />';
+
+          ?> 
         </div>
-
-      </form>
-
-      <div class="Contenedor_codigo_qr">
-          <?php
-            require 'phpqrcode/qrlib.php';
-
-            $dir='temp/';
-            $identificador=$_GET['identificador'];
-            
-            if(!file_exists($dir))
-                    mkdir($dir);
-
-                $filename= $dir.'test.png';
-                
-                $tamanio=10;
-                $level='M';
-                $frameSize=3;
-                $contenido=$identificador;
-            
-            QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-            echo "POR FAVOR DESCARGA TU CODIGO QR";
-            echo '<img src="'.$filename.'" />';
-          ?>
-        </div>   
+      </form> 
     </div>
 
     <div class="panels-container">
@@ -140,10 +152,9 @@
       </div>
 
     </div>
-
   </div>
+
   <script src="/js/campos_ventana_auxiliar.js"></script>
 
 </body>
-
 </html>

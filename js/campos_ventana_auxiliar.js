@@ -11,7 +11,7 @@ let inputRfc = document.getElementById("cajaRfc")
 let inputProcedencia = document.getElementById("cajaProcedencia")
 let inputFuncion = document.getElementById("cajaFuncion")
 let inputcorreo=document.getElementById("caja_correo")
-
+let contenedor_codigo=document.getElementById("contenedor_codigo")
 let botonEnviar = document.getElementById("enviar")
 
 let circulo = document.getElementById("circulo")
@@ -31,6 +31,7 @@ identidad.addEventListener("change", function() {
         inputFuncion.style.display = "none"
         inputRolEstudiante.style.display = "none"
         inputcorreo.style.display = "none"
+        contenedor_codigo.style.display="none"
     }
     if(seleccion == "1") {
         /* Código para los campos del alumno */
