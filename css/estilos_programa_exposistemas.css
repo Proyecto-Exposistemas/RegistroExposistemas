@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    user-select: none;
+    scroll-behavior: smooth;
+} 
+
+h2{
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+} 
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    width: 100%;
+    margin: 10px;
+} 
+ 
+.table-cebra {
+    width: 100%;
+    color: #fff;
+    margin: 0 auto;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.table-cebra td {
+    color: black;
+    background-color: white;
+    border: none;
+    /* border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; */
+    width: 250px;
+}
+
+.table-cebra th {
+    color: white;
+    background: #668588;
+    width: 250px;
+    border: none;
+}
+
+.table-cebra td:last-child,
+.table-cebra th:last-child {
+    border-right: 0;
+}
+
+.table-cebra tbody tr {
+    background: #1e355e;
+}
+
+.table-cebra tbody tr:nth-child(2n) {
+    background: white;
+}
+
+.table-cebra .sticky {
+    position: sticky;
+    left: 0;
+}
+
+.table-cebra tbody tr .sticky {
+    background: white;
+}
+
+.table-cebra tbody tr:nth-child(2n) {
+    background: #f2f2f2;
+} 
+
+.btn {
+    width: 10%;
+
+    background: linear-gradient(135deg, #546678 0%, #282e48 100%);
+    background-size: 200% 100%;
+    background-position: left center;
+    transition: background 300ms ease;
+
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background-position: right bottom;
+    color: #FFF;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+}
