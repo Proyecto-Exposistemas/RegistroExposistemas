@@ -1,9 +1,0 @@
-Numero de actividad | Nombre de actividad | Descripción | Hora de Inicio | Expositores | Asesores | Materia
-
-Desde las tablas
--Alumnos
--Asesores_evento
--Docentes
--Evento
--Evento_Alumnos
--Evento_Externos
