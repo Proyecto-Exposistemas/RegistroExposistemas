@@ -1,4 +1,5 @@
 <?php
+//cuando aprietan el boton viene aqui a llamar a la clase que genera las constancias
 require_once("../GeneradorConstancias/Generar_constancias_participantes.php");
 
 $data = ["mensaje"=>"No se han podido generar las constancias", "error"=>true];

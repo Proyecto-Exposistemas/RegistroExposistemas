@@ -2,6 +2,13 @@
 
 require_once "vendor/autoload.php";
 require_once "../CRUD/CRUD_bd_general.php";
+/**
+ * estas clase usa la libreria phpWord para la generacion y combinacion de constancias
+ * se remplazan las variables de la template con el nombre del alumno, docente o externo
+ * cuando se han generado las constancias individualmente en archivos docx, 
+ * todos esos archivos se juntan en uno solo, al que se llama ConstanciasAlumnos, ConstanciasDocentes
+ * o ConstanciasExternos.
+ */
 
 class Constancias_participantes extends CRUD_general{
 
@@ -148,12 +155,9 @@ class Constancias_participantes extends CRUD_general{
 
         for ($i=1; $i < $this->contador_constancias ; $i++) { 
 
-            $mainTemplateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($archivo1);
-            //$mainTemplateProcessor ->setValue('var_name', $value);
-            
+            $mainTemplateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($archivo1);            
             $innerTemplateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($archivo2);
-            //$innerTemplateProcessor->setValue('var2_name', $value2);
-            
+
             // extract internal xml from template that will be merged inside main template
             $innerXml = $innerTemplateProcessor->gettempDocumentMainPart();
             $innerXml = preg_replace('/^[\s\S]*<w:body>(.*)<\/w:body>.*/', '$1', $innerXml);

@@ -1,6 +1,7 @@
 <?php
 include_once("../CRUD/CRUD_bd_general.php");
-
+//se registra a los externos, docentes o alumnos en la bd, y se manda un identificador
+//para que se cree su codigo qr
 $conexion = new CRUD_general();
 $conexion->conexionBD();
 $identificador = "no hay";
