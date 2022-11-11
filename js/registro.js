@@ -1,9 +1,11 @@
-const form = document.getElementById('formulario');
-form.addEventListener('submit', registrarAlumno);
 
-function registrarAlumno(event){
-    event.preventDefault();
-    let form = new FormData(event.target);
+//boton de la ventana modal
+const boton_modal =  document.getElementById("confirmar_modal");
+boton_modal.addEventListener("click",registrarAlumno);
+
+function registrarAlumno(){
+
+    let form = new FormData(document.getElementById('formulario'));
     fetch("/php/Registro.php",
     {
         method: 'POST',
@@ -12,7 +14,8 @@ function registrarAlumno(event){
     .then(response => response.json())
     .then(data => {
         data.error ?showAlert(data.mensaje,true,data.identificador):showAlert(data.mensaje,false,data.identificador);
-        
+        modal_container.classList.remove('show');
+        limpiarModal();
     });
 
 }
@@ -31,7 +34,7 @@ function showAlert(mensaje,error,identificador){
         callback: function() {
             if(identificador !== "no hay"){
             
-                window.open("../codigo/imagen_qr.php?identificador="+encodeURIComponent(identificador), '_blank');
+                window.open("../codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador), '_blank');
             }
              
             Toastify.reposition();

@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv='cache-control' content='no-cache'>
+  <meta http-equiv='expires' content='0'>
+  <meta http-equiv='pragma' content='no-cache'>
   <title>Generación codigo qr</title>
   <link rel="stylesheet" href="../css/logincopy.css">
 </head>
@@ -16,27 +19,8 @@
         <div class="signin-signup">
             <h2>Aqui tienes tu QR</h2>
             <h4><span>Toma</span> una <span>screenshot</span> de tu código QR</h4>
-
-            <?php
-                require 'phpqrcode/qrlib.php';
-
-                $dir='temp/';
-                $identificador=$_GET['identificador'];
-                
-                if(!file_exists($dir))
-                        mkdir($dir);
-
-                    $filename= $dir.'test.png';
-                    
-                    $tamanio=10;
-                    $level='M';
-                    $frameSize=3;
-                    $contenido=$identificador;
-                
-                QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                echo "<span>Lo necesitarás para entrar a la sala</span>";
-                echo '<img src="'.$filename.'" />';
-              ?>
+            <span>Lo necesitarás para entrar a la sala</span>
+            <img src="" alt="qr-code" id="qr_imagen">
         </div>
       </form>
 
@@ -57,12 +41,13 @@
 
   </div>
 
-  <script src="js/app.js"></script>
-  <script src="js/campos.js"></script>
-  <script src="js/registro.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/campos.js"></script>
+  <script src="../js/registro.js"></script>
+  <script src="../js/recargar.js"></script>
   <!-- <script src="js/java.js"></script> -->
   <script src="../js/toast_alert.js"></script>
 
 </body>
 
-</html>
+</html> 
