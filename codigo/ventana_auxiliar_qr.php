@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ventana auxiliar código qr</title>
+  <title>Recuperación código qr </title>
   <link rel="stylesheet" href="../css/logincopy.css">
   <link rel="shortcut icon" href="/img/logo-ISC.ico" type="image/x-icon">
 </head>
@@ -15,9 +15,10 @@
     <div class="forms-container">
       <br><br><br><br><br>
       <form action="">
+         <br><br><br><br><br><br><br><br><br><br>
         <div class="signin-signup">
-            <h2>Toma tu QR</h2>
-            <h4>Captura una screenshot de tu código</h4>
+            <h2>Retoma captura de tu codigo qr </h2>
+            <h4>Ya que si no lo llevas no podras ingresar</h4>
             <div class="input-field" id="cajaIdentidad">
               <i class="fas fa-clipboard"></i>
               <div class="options">
@@ -104,7 +105,7 @@
             <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"/>
              <?php
             require 'phpqrcode/qrlib.php';
-            $nivel = $_POST['identdad'];
+            $nivel = $_GET['identdad'];
             $dir='temp/';
             $numero_control = $_GET['numeroControl'];
             $rfc=$_GET['rfc'];
@@ -125,10 +126,10 @@
                       $bandera=TRUE;
                   if($nivel==2 && $bandera==FALSE)
                       $contenido=$rfc;
-                      $bandera=TRUE;  
+                      $bandera=TRUE; 
                   if($nivel==3 && $bandera==FALSE)
                       $contenido=$correo;
-                      $bandera=TRUE;      
+                      $bandera=TRUE;     
                   if($bandera==TRUE)
                     QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
                     echo '<img src="'.$filename.'" />';
