@@ -7,14 +7,10 @@ const input_nombre = document.getElementById("nombre");
 const input_apellido_paterno =  document.getElementById("ap");
 const input_apellido_materno = document.getElementById("am");
 const input_email = document.getElementById("email");
-const input_identidad = document.getElementById("identidad");
-const input_roles = document.getElementById("roles");
 const input_telefono = document.getElementById("tel");
 const input_noControl = document.getElementById("control");
-const input_rolEstudiantes = document.getElementById("rolEstudiante");
 const input_semestre = document.getElementById("semestre");
 const input_titulo = document.getElementById("titulo");
-const input_funcionMaestro = document.getElementById("inputFuncion");
 const input_rfc = document.getElementById("rfc");
 const input_lugar = document.getElementById("lugar");
 
@@ -51,6 +47,7 @@ function showAlert(mensaje,error,identificador){
             if(identificador !== "no hay"){
                 limpiarCampos();
                 window.open("../codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador), '_blank');
+                
             }
              
             Toastify.reposition();
@@ -67,14 +64,10 @@ function limpiarCampos() {
     input_apellido_paterno.value = "";
     input_apellido_materno.value = "";
     input_email.value = "";
-    input_identidad.value = "";
-    input_roles.value = "";
     input_telefono.value = "";
-    input_noControl.value = "";
-    input_rolEstudiantes.value = "";
+    input_noControl.value = ""
     input_semestre.value = "";
     input_titulo.value = "";
-    input_funcionMaestro.value = "";
     input_rfc.value = "";
     input_lugar.value = "";
     
