@@ -207,7 +207,7 @@ lugar.addEventListener('keyup', (e) => {
 
 function validar() {
     const bot = document.getElementById('btn');
-    console.log(b1);
+   /*  console.log(b1);
     console.log(b2);
     console.log(b3);
     console.log(b4);
@@ -223,5 +223,5 @@ function validar() {
     }
     else{
         bot.disabled=true;
-    }
+    } */
 }
