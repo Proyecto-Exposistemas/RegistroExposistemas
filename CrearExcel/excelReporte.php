@@ -3,10 +3,10 @@
     //importar la libreria
     require 'vendor/autoload.php';
 
-    use PhpOffice\PhpSpreadsheet\Spreadsheet;
-    use PhpOffice\PhpSpreadsheet\Writer\Xls;
-    use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-    use PhpOffice\PhpSpreadsheet\IOFactory;
+    // use PhpOffice\PhpSpreadsheet\Spreadsheet;
+    // use PhpOffice\PhpSpreadsheet\Writer\Xls;
+    // use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+    // use PhpOffice\PhpSpreadsheet\IOFactory;
 
     //instancia del CRUD
     include_once("../CRUD/CRUD_bd_general.php");
@@ -14,7 +14,7 @@
     $obj->conexionBD();
 
     //instanciar la clase
-    $spreadsheet = new Spreadsheet();
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
     $spreadsheet->getProperties()->setTitle("Reporte de asistencia Exposistemas " . date("Y"))->setCreator("Academia ISC")
         ->setCategory("Constancias")->setCompany("Instituto Tecnológico Superior Zacatecas Sur")->setLastModifiedBy("");
 
@@ -192,7 +192,7 @@
     header('Content-Disposition: attachment;filename="Reporte de asistencia Exposistemas ' . date("Y") . '.xls"');
     header('Cache-Control: max-age=0');
 
-    $writer = IOFactory::createWriter($spreadsheet, 'Xls');
+    $writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
     $writer->save('php://output');
 
     //funcion para quitar los segundos

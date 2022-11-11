@@ -3,13 +3,13 @@
     //importar la libreria
     require 'vendor/autoload.php';
 
-    use PhpOffice\PhpSpreadsheet\Spreadsheet;
-    use PhpOffice\PhpSpreadsheet\Writer\Xls;
-    use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-    use PhpOffice\PhpSpreadsheet\IOFactory;
+    // use PhpOffice\PhpSpreadsheet\Spreadsheet;
+    // use PhpOffice\PhpSpreadsheet\Writer\Xls;
+    // use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+    // use PhpOffice\PhpSpreadsheet\IOFactory;
 
     //instanciar la clase
-    $spreadsheet = new Spreadsheet();
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
     $spreadsheet -> getProperties() -> setTitle("Constancias de Exposistemas " . date("Y")) -> setCreator("Academia ISC")
     -> setCategory("Constancias") -> setCompany("Instituto Tecnológico Superior Zacatecas Sur") -> setLastModifiedBy("");
 
@@ -109,7 +109,7 @@
     header('Content-Disposition: attachment;filename="Constancias Exposistemas ' . date("Y") . '.xls"');
     header('Cache-Control: max-age=0');
 
-    $writer = IOFactory::createWriter($spreadsheet, 'Xls');
+    $writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
     $writer->save('php://output');
 
     //volver a la ventana
