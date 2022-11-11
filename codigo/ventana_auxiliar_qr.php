@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ventana auxiliar código qr</title>
+  <title>Recuperación código qr </title>
   <link rel="stylesheet" href="../css/logincopy.css">
   <link rel="shortcut icon" href="/img/logo-ISC.ico" type="image/x-icon">
 </head>
@@ -15,8 +15,8 @@
     <div class="forms-container">
       <form action="">
         <div class="signin-signup">
-            <h2>Toma tu QR</h2>
-            <h4>Captura una screenshot de tu código</h4>
+            <h2>Retoma captura de tu codigo qr </h2>
+            <h4>Ya que si no lo llevas no podras ingresar</h4>
             <div class="input-field" id="cajaIdentidad">
               <i class="fas fa-clipboard"></i>
               <div class="options">
@@ -102,31 +102,8 @@
             </div>
             <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"/>
         </div>
-
       </form> 
     </div>
-    <?php
-            require 'phpqrcode/qrlib.php';
-            $nivel = $_POST['identdad'];
-            $dir='temp/';
-
-            if($nivel==0)
-              echo "Entre en la condicional";
-              $numero_control = $_POST['numeroControl'];
-              if(!file_exists($dir))
-                      mkdir($dir);
-
-                  $filename= $dir.'test.png';
-                  
-                  $tamanio=10;
-                  $level='M';
-                  $frameSize=3;
-                  $contenido=$numero_control;
-              
-              QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-              echo "POR FAVOR DESCARGA TU CODIGO QR";
-              echo '<img src="'.$filename.'" />';
-          ?> 
 
     <div class="panels-container">
       <div class="panel left-panel" id="panel1">
@@ -139,10 +116,9 @@
       </div>
 
     </div>
-
   </div>
+
   <script src="/js/campos_ventana_auxiliar.js"></script>
 
 </body>
-
 </html>
