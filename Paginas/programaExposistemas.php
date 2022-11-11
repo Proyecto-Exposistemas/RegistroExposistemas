@@ -25,7 +25,7 @@
 
         <th> Descripción </th>
 
-        <th> Hora de Inicio </th>
+        <th> Hora de Inicio </th>  
 
         <th> Expositores </th>
 
@@ -46,7 +46,7 @@
             evento.hora_inicio, asesores_evento.materia 
             FROM evento, asesores_evento 
             WHERE evento.no_evento = asesores_evento.no_evento ORDER BY evento.no_evento ASC";
-            $resultadoE = $con->MOSTRAR($consulta_evento);
+            $resultadoE = $con->MOSTRAR($consulta_evento); 
 
             $consulta_asesores = "SELECT DISTINCT docentes.nombre, docentes.paterno 
             FROM asesores_evento, docentes, evento WHERE evento.no_evento = :numero 

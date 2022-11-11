@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
             jsPDF:{
                 unit:"in",
-                format: "a4", 
+                format: "a3", 
                 orientation: 'portrait'
             }
         }) 
@@ -22,3 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.log(err));
     });
 });  
+
