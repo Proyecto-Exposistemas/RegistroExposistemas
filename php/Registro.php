@@ -120,7 +120,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
             }
             
             // se trata de un expositor, panelista, o conferencista
-            $sql = "INSERT INTO ponentes_externos (nombre,paterno,materno,conferencia,titulo,correo) VALUES(:nom,:apep,:apem,:rol,:titulo,:correo)";
+            $sql = "INSERT INTO ponentes_externos (nombre,paterno,materno,rol,titulo,correo) VALUES(:nom,:apep,:apem,:rol,:titulo,:correo)";
             $parametros = [":nom"=>$nombre,":apep"=>$ap_paterno,":apem"=>$ap_materno,":rol"=>$tipos_externos[$roles-2],":titulo"=>$titulo,":correo"=>$correo];
 
             $registros = $conexion->MOSTRAR("SELECT nombre FROM ponentes_externos WHERE correo=:correo", [":correo"=>$correo]);

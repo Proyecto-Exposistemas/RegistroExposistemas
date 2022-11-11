@@ -42,7 +42,7 @@ class Constancias_participantes extends CRUD_general{
         $this->conexionBD();
         $resultados =$this->MOSTRAR(
             "SELECT nombre, paterno, materno, funcion,titulo
-             FROM docentes");
+             FROM docentes WHERE rfc <> 'QWER12345678'");
         $this->CERRAR_CONEXION();
 
         if(count($resultados) > 0 && file_exists("../GeneradorConstancias/templates/template.docx")){
@@ -108,7 +108,7 @@ class Constancias_participantes extends CRUD_general{
         $this->conexionBD();
         $resultados =$this->MOSTRAR(
             "SELECT ponentes_externos.nombre, ponentes_externos.paterno, ponentes_externos.materno,
-            ponentes_externos.conferencia, ponentes_externos.titulo, evento.evento 
+            ponentes_externos.rol, ponentes_externos.titulo, evento.evento 
             FROM ponentes_externos,evento,evento_externos 
             WHERE evento_externos.correo = ponentes_externos.correo 
             AND evento_externos.no_evento = evento.no_evento");
@@ -121,7 +121,7 @@ class Constancias_participantes extends CRUD_general{
                 $titulo = $this->Acronimo($fila["titulo"]);
 
                 $nombre_completo = $titulo ." ".$fila["nombre"]." ".$fila["paterno"] . " " . $fila["materno"];
-                $actividad = "como " . strtolower($fila["conferencia"]);
+                $actividad = "como " . strtolower($fila["rol"]);
                 $evento = $fila["evento"];
                 $this->Crear_docx_contancia(
                     [
@@ -163,7 +163,7 @@ class Constancias_participantes extends CRUD_general{
             
             // inject internal xml inside main template
             $mainXml = $mainTemplateProcessor->gettempDocumentMainPart();
-            $mainXml = preg_replace('/<\/w:body>/', $innerXml . '</w:body>', $mainXml);
+            $mainXml = preg_replace('/<\/w:body>/', '<w:p><w:r><w:br w:type="page" /><w:lastRenderedPageBreak/></w:r></w:p>' . $innerXml . '</w:body>', $mainXml);
             $mainTemplateProcessor->settempDocumentMainPart($mainXml);
            
             if(($i+1) == ($this->contador_constancias-1) ||  ($i+1) == $this->contador_constancias){
@@ -202,7 +202,8 @@ class Constancias_participantes extends CRUD_general{
 
     public function Acronimo($titulo): string
     {
-        if((preg_match('#^Inge#i', $titulo) === 1)){
+
+        if((preg_match('#^Ing#i', $titulo) === 1)){
             $titulo = "Ing.";
         }else if((preg_match('#^Doctor#i', $titulo) === 1)){
             $titulo = "Dr.";
@@ -216,12 +217,8 @@ class Constancias_participantes extends CRUD_general{
     }
 
 
+
 }
-
-
-
-
-
 
 
 
