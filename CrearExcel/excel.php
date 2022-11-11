@@ -76,7 +76,8 @@
 
     //sacar los datos para las constancias de docentes
     $aumento = count($resultados_alumnos) + count($resultados_externos) + 2;
-    $consulta = "SELECT * FROM docentes";
+    $consulta = "SELECT * FROM docentes
+    WHERE rfc != 'QWER12345678'";
     $parametro = [":selecion" => "10"];
     $resultados_docentes = $obj->Mostrar($consulta);
 
