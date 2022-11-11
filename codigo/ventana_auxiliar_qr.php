@@ -105,27 +105,19 @@
             <input  id="btn" type="submit" value="Generar" name="generar" class="btn solid" id="enviar"/>
              <?php
                 require 'phpqrcode/qrlib.php';
-                if(isset($_GET['identidad'])){
-                }
-                if(isset($_GET['numeroControl'])){
-
-                }
-                if(isset($_GET['procedencia'])){
-
-                }
-                if(isset($_GET['rfc'])){
-
-                }
-                $bandera=FALSE;
                 $dir='temp/';
+                if(isset($_GET['identidad'])){
+                   $_GET['numeroControl'];
+                   $_GET['procedencia'];
+                   $_GET['rfc'];
+                   $_POST['generar'];
+                 }
+                $bandera=FALSE;
                 $nivel=['identidad'];
                 $numero_control =['numeroControl'];
                 $correo=['procedencia'];
                 $rfc=['rfc'];
-                $contenido="";
-
-                if($nivel==1 || $nivel==2 || $nivel==3)
-                  if(!file_exists($dir))
+                if(!file_exists($dir))
                           mkdir($dir);
 
                       $filename= $dir.'test.png';
@@ -133,18 +125,9 @@
                       $tamanio=10;
                       $level='M';
                       $frameSize=3;
-                      if($nivel==1 && $bandera==FALSE)
-                          $contenido=$numero_control;
-                          $bandera=TRUE;
-                      if($nivel==2 && $bandera==FALSE)
-                          $contenido=$rfc;
-                          $bandera=TRUE; 
-                      if($nivel==3 && $bandera==FALSE)
-                          $contenido=$correo;
-                          $bandera=TRUE;     
-                      if($bandera==TRUE)
-                        QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                        echo '<img src="'.$filename.'" />';
+                      $contenido='';
+                      QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
+                      echo '<img src="'.$filename.'" />';
 
           ?> 
         </div>
