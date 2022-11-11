@@ -276,8 +276,7 @@
               <td class="sticky"><?php echo $resultado[$i]['nombre']; ?></td>
               <td><?php echo $resultado[$i]['paterno']; ?></td>
               <td><?php echo $resultado[$i]['materno']; ?></td>
-              <td><?php echo $resultado[$i]['procedencia']; ?></td>
-              <td><?php echo $no_registros ?></td>
+              <t><?php echo $resultado[$i]['procedencia']; ?></t
               <td><?php echo $registros[0] ?></td>
               <td><?php echo $registros[1] ?></td>
 
