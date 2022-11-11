@@ -105,14 +105,24 @@
             <input  id="btn" type="submit" value="Generar" name="generar" class="btn solid" id="enviar"/>
              <?php
                 require 'phpqrcode/qrlib.php';
-                if(isset($_REQUEST['generar'])){
-                  $nivel = $_REQUEST['identdad'];
-                  $numero_control = $_REQUEST['numeroControl'];
-                  $rfc=$_REQUEST['rfc'];
-                  $correo=$_REQUEST['procedencia'];
+                if(isset($_GET['identidad'])){
+                }
+                if(isset($_GET['numeroControl'])){
+
+                }
+                if(isset($_GET['procedencia'])){
+
+                }
+                if(isset($_GET['rfc'])){
+
                 }
                 $bandera=FALSE;
                 $dir='temp/';
+                $nivel=['identidad'];
+                $numero_control =['numeroControl'];
+                $correo=['procedencia'];
+                $rfc=['rfc'];
+                $contenido="";
 
                 if($nivel==1 || $nivel==2 || $nivel==3)
                   if(!file_exists($dir))
