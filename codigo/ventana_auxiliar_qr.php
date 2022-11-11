@@ -102,33 +102,50 @@
               <i class="fas fa-map-marker-alt"></i>
               <input id="lugar" type="text" placeholder="Correo" name="procedencia" autocomplete="off" />
             </div>
-            <input  id="btn" type="submit" value="Generar" name="generar" class="btn solid" id="enviar"/>
-             <?php
-                require 'phpqrcode/qrlib.php';
+            <input  id="btn" type="submit" value="Generar" class="btn solid" id="enviar"/>
+            <?php
+            require 'phpqrcode/qrlib.php';
                 $dir='temp/';
                 if(isset($_GET['identidad'])){
                    $_GET['numeroControl'];
                    $_GET['procedencia'];
                    $_GET['rfc'];
                    $_POST['generar'];
-                   $contenido['Hola mundo'];
+                   $_GET['procedencia'];
                  }
                 $bandera=FALSE;
                 $nivel=['identidad'];
-                $numero_control =['numeroControl'];
+                //$numero_control =['numeroControl'];
                 $correo=['procedencia'];
                 $rfc=['rfc'];
-                if(!file_exists($dir))
-                          mkdir($dir);
 
-                      $filename= $dir.'test.png';
-                      
-                      $tamanio=10;
-                      $level='M';
-                      $frameSize=3;
-                      $contenido='';
-                      QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
-                      echo '<img src="'.$filename.'" />';
+            if($nivel==1 || $nivel==2 || $nivel==3)
+              if(!file_exists($dir))
+                      mkdir($dir);
+                  $filename= $dir.'test.png';
+                  $bandera=FALSE;
+                  $tamanio=10;
+                  $level='M';
+                  $frameSize=3;
+                  if($nivel==1 && $bandera==FALSE){
+                      $contenido=$numero_control;
+                      $bandera=TRUE;
+                      echo "Sali de la condicion 1"; 
+                  }  
+                  if($nivel==2 && $bandera==FALSE){
+                      $contenido=$rfc;
+                      $bandera=TRUE; 
+                      echo "Sali de la condicion 2"; 
+                  }      
+                  if($nivel==3 && $bandera==FALSE){
+                      $contenido=$correo;
+                      $bandera=TRUE;
+                      echo "Sali de la condicion 3";
+                  }      
+                  if($bandera==TRUE){
+                    QRcode::png($contenido,$filename,$level,$tamanio,$frameSize);
+                    echo '<img src="'.$filename.'" />';
+                  }    
 
           ?> 
         </div>
