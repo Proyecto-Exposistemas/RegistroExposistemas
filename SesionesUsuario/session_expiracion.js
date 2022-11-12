@@ -16,3 +16,17 @@ const id = window.setInterval(function () {
         location.href="../SesionesUsuario/logout.php";
     }
 }, 1200);/** repetir cada 1.2 segundos */
+
+VerSesion();
+function VerSesion() {
+
+    fetch("../SesionesUsuario/user.php",{
+        method: "POST"
+    },true).then(response => response.json())
+    .then(data => {
+        location.href="../SesionesUsuario/logout.php";
+        
+    }
+);
+}
+

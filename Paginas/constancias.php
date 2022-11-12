@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+<script src="../SesionesUsuario/session_expiracion.js"></script>
   <section class="container-general">
     <article class="navigation">
       <nav>
@@ -143,6 +143,7 @@
     </div>
 
   </section>
+
   <script src="../js/constancias.js"></script>
   <script src="../js/toast_alert.js"></script>
   <!-- Importacion de los íconos de Ionic -->

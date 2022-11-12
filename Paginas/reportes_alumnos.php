@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<script src="../SesionesUsuario/session_expiracion.js"></script>
   <header>
     <h2>Reportes de asistencia alumnos y externos</h2>
   </header>
@@ -367,6 +368,7 @@
 
   </section>
   <!-- Importacion de los íconos de Ionic -->
+  
   <script src="../js/linkHome.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

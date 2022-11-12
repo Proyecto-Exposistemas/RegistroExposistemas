@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/estilos_programa_exposistemas.css">
 </head>
 <body>
+<script src="../SesionesUsuario/session_expiracion.js"></script>
 <div class="card">
 
 <h2>PROGRAMA EXPOSISTEMAS</h2><br>
@@ -103,6 +104,7 @@
 <div> 
   <button class="btn" id="CrearPdf">PDF</button>
 </div>
+
 </body>
 </html>
 
