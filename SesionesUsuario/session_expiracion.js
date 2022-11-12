@@ -24,7 +24,10 @@ function VerSesion() {
         method: "POST"
     },true).then(response => response.json())
     .then(data => {
-        location.href="../SesionesUsuario/logout.php";
+        if(data.dato == false){
+            location.href="../SesionesUsuario/logout.php";
+        }
+        
         
     }
 );
