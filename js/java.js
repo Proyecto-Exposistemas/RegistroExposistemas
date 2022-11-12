@@ -55,7 +55,7 @@ const ap = document.getElementById('ap');
 ap.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
-    ap.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '').trim(); 
+    ap.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, ''); 
     if (expresiones.apellido.test(valorinput.replace(/\s/g, '').trim() )) {
         b2 = true;
         validar();
@@ -69,7 +69,7 @@ const am = document.getElementById('am');
 am.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
-    am.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '').trim();  
+    am.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '');  
     if (expresiones.apellido.test(valorinput.replace(/\s/g, '').trim() )) {
         b3 = true;
         validar();
@@ -146,7 +146,7 @@ email.addEventListener('keyup', (e) => {
         validar();
     } 
 });
-const funcion = document.getElementById('funcion');
+/* const funcion = document.getElementById('funcion');
 funcion.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
@@ -159,13 +159,13 @@ funcion.addEventListener('keyup', (e) => {
         b7 = false;
         validar();
     } 
-});
+}); */
 
 const titulo = document.getElementById('titulo');
 titulo.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
-    titulo.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '').trim();
+    titulo.value = valorinput.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '');
     if (expresiones.nom.test(valorinput.replace(/\s/g, '').trim() )) {
         b10 = true;
         validar();
@@ -179,7 +179,7 @@ const rfc = document.getElementById('rfc');
 rfc.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
-    rfc.value = valorinput.replace(/[^A-Z0-9]/g, '').trim();
+    rfc.value = valorinput.replace(/[^a-zA-Z0-9]/g, '').trim();
     if (expresiones.rfc.test(valorinput.replace(/\s/g, '').trim() )) {
         b9 = true;
         validar();
