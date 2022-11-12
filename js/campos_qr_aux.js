@@ -57,9 +57,9 @@ function comprobarRegistroAnterior(event) {
             //si el registro existe entonces que genere el qr
 
             GenerarQR(data.identificador);
-        }else{
-            showAlert(data.mensaje,true);
         }
+
+        showAlert(data.mensaje,data.error);
 
         
 
@@ -78,14 +78,14 @@ function GenerarQR(identificador) {
 function showAlert(mensaje,error){
     Toastify({
         text: mensaje,
-        duration: 1500,
+        duration: 3000,
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "center", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "linear-gradient(to right, #ff0000, #96c93d)" ,
-        }
+          background: error?"linear-gradient(to right, #ff0000, #96c93d)" : "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        close: true
       }).showToast();
-  }
-    
+}

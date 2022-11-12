@@ -21,6 +21,7 @@ if(isset($_POST["identidad"])){
       $identificador = "registros_alumnos;".$numero_control;
       $existe = true;
       $error = false;
+      $mensaje = "Código generado con exito";
     }else{
       $mensaje = "Debes registrarte primero para poder generar tu código qr";
     }
@@ -39,6 +40,7 @@ if(isset($_POST["identidad"])){
         $identificador = "registros_externos;".$correo;
         $existe = true;
         $error = false;
+        $mensaje = "Código generado con exito";
       }else{
         $mensaje = "Debes registrarte primero para poder generar tu código qr";
       }
@@ -52,6 +54,7 @@ if(isset($_POST["identidad"])){
         $identificador = "registros_ponentes_ext;".$correo;
         $existe = true;
         $error = false;
+        $mensaje = "Código generado con exito";
       }else{
         $mensaje = "Debes registrarte primero para poder generar tu código qr";
       }
