@@ -85,7 +85,7 @@ if(isset($_POST['identdad']) && isset($_POST['nombre']) && isset($_POST['ap']) &
                 if($resultado){
                     $mensaje = "Registro exitoso";
                     $error=false;
-                    $identificador = "registros_docentes;".$rfc;
+                    $identificador = "registros_docentes;";
                 }else{
                     $mensaje = "No se ha podido realizar el registro";
                     $error=true;

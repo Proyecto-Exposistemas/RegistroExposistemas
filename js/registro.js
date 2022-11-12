@@ -46,7 +46,11 @@ function showAlert(mensaje,error,identificador){
         callback: function() {
             if(identificador !== "no hay"){
                 limpiarCampos();
-                window.open("../codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador), '_blank');
+
+                if(identificador !== "registros_docentes;"){//si no es un docente le genera el codigo qr
+                    window.open("../codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador), '_blank');
+                }
+                
                 
             }
              
