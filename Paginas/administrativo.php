@@ -167,9 +167,9 @@
             </div>
             <!-- Código del contenedor de nombres -->
             <div class="contanerPersonas">
-                <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
+              <h2 style="margin-bottom: -5px;">Integrantes del equipo</h2>
               <div class="containerP">
-                
+
 
               </div>
             </div>
@@ -203,7 +203,7 @@
             <div class="containerAsistentes">
               <h2 style="margin-bottom: -5px;">Lista de asistentes del proyecto</h2>
               <div class="container2P">
-                
+
               </div>
             </div>
 
@@ -248,64 +248,64 @@
             <tbody>
               <tr>
                 <?php
-                    include_once("../CRUD/CRUD_bd_general.php");
-                    $con=new CRUD_general();
-                    $con->conexionBD();
-                
-                    $consulta_evento  = "SELECT DISTINCT  evento.no_evento, evento.evento, evento.descripcion, 
+                include_once("../CRUD/CRUD_bd_general.php");
+                $con = new CRUD_general();
+                $con->conexionBD();
+
+                $consulta_evento  = "SELECT DISTINCT  evento.no_evento, evento.evento, evento.descripcion, 
                     evento.hora_inicio, asesores_evento.materia 
                     FROM evento, asesores_evento 
                     WHERE evento.no_evento = asesores_evento.no_evento ORDER BY evento.no_evento ASC";
-                    $resultadoE = $con->MOSTRAR($consulta_evento);
+                $resultadoE = $con->MOSTRAR($consulta_evento);
 
-                    $consulta_asesores = "SELECT DISTINCT docentes.nombre, docentes.paterno 
+                $consulta_asesores = "SELECT DISTINCT docentes.nombre, docentes.paterno 
                     FROM asesores_evento, docentes, evento WHERE evento.no_evento = :numero 
                     AND evento.no_evento = asesores_evento.no_evento 
                     AND docentes.rfc = asesores_evento.rfc";
 
-                    $consulta_alumnos = "SELECT DISTINCT alumnos.nombre, alumnos.paterno
+                $consulta_alumnos = "SELECT DISTINCT alumnos.nombre, alumnos.paterno
                     FROM evento, evento_alumnos, alumnos 
                     WHERE evento.no_evento = :numero
                     AND evento.no_evento = evento_alumnos.no_evento 
                     AND evento_alumnos.no_control = alumnos.no_control";
 
-                    $consulta_externos = "SELECT DISTINCT ponentes_externos.nombre, ponentes_externos.paterno
+                $consulta_externos = "SELECT DISTINCT ponentes_externos.nombre, ponentes_externos.paterno
                     FROM evento, ponentes_externos, evento_externos 
                     WHERE evento.no_evento = :numero AND evento.no_evento = evento_externos.no_evento 
                     AND evento_externos.correo = ponentes_externos.correo";
 
 
-                    for($i=0;$i<count($resultadoE);$i++){?>
-                      <td><?php echo $resultadoE[$i]['no_evento'];?></td>
-                      <td><?php echo $resultadoE[$i]['evento'];?></td>
-                      <td ><?php echo $resultadoE[$i]['descripcion'];?></td>
-                      <td><?php echo $resultadoE[$i]['hora_inicio'];?></td>
+                for ($i = 0; $i < count($resultadoE); $i++) { ?>
+                  <td><?php echo $resultadoE[$i]['no_evento']; ?></td>
+                  <td><?php echo $resultadoE[$i]['evento']; ?></td>
+                  <td><?php echo $resultadoE[$i]['descripcion']; ?></td>
+                  <td><?php echo $resultadoE[$i]['hora_inicio']; ?></td>
 
-                      <td><?php
-                          $resultado_alumnos = $con->MOSTRAR($consulta_alumnos,[":numero"=>$resultadoE[$i]['no_evento']]);
-                          for ($j=0; $j < count($resultado_alumnos); $j++) { 
-                              echo $resultado_alumnos[$j]["nombre"]." " . $resultado_alumnos[$j]["paterno"]."<br>";
-                          }
-                          $resultado_externos = $con->MOSTRAR($consulta_externos,[":numero"=>$resultadoE[$i]['no_evento']]);
-                          for ($j=0; $j < count($resultado_externos); $j++) { 
-                              echo $resultado_externos[$j]["nombre"]." ". $resultado_externos[$j]["paterno"]."<br>";
-                          }
+                  <td><?php
+                      $resultado_alumnos = $con->MOSTRAR($consulta_alumnos, [":numero" => $resultadoE[$i]['no_evento']]);
+                      for ($j = 0; $j < count($resultado_alumnos); $j++) {
+                        echo $resultado_alumnos[$j]["nombre"] . " " . $resultado_alumnos[$j]["paterno"] . "<br>";
+                      }
+                      $resultado_externos = $con->MOSTRAR($consulta_externos, [":numero" => $resultadoE[$i]['no_evento']]);
+                      for ($j = 0; $j < count($resultado_externos); $j++) {
+                        echo $resultado_externos[$j]["nombre"] . " " . $resultado_externos[$j]["paterno"] . "<br>";
+                      }
                       ?></td>
-                      <td><?php
-                          $resultado_asesores = $con->MOSTRAR($consulta_asesores,[":numero"=>$resultadoE[$i]['no_evento']]);
-                          for ($j=0; $j < count($resultado_asesores); $j++) { 
-                              echo $resultado_asesores[$j]["nombre"]." ".$resultado_asesores[$j]["paterno"]."<br>";
-                          }
+                  <td><?php
+                      $resultado_asesores = $con->MOSTRAR($consulta_asesores, [":numero" => $resultadoE[$i]['no_evento']]);
+                      for ($j = 0; $j < count($resultado_asesores); $j++) {
+                        echo $resultado_asesores[$j]["nombre"] . " " . $resultado_asesores[$j]["paterno"] . "<br>";
+                      }
                       ?></td>
 
-                      <td><?php echo $resultadoE[$i]['materia'];?></td>
-                  </tr>
+                  <td><?php echo $resultadoE[$i]['materia']; ?></td>
               </tr>
-          <?php
+              </tr>
+            <?php
                 }
-          ?>
-          </tr>
-          </tbody>
+            ?>
+            </tr>
+            </tbody>
 
           </table>
         </article>
@@ -314,7 +314,7 @@
       <!-- Sección para el cambio de contraseña #######################################################-->
       <div class="card">
         <h2>Cambiar la contraseña</h2>
-        
+
         <form action="" method="post" id="form2">
 
           <div class="campos">
@@ -332,17 +332,17 @@
               <input type="text" name="confirma_contraseña" autocomplete="off" id="confirma_contraseña" required class="input">
               <label for="confirma_contraseña" class="input-label">Confirmar contraseña</label>
             </div>
-            
+
           </div>
 
           <div class="botones">
-              <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="Guardar">
+            <input type="submit" class="btn" name="btn-guardarC" id="btn-guardarC" value="Guardar">
           </div>
 
         </form>
       </div>
 
-        <!-- Seccion para escanear los códigos QR -->
+      <!-- Seccion para escanear los códigos QR -->
       <div class="card">
         <h2>Escanear código QR</h2>
         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
@@ -382,13 +382,20 @@
             var datos = new FormData(formulario);
             console.log(datos);
             console.log(datos.get('text'));
-            datos.append("text",c);
+            datos.append("text", c);
             fetch('../Paginas/funcion.php', {
               method: 'POST',
               body: datos
             })
           });
         </script>
+      </div>
+
+      <div class="card">
+        <form action="" id="formulario_limpiar">
+          <input class="btn" type="submit" value="Limpiar base de datos">
+          <script src="js/alertaLimpiarBD.js"></script>
+        </form>
       </div>
 
     </article>
