@@ -180,6 +180,9 @@ rfc.addEventListener('keyup', (e) => {
     let valorinput = e.target.value;
     console.log(valorinput);
     rfc.value = valorinput.replace(/[^a-zA-Z0-9]/g, '').trim();
+    if (rfc.value.length > 13) {
+        rfc.value = rfc.value.slice(0, 13);
+    }
     if (expresiones.rfc.test(valorinput.replace(/\s/g, '').trim() )) {
         b9 = true;
         validar();
