@@ -1,42 +1,71 @@
 <?php
-  class Peticion{
-    function comprobar(){
-        include_once("../CRUD/CRUD_bd_general.php");
-        //se registra a los externos, docentes o alumnos en la bd, y se manda un identificador
-        //para que se cree su codigo qr
-        $conexion = new CRUD_general();
-        $conexion->conexionBD();
+require_once("../CRUD/CRUD_bd_general.php");
+$conexion = new CRUD_general();
+$conexion->conexionBD();
 
-        $identificador_numero_control=$_POST['numeroControl'];
-        $identificador_rfc=$_POST['rfc'];
-        $identificador_correo=$_POST['procedencia'];
+$mensaje = "Debes seleccionar un rol";
+$existe = false;
+$identificador = "";
+$error = true;
+if(isset($_POST["identidad"])){
+  $identidad = $_POST["identidad"];
+  
+  if($identidad == 1 && isset($_POST["numeroControl"])){
 
-        $nive=$_POST['identdad'];
+    $numero_control = $_POST["numeroControl"];
 
-        if($nive==1){
-            $consulta="SELECT no_control FROM alumnos where no_control: no_contol ";
-            $parametros = ["no_control" => $identificador_numero_control]
-            $resultado=$conexion->Mostrar($consulta,$parametros);
-            if(count($resultado)!=0){
-                echo json_encode("No se encontro el numero de control");
-            }
-            else{
-                echo json_encode("Este alumno ya esta registrado");
-            }
+    $registros = $conexion->MOSTRAR("SELECT nombre FROM alumnos WHERE no_control=:no_con", [":no_con"=>$numero_control]);
 
-        }
-        
-        
+    if(count($registros) > 0){
 
+      $identificador = "registros_alumnos;".$numero_control;
+      $existe = true;
+      $error = false;
+    }else{
+      $mensaje = "Debes registrarte primero para poder generar tu código qr";
+    }
+    
 
-        
-    } 
-    $conexion->CERRAR_CONEXION();
+  }if($identidad == 2 && isset($_POST["roles"]) && isset($_POST["email"])){
+
+    $correo = $_POST["email"];
+    $rol = $_POST["roles"];
+    if(strcmp($rol,"Espectador") == 0){
+
+      $registros = $conexion->MOSTRAR("SELECT nombre FROM espectadores_externos WHERE correo=:correo", [":correo"=>$correo]);
+
+      if(count($registros) > 0){
+
+        $identificador = "registros_externos;".$correo;
+        $existe = true;
+        $error = false;
+      }else{
+        $mensaje = "Debes registrarte primero para poder generar tu código qr";
+      }
+
+    }else if(strcmp($rol,"0") != 0){
+
+      $registros = $conexion->MOSTRAR("SELECT nombre FROM ponentes_externos WHERE correo=:correo", [":correo"=>$correo]);
+
+      if(count($registros) > 0){
+
+        $identificador = "registros_ponentes_ext;".$correo;
+        $existe = true;
+        $error = false;
+      }else{
+        $mensaje = "Debes registrarte primero para poder generar tu código qr";
+      }
+
+    }
+    
+    
+
   }
-  /*$objeto=new Peticion;
-  $objeto->comprobar(); 
-  $mensaje = "Se ha llegado con éxito";
-  $data = ["mensaje"=> $mensaje];
-  header('Content-Type: application/json');
-  echo json_encode($data);/*  
+}
+$conexion->CERRAR_CONEXION();
+//regresa el tipo JSON con el mensaje
+$data = ["mensaje"=> $mensaje,"error"=>$error, "identificador"=>$identificador, "existe"=>$existe];
+header("Content-Type: application/json");
+echo json_encode($data);
+
 ?>
