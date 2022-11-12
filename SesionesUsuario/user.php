@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $respuesta = false;
 if(isset($_SESSION['user'])){
     $respuesta = true;
