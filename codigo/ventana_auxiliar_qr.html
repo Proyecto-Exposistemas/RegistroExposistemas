@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperación código qr </title>
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="shortcut icon" href="/img/logo-ISC.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div class="container" id="circulo">
+    <div class="forms-container">
+      <div class="signin-signup">
+
+        <form method="POST" class="sign-in-form" id="formularioQR">
+          <h2 class="title">Recuperar QR</h2>
+
+          <div class="input-field" id="cajaIdentidad">
+            <i class="fas fa-clipboard"></i>
+            <div class="options">
+              
+              <select name="identdad" id="identidad">
+                <option value="0">Ingresa tu rol</option>
+                <option value="1">Estudiante</option>
+                <option value="3">Externo</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="input-field" id="cajaNumeroControl">
+            <i class="fas fa-id-card"></i>
+            <input id="control" type="text" placeholder="Número de control" name="numeroControl" autocomplete="off" />
+          </div>
+
+          <div class="input-field" id="cajaCorreo">
+            <i class="fas fa-envelope"></i>
+            <input id="email" type="email" placeholder="Correo" name="correo" autocomplete="off" />
+          </div>
+
+          <input  id="btn" type="submit" value="Consultar" class="btn solid" id="enviar"  />
+
+        </form>
+
+        <form method="POST" class="sign-up-form">
+          
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/js/campos2.js"></script>
+  <script src="/js/campos_qr.js"></script>
+</body>
+</html>
