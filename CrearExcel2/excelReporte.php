@@ -24,8 +24,8 @@
 
     //poner los encabezados de las columnas
     $hoja_alumnos -> setCellValue('A1', "Nombre(s)") -> setCellValue("B1", "Apellido paterno") -> setCellValue("C1", "Apellido materno") ->
-    setCellValue("D1", "No. de control") -> setCellValue("E1", "Semestre") -> setCellValue("F1", "Regisro 1") -> 
-    setCellValue("G1", "Regisro 2");
+    setCellValue("D1", "No. de control") -> setCellValue("E1", "Semestre") -> setCellValue("F1", "Registro 1") -> 
+    setCellValue("G1", "Registro 2");
 
     //insertar los datos de los alumnos
     
@@ -89,7 +89,7 @@
 
     //poner los encabezados de las columnas
     $hoja_externos->setCellValue('A1', "Nombre(s)")->setCellValue("B1", "Apellido paterno")->setCellValue("C1", "Apellido materno")->
-    setCellValue("D1", "Procedencia")->setCellValue("E1", "Regisro 1")->setCellValue("F1", "Regisro 2");
+    setCellValue("D1", "Procedencia")->setCellValue("E1", "Registro 1")->setCellValue("F1", "Registro 2");
 
     //insertar los datos de los espectadores externos
 

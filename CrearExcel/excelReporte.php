@@ -24,8 +24,8 @@
 
     //poner los encabezados de las columnas
     $hoja_alumnos -> setCellValue('A1', "Nombre(s)") -> setCellValue("B1", "Apellido paterno") -> setCellValue("C1", "Apellido materno") ->
-    setCellValue("D1", "No. de control") -> setCellValue("E1", "Semestre") -> setCellValue("F1", "Regisro 1") -> 
-    setCellValue("G1", "Regisro 2");
+    setCellValue("D1", "No. de control") -> setCellValue("E1", "Semestre") -> setCellValue("F1", "Registro 1") -> 
+    setCellValue("G1", "Registro 2")->setCellValue("H1", "Registro 3");
 
     //insertar los datos de los alumnos
     
@@ -41,7 +41,7 @@
 
         $resp  = $obj->MOSTRAR($querry_verificacion);
         $no_registros = count($resp);
-        $registros = ["", ""];
+        $registros = ["", "", ""];
         $hora_ant = "";
         $counter = 0;
 
@@ -61,14 +61,12 @@
             //echo $hora_ant. '<br>';
         }
 
-        if ($no_registros <= 2) {
             $hoja_alumnos->setCellValue('A'.$iter+2, $resultado[$i]['nombre'])->setCellValue('B' . $iter+2, $resultado[$i]['paterno'])
             ->setCellValue('C' . $iter+2, $resultado[$i]['materno'])->setCellValue('D' . $iter+2, $resultado[$i]['no_control'])->
             setCellValue('E' . $iter+2, $resultado[$i]['semestre'])->setCellValue('F' . $iter+2, $registros[0])->
-            setCellValue('G' . $iter+2, $registros[0]);
+            setCellValue('G' . $iter+2, $registros[1])->setCellValue('H' . $iter + 2, $registros[2]);
 
             $iter++;
-        }
     }
 
     //definir propiedades de la hoja alumnos
@@ -89,7 +87,7 @@
 
     //poner los encabezados de las columnas
     $hoja_externos->setCellValue('A1', "Nombre(s)")->setCellValue("B1", "Apellido paterno")->setCellValue("C1", "Apellido materno")->
-    setCellValue("D1", "Procedencia")->setCellValue("E1", "Regisro 1")->setCellValue("F1", "Regisro 2");
+    setCellValue("D1", "Procedencia")->setCellValue("E1", "Registro 1")->setCellValue("F1", "Registro 2")->setCellValue("G1", "Registro 3");
 
     //insertar los datos de los espectadores externos
 
@@ -105,7 +103,7 @@
 
         $resp  = $obj->MOSTRAR($querry_verificacion);
         $no_registros = count($resp);
-        $registros = ["", ""];
+        $registros = ["", "", ""];
         $hora_ant = "";
         $counter = 0;
 
@@ -125,13 +123,11 @@
             //echo $hora_ant. '<br>';
         }
 
-        if ($no_registros <= 2) {
             $hoja_externos->setCellValue('A' . $iter + 2, $resultado[$i]['nombre'])->setCellValue('B' . $iter + 2, $resultado[$i]['paterno'])
                 ->setCellValue('C' . $iter + 2, $resultado[$i]['materno'])->setCellValue('D' . $iter + 2, $resultado[$i]['procedencia'])->
-                setCellValue('E' . $iter+2, $registros[0])->setCellValue('F' . $iter+2, $registros[1]);
+                setCellValue('E' . $iter+2, $registros[0])->setCellValue('F' . $iter+2, $registros[1])->setCellValue('G' . $iter + 2, $registros[2]);
 
             $iter++;
-        }
     }
 
     //insertar los datos de los ponentes externos

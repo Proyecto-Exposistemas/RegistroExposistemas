@@ -117,8 +117,6 @@
 
               <th>Semeste</th>
 
-              <th>No. de registros</th>
-
               <th>Registro 1</th>
 
               <th>Registro 2</th>
@@ -182,9 +180,6 @@
               </td>
               <td>
                 <?php echo $resultado[$i]['semestre']; ?>
-              </td>
-              <td>
-                <?php echo $no_registros ?>
               </td>
               <td>
                 <?php echo $registros[0] ?>
