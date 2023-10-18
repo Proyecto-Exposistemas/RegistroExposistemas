@@ -15,7 +15,7 @@ formulario.addEventListener('submit', function (e)
         .then(data =>{
             if (data === 'todo chido') {
                 alert("La limpieza se ha realizado con éxito");
-                location.href = "Paginas/administrativo.php";
+                location.href = "http://localhost/";
             }
 
             else {

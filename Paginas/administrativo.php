@@ -394,7 +394,7 @@
       <div class="card">
         <form action="" id="formulario_limpiar">
           <input class="btn" type="submit" value="Limpiar base de datos">
-          <script src="js/alertaLimpiarBD.js"></script>
+          <script src=" js/alertaLimpiarBD.js"></script>
         </form>
       </div>
 
