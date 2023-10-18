@@ -1,5 +1,5 @@
 <?php
-require_once("../CRUD/CRUD_bd_general.php");
+require_once("CRUD/CRUD_bd_general.php");
 $conexion = new CRUD_general();
 $conexion->conexionBD();
 $mensaje_evento = "No se encontro evento con ese numero";

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Constancias</title>
   <link rel="stylesheet" href="../css/administrativo.css">
-  <link rel="stylesheet" href="/css/toast_alert.css">
+  <link rel="stylesheet" href="../css/toast_alert.css">
 
 </head>
 

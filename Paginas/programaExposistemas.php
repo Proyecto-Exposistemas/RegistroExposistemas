@@ -7,7 +7,7 @@
     <title>Programa Exposistemas</title> 
     <script src="../js/html2pdf.bundle.min.js"></script> 
     <script src="../js/scriptPDF.js"></script>
-    <link rel="stylesheet" href="../css/estilos_programa_exposistemas.css">
+    <link rel="stylesheet" href="css/estilos_programa_exposistemas.css">
 </head>
 <body>
 <script src="../SesionesUsuario/session_expiracion.js"></script>
@@ -39,7 +39,7 @@
     <tbody>
       <tr>
         <?php
-            include_once("../CRUD/CRUD_bd_general.php");
+            include_once("CRUD/CRUD_bd_general.php");
             $con=new CRUD_general();
             $con->conexionBD();
         

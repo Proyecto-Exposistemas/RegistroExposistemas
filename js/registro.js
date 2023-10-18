@@ -18,7 +18,7 @@ const input_lugar = document.getElementById("lugar");
 function registrarAlumno(){
 
     let form = new FormData(document.getElementById('formulario'));
-    fetch("/php/Registro.php",
+    fetch("php/Registro.php",
     {
         method: 'POST',
         body: form,
@@ -47,8 +47,9 @@ function showAlert(mensaje,error,identificador){
             if(identificador !== "no hay"){
                 limpiarCampos();
 
-                if(identificador !== "registros_docentes;"){//si no es un docente le genera el codigo qr
-                    window.open("../codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador), '_blank');
+                if(identificador !== "registros_docentes;"){
+
+                    window.open("codigo/imagen_qr.html?identificador="+encodeURIComponent(identificador));
                 }
                 
                 
@@ -63,7 +64,7 @@ function showAlert(mensaje,error,identificador){
 
 
 function limpiarCampos() {
-
+    
     input_nombre.value = "";
     input_apellido_paterno.value = "";
     input_apellido_materno.value = "";
@@ -74,5 +75,4 @@ function limpiarCampos() {
     input_titulo.value = "";
     input_rfc.value = "";
     input_lugar.value = "";
-    
 }
